@@ -1,0 +1,178 @@
+{
+ "4K_Road_traffic_video_for_object_detection_and_t": {
+  "video": "4K Road traffic video for object detection and tracking - free download now! [MNn9qKG2UFI].mp4",
+  "resolution": "3840x2160",
+  "samples": 90,
+  "two_wheelers": 13,
+  "full640": {
+   "helmet": 0,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 1,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 13,
+   "head_found": 7,
+   "helmet": 7,
+   "no_helmet": 0,
+   "head_found_rate": 0.538
+  },
+  "two_wheeler_height_px_median": 191
+ },
+ "4K_Video_of_Highway_Traffic_KBsqQez_O4w": {
+  "video": "4K Video of Highway Traffic! [KBsqQez-O4w].mp4",
+  "resolution": "3840x2160",
+  "samples": 77,
+  "two_wheelers": 27,
+  "full640": {
+   "helmet": 1,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 1,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 27,
+   "head_found": 0,
+   "helmet": 0,
+   "no_helmet": 0,
+   "head_found_rate": 0.0
+  },
+  "two_wheeler_height_px_median": 69
+ },
+ "HTC_Sensation_FULL_HD_1080p_Video_Sample_highway": {
+  "video": "HTC Sensation FULL HD 1080p Video Sample (highway traffic) [wWLAc6mdJrs].mp4",
+  "resolution": "1920x1080",
+  "samples": 80,
+  "two_wheelers": 20,
+  "full640": {
+   "helmet": 1,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 0,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 20,
+   "head_found": 0,
+   "helmet": 0,
+   "no_helmet": 0,
+   "head_found_rate": 0.0
+  },
+  "two_wheeler_height_px_median": 61
+ },
+ "Highway_sounds_cars_trucks_passing_by_for_sleepi": {
+  "video": "Highway sounds cars trucks passing by for sleeping relaxing [TW3EH4cnFZo].mp4",
+  "resolution": "1920x1080",
+  "samples": 90,
+  "two_wheelers": 12,
+  "full640": {
+   "helmet": 0,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 0,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 12,
+   "head_found": 0,
+   "helmet": 0,
+   "no_helmet": 0,
+   "head_found_rate": 0.0
+  },
+  "two_wheeler_height_px_median": 52
+ },
+ "Original_Traffic_Sound_of_Delhi_Roads_Real_Delhi": {
+  "video": "Original Traffic Sound of Delhi Roads \uff5c Real Delhi Traffic \uff5c 1 Minute [D2m3THw-b78].mp4",
+  "resolution": "3840x2160",
+  "samples": 30,
+  "two_wheelers": 256,
+  "full640": {
+   "helmet": 2,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 3,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 256,
+   "head_found": 12,
+   "helmet": 15,
+   "no_helmet": 0,
+   "head_found_rate": 0.047
+  },
+  "two_wheeler_height_px_median": 494
+ },
+ "Traffic_congestion_due_to_Metro_work_South_Delhi": {
+  "video": "Traffic congestion due to Metro work - South Delhi [-EnB6E3hApQ].mp4",
+  "resolution": "1920x1080",
+  "samples": 62,
+  "two_wheelers": 203,
+  "full640": {
+   "helmet": 3,
+   "no_helmet": 3
+  },
+  "full1280": {
+   "helmet": 21,
+   "no_helmet": 3
+  },
+  "crop": {
+   "crops": 203,
+   "head_found": 61,
+   "helmet": 64,
+   "no_helmet": 1,
+   "head_found_rate": 0.3
+  },
+  "two_wheeler_height_px_median": 100
+ },
+ "bombay_traffic_zxxfvP8_lrU": {
+  "video": "bombay traffic [zxxfvP8-lrU].mp4",
+  "resolution": "1280x720",
+  "samples": 90,
+  "two_wheelers": 1550,
+  "full640": {
+   "helmet": 8,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 17,
+   "no_helmet": 0
+  },
+  "crop": {
+   "crops": 1550,
+   "head_found": 77,
+   "helmet": 77,
+   "no_helmet": 2,
+   "head_found_rate": 0.05
+  },
+  "two_wheeler_height_px_median": 68
+ },
+ "model2_test": {
+  "video": "model2_test.mp4",
+  "resolution": "1280x720",
+  "samples": 54,
+  "two_wheelers": 386,
+  "full640": {
+   "helmet": 2,
+   "no_helmet": 0
+  },
+  "full1280": {
+   "helmet": 61,
+   "no_helmet": 6
+  },
+  "crop": {
+   "crops": 386,
+   "head_found": 94,
+   "helmet": 93,
+   "no_helmet": 8,
+   "head_found_rate": 0.244
+  },
+  "two_wheeler_height_px_median": 66
+ }
+}

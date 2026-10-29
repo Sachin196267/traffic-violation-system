@@ -1,0 +1,13 @@
+{
+  "id": "sachin196267/tvs-triple-cls-yolo11s-smoke",
+  "title": "tvs-triple-cls-yolo11s-smoke",
+  "code_file": "train_triple_cls.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["sachin196267/tvs-triple-crops"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

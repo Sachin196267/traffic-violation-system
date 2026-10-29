@@ -1,0 +1,22 @@
+{
+ "video": "model2_test.mp4",
+ "resolution": "1280x720",
+ "samples": 54,
+ "two_wheelers": 386,
+ "full640": {
+  "helmet": 2,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 61,
+  "no_helmet": 6
+ },
+ "crop": {
+  "crops": 386,
+  "head_found": 94,
+  "helmet": 93,
+  "no_helmet": 8,
+  "head_found_rate": 0.244
+ },
+ "two_wheeler_height_px_median": 66
+}

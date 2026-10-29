@@ -1,0 +1,8 @@
+{
+ "note": "graded by eye from echallan/grade_sheet.py crops (2026-09-27). ok = correct challan, wrong = wrong challan, na = crop does not show the vehicle (triple evidence box/time mismatch)",
+ "tpt-26": {"helmet": {"ok": 12, "wrong": 1, "wrong_ids": ["008: person standing by the road"]},
+            "triple": {"ok_or_plausible": 13, "na": 4, "na_ids": ["002", "013", "021", "028"]}},
+ "tpt-15": {"helmet": {"ok": 7, "wrong": 2, "wrong_ids": ["007", "012: same pedestrian standing next to a bike, covering his face"]},
+            "triple": {"ok": 3, "na": 1, "na_ids": ["003"]}},
+ "sig-03 red light (camera config)": {"violation_ok": 2, "violation_wrong": 0, "crossings_on_green_marked_ok": 11}
+}

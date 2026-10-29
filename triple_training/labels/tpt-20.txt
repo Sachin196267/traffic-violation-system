@@ -1,0 +1,1 @@
+tpt-20:2=x tpt-20:3=x tpt-20:6=3 tpt-20:8=u tpt-20:11=u tpt-20:17=3 tpt-20:21=u tpt-20:30=3 tpt-20:31=u tpt-20:59=u tpt-20:64=3 tpt-20:70=x tpt-20:89=3

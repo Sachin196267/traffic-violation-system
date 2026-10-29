@@ -1,0 +1,25 @@
+# Autopilot 3: new junction + police/fire clips
+- 09-27 18:33 started
+- 09-27 18:34 downloaded sig-30
+- 09-27 18:34 downloaded sig-31
+- 09-27 18:34 downloaded sig-32
+- 09-27 18:35 downloaded sig-33
+- 09-27 18:36 downloaded sig-34
+- 09-27 18:37 downloaded sig-35
+- 09-27 18:38 downloaded pol-01
+- 09-27 18:39 downloaded pol-02
+- 09-27 18:39 downloaded pol-03
+- 09-27 18:43 downloaded pol-04
+- 09-27 18:44 downloaded fire-01
+- 09-27 18:45 downloaded fire-02
+- 09-27 18:48 downloaded fire-03
+- 09-27 18:49 downloaded fire-04
+- 09-27 18:57 emergency clips: crops extracted
+- 09-27 18:57 label sheets ready: 4 (ambulance_training/sheets/vids_*.jpg - NOTE: overwrote old vids_* sheets, labels already saved)
+- 09-27 19:00 red light sig-30: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 1
+- 09-27 19:03 red light sig-31: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 2
+- 09-27 19:04 red light sig-32: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 1
+- 09-27 19:10 red light sig-33: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 8
+- 09-27 19:12 red light sig-34: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 1
+- 09-27 19:19 red light sig-35: {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 63
+- 09-27 19:19 AUTOPILOT3 DONE - remaining (manual): label police/fire sheets, retrain probe, camera configs + grading for new junctions, report

@@ -1,0 +1,122 @@
+{
+ "APP_helmet_nohelmet-2": {
+  "per_class": {
+   "helmet": {
+    "P(labelled heads)": 1.0,
+    "R": 0.06,
+    "n_true": 168
+   },
+   "no_helmet": {
+    "P(labelled heads)": 0.417,
+    "R": 0.312,
+    "n_true": 16
+   }
+  },
+  "false_no_helmet(helmet->no_helmet)": "7 / 168",
+  "false_helmet(no_helmet->helmet)": "0 / 16",
+  "missed(h/nh)": "151/11",
+  "unmatched_preds(h/nh)": "30/44",
+  "confusion(pred rows h,nh,none x true cols h,nh,unlabelled)": [
+   [
+    10,
+    0,
+    30
+   ],
+   [
+    7,
+    5,
+    44
+   ],
+   [
+    151,
+    11,
+    0
+   ]
+  ],
+  "original_clean_test": {
+   "mAP50": 0.582,
+   "mAP50-95": 0.269,
+   "no_helmet_R": 0.473
+  }
+ },
+ "head_model_task1": {
+  "per_class": {
+   "helmet": {
+    "P(labelled heads)": 1.0,
+    "R": 0.256,
+    "n_true": 168
+   },
+   "no_helmet": {
+    "P(labelled heads)": 0.75,
+    "R": 0.375,
+    "n_true": 16
+   }
+  },
+  "false_no_helmet(helmet->no_helmet)": "2 / 168",
+  "false_helmet(no_helmet->helmet)": "0 / 16",
+  "missed(h/nh)": "123/10",
+  "unmatched_preds(h/nh)": "1/0",
+  "confusion(pred rows h,nh,none x true cols h,nh,unlabelled)": [
+   [
+    43,
+    0,
+    1
+   ],
+   [
+    2,
+    6,
+    0
+   ],
+   [
+    123,
+    10,
+    0
+   ]
+  ],
+  "original_clean_test": {
+   "mAP50": 0.769,
+   "mAP50-95": 0.398,
+   "no_helmet_R": 0.596
+  }
+ },
+ "FINETUNED_own": {
+  "per_class": {
+   "helmet": {
+    "P(labelled heads)": 1.0,
+    "R": 0.625,
+    "n_true": 168
+   },
+   "no_helmet": {
+    "P(labelled heads)": 0.611,
+    "R": 0.688,
+    "n_true": 16
+   }
+  },
+  "false_no_helmet(helmet->no_helmet)": "7 / 168",
+  "false_helmet(no_helmet->helmet)": "0 / 16",
+  "missed(h/nh)": "56/5",
+  "unmatched_preds(h/nh)": "6/2",
+  "confusion(pred rows h,nh,none x true cols h,nh,unlabelled)": [
+   [
+    105,
+    0,
+    6
+   ],
+   [
+    7,
+    11,
+    2
+   ],
+   [
+    56,
+    5,
+    0
+   ]
+  ],
+  "original_clean_test": {
+   "mAP50": 0.744,
+   "mAP50-95": 0.37,
+   "no_helmet_R": 0.589
+  }
+ }
+}

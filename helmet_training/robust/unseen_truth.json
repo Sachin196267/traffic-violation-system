@@ -1,0 +1,8 @@
+{"_note": "Visual truth label per rider, in review-sheet order of video_out/final/<video>_review.jpg. h helmet, n no helmet, u can't tell (even for a person), x not a rider head. Graded 2026-09-26.",
+ "vns_main": "nnnh",
+ "blr_signal": "xuhhhuhh hhhhhhhh hhhhhhhh uhhhhhhh uhhhhhhu hhhhhhhh hhhhhhhh hhhhhhhh hhhhhhhh hhuhhhhh uuhh",
+ "hyd_nohelmet": "nunnnnnn nnnnnnnn nnnnnhuu uhnhnnnh nnununnh hhnunnhn uununxhu hnhnnhun ununhnhn hnuuhhhu uhuuuhnu uuuuuhhu uhxuxhhh hhhhhhhh hhhhuhh",
+ "kochi_vytila": "nhuhhuxu hhnhhhhh huuhhhhh hhhhhh",
+ "mysore": "hununuux uuuhnnnu xhhxxxxn nnnnxxhn nxhnuunu xhuxhhhh hhu",
+ "bhopal": "nnnnnuuu uuuhhuuh nxnhnnnu nnhuuuuu unuuuhhu uuhuhhhh hhhuhhuu hhuhhuuu hu",
+ "hyd_police": "nnnnuuuuhhuuh"}

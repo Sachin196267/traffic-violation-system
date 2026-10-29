@@ -1,0 +1,22 @@
+{
+ "video": "4K Video of Highway Traffic! [KBsqQez-O4w].mp4",
+ "resolution": "3840x2160",
+ "samples": 77,
+ "two_wheelers": 27,
+ "full640": {
+  "helmet": 1,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 1,
+  "no_helmet": 0
+ },
+ "crop": {
+  "crops": 27,
+  "head_found": 0,
+  "helmet": 0,
+  "no_helmet": 0,
+  "head_found_rate": 0.0
+ },
+ "two_wheeler_height_px_median": 69
+}

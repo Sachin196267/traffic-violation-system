@@ -1,0 +1,1 @@
+tpt-12:3=1 tpt-12:5=u tpt-12:8=u tpt-12:9=u tpt-12:11=u tpt-12:18=3 tpt-12:24=1 tpt-12:32=3 tpt-12:47=1 tpt-12:56=x tpt-12:59=u tpt-12:78=u tpt-12:93=u tpt-12:133=u tpt-12:192=u tpt-12:212=u tpt-12:223=u tpt-12:258=u tpt-12:286=u tpt-12:291=u tpt-12:292=2 tpt-12:293=u tpt-12:310=u tpt-12:347=x tpt-12:355=u tpt-12:367=u tpt-12:379=u tpt-12:382=3

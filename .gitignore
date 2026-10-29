@@ -1,0 +1,64 @@
+.env
+.venv/
+venv/
+traffic_env/
+__pycache__/
+*.pyc
+
+# Large media, videos, outputs and binaries
+*.mp4
+*.avi
+*.mov
+*.zip
+*.tar.gz
+*.pt
+outputs/
+datasets/
+runs/
+videos/
+
+# Roboflow raw dataset folders
+Bike Helmet Detection*
+Motorcycle Helmet Detection*
+
+# Kaggle credentials must never be committed
+kaggle.json
+.kaggle/
+
+# Downloaded dataset files (keep directory placeholders)
+datasets/kaggle/*/
+datasets/huggingface/*/
+!datasets/kaggle/.gitkeep
+!datasets/huggingface/.gitkeep
+
+# macOS Finder metadata
+.DS_Store
+
+# Regenerable data, caches and renders from the training / lane experiments
+*.npz
+*.log
+lane_trace/cache/
+lane_trace/output/
+triple_training/data/
+triple_training/aug/
+triple_training/cls/
+triple_training/sheets/
+triple_training/logs/
+triple_training/video_out/
+helmet_training/_pydeps/
+helmet_training/test_videos/
+helmet_training/audit/idd_eval/
+helmet_training/label_own/crops/
+helmet_training/label_own/sheets/
+helmet_training/robust/data/
+helmet_training/robust/sheets/
+helmet_training/robust/cls/
+helmet_training/robust/aug_patches/
+helmet_training/robust/public_patches/
+helmet_training/robust/video_out/
+helmet_training/robust/vids/
+helmet_training/reports/**/*.jpg
+helmet_training/reports/**/*.png
+
+# Unity copy used by the web platform for simulations
+app/data/signal_sim_runner/

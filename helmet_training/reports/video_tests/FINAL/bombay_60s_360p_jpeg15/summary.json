@@ -1,0 +1,19 @@
+{
+ "source": "helmet_training/test_videos/bombay_60s_360p_jpeg15.mp4",
+ "resolution": "640x360",
+ "frames_processed": 1798,
+ "frames_in_video": 1798,
+ "stride": 1,
+ "proc_fps": 82.96,
+ "detections_per_frame": 0.039,
+ "helmet_dets": 68,
+ "no_helmet_dets": 2,
+ "tracks(>=5 frames)": 2,
+ "tracks_majority_helmet": 2,
+ "tracks_majority_no_helmet": 0,
+ "tracks_with_>=20%_minority_class(unstable)": 0,
+ "class_flip_rate(per track-frame)": 0.0,
+ "weights": "/Users/sachinnair/Desktop/traffic violation system/runs/helmet_nohelmet_final/weights/best.pt",
+ "conf": 0.45,
+ "imgsz": 640
+}

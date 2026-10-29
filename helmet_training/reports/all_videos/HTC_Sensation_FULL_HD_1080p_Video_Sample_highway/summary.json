@@ -1,0 +1,22 @@
+{
+ "video": "HTC Sensation FULL HD 1080p Video Sample (highway traffic) [wWLAc6mdJrs].mp4",
+ "resolution": "1920x1080",
+ "samples": 80,
+ "two_wheelers": 20,
+ "full640": {
+  "helmet": 1,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 0,
+  "no_helmet": 0
+ },
+ "crop": {
+  "crops": 20,
+  "head_found": 0,
+  "helmet": 0,
+  "no_helmet": 0,
+  "head_found_rate": 0.0
+ },
+ "two_wheeler_height_px_median": 61
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sachin196267/tvs-plate-det-v2",
+  "title": "tvs-plate-det-v2",
+  "code_file": "train_plate_det.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["sachin196267/tvs-plate-det-data"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

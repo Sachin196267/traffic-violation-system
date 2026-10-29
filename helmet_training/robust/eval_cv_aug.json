@@ -1,0 +1,292 @@
+{
+ "thr": 0.5645256451889873,
+ "nh_thr": 0.4,
+ "all": {
+  "persons": 3366,
+  "not_sure": 0.0333,
+  "accuracy_called": 0.9081,
+  "no_helmet_caught": "657/873",
+  "no_helmet_recall": 0.7526,
+  "wrong_challans(helmet->no_helmet)": "57/1228",
+  "missed(no_helmet->helmet)": 119,
+  "dropped_as_not_head": 446,
+  "unclear_u_forced_calls": 893
+ },
+ "per_video": {
+  "ahd": {
+   "persons": 336,
+   "not_sure": 0.0417,
+   "accuracy_called": 0.8523,
+   "no_helmet_caught": "94/132",
+   "no_helmet_recall": 0.7121,
+   "wrong_challans(helmet->no_helmet)": "3/59",
+   "missed(no_helmet->helmet)": 23,
+   "dropped_as_not_head": 27,
+   "unclear_u_forced_calls": 119
+  },
+  "blr_pov": {
+   "persons": 136,
+   "not_sure": 0.0441,
+   "accuracy_called": 0.8831,
+   "no_helmet_caught": "31/40",
+   "no_helmet_recall": 0.775,
+   "wrong_challans(helmet->no_helmet)": "2/47",
+   "missed(no_helmet->helmet)": 7,
+   "dropped_as_not_head": 29,
+   "unclear_u_forced_calls": 24
+  },
+  "blr_ride": {
+   "persons": 58,
+   "not_sure": 0.0172,
+   "accuracy_called": 0.9574,
+   "no_helmet_caught": "35/38",
+   "no_helmet_recall": 0.9211,
+   "wrong_challans(helmet->no_helmet)": "1/12",
+   "missed(no_helmet->helmet)": 1,
+   "dropped_as_not_head": 3,
+   "unclear_u_forced_calls": 7
+  },
+  "bombay": {
+   "persons": 192,
+   "not_sure": 0.0312,
+   "accuracy_called": 0.8444,
+   "no_helmet_caught": "21/50",
+   "no_helmet_recall": 0.42,
+   "wrong_challans(helmet->no_helmet)": "0/68",
+   "missed(no_helmet->helmet)": 14,
+   "dropped_as_not_head": 56,
+   "unclear_u_forced_calls": 40
+  },
+  "chennai": {
+   "persons": 150,
+   "not_sure": 0.0333,
+   "accuracy_called": 0.9041,
+   "no_helmet_caught": "31/43",
+   "no_helmet_recall": 0.7209,
+   "wrong_challans(helmet->no_helmet)": "0/36",
+   "missed(no_helmet->helmet)": 7,
+   "dropped_as_not_head": 16,
+   "unclear_u_forced_calls": 56
+  },
+  "delhi4k": {
+   "persons": 50,
+   "not_sure": 0.08,
+   "accuracy_called": 0.9231,
+   "no_helmet_caught": "0/0",
+   "no_helmet_recall": 0.0,
+   "wrong_challans(helmet->no_helmet)": "1/16",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 12,
+   "unclear_u_forced_calls": 21
+  },
+  "hyd_night": {
+   "persons": 28,
+   "not_sure": 0.1786,
+   "accuracy_called": 0.9,
+   "no_helmet_caught": "8/13",
+   "no_helmet_recall": 0.6154,
+   "wrong_challans(helmet->no_helmet)": "0/1",
+   "missed(no_helmet->helmet)": 1,
+   "dropped_as_not_head": 8,
+   "unclear_u_forced_calls": 5
+  },
+  "indore": {
+   "persons": 29,
+   "not_sure": 0.0,
+   "accuracy_called": 0.9333,
+   "no_helmet_caught": "14/16",
+   "no_helmet_recall": 0.875,
+   "wrong_challans(helmet->no_helmet)": "0/0",
+   "missed(no_helmet->helmet)": 1,
+   "dropped_as_not_head": 1,
+   "unclear_u_forced_calls": 13
+  },
+  "jaipur": {
+   "persons": 625,
+   "not_sure": 0.0288,
+   "accuracy_called": 0.9494,
+   "no_helmet_caught": "47/59",
+   "no_helmet_recall": 0.7966,
+   "wrong_challans(helmet->no_helmet)": "8/311",
+   "missed(no_helmet->helmet)": 10,
+   "dropped_as_not_head": 74,
+   "unclear_u_forced_calls": 177
+  },
+  "jaipur2015": {
+   "persons": 185,
+   "not_sure": 0.0541,
+   "accuracy_called": 0.9694,
+   "no_helmet_caught": "38/48",
+   "no_helmet_recall": 0.7917,
+   "wrong_challans(helmet->no_helmet)": "1/58",
+   "missed(no_helmet->helmet)": 2,
+   "dropped_as_not_head": 31,
+   "unclear_u_forced_calls": 46
+  },
+  "kerala_block": {
+   "persons": 62,
+   "not_sure": 0.0484,
+   "accuracy_called": 0.963,
+   "no_helmet_caught": "0/0",
+   "no_helmet_recall": 0.0,
+   "wrong_challans(helmet->no_helmet)": "1/29",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 9,
+   "unclear_u_forced_calls": 23
+  },
+  "kol_hectic": {
+   "persons": 39,
+   "not_sure": 0.0,
+   "accuracy_called": 0.8261,
+   "no_helmet_caught": "19/25",
+   "no_helmet_recall": 0.76,
+   "wrong_challans(helmet->no_helmet)": "0/0",
+   "missed(no_helmet->helmet)": 4,
+   "dropped_as_not_head": 6,
+   "unclear_u_forced_calls": 10
+  },
+  "kol_signal": {
+   "persons": 162,
+   "not_sure": 0.0185,
+   "accuracy_called": 0.9603,
+   "no_helmet_caught": "47/51",
+   "no_helmet_recall": 0.9216,
+   "wrong_challans(helmet->no_helmet)": "5/84",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 13,
+   "unclear_u_forced_calls": 20
+  },
+  "lucknow": {
+   "persons": 303,
+   "not_sure": 0.0396,
+   "accuracy_called": 0.856,
+   "no_helmet_caught": "54/79",
+   "no_helmet_recall": 0.6835,
+   "wrong_challans(helmet->no_helmet)": "5/61",
+   "missed(no_helmet->helmet)": 13,
+   "dropped_as_not_head": 43,
+   "unclear_u_forced_calls": 123
+  },
+  "mum_rain": {
+   "persons": 178,
+   "not_sure": 0.0112,
+   "accuracy_called": 0.9632,
+   "no_helmet_caught": "2/2",
+   "no_helmet_recall": 1.0,
+   "wrong_challans(helmet->no_helmet)": "5/139",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 9,
+   "unclear_u_forced_calls": 31
+  },
+  "mum_traffic": {
+   "persons": 33,
+   "not_sure": 0.0303,
+   "accuracy_called": 0.9259,
+   "no_helmet_caught": "9/11",
+   "no_helmet_recall": 0.8182,
+   "wrong_challans(helmet->no_helmet)": "1/20",
+   "missed(no_helmet->helmet)": 1,
+   "dropped_as_not_head": 3,
+   "unclear_u_forced_calls": 2
+  },
+  "mumbai": {
+   "persons": 309,
+   "not_sure": 0.0324,
+   "accuracy_called": 0.8762,
+   "no_helmet_caught": "50/61",
+   "no_helmet_recall": 0.8197,
+   "wrong_challans(helmet->no_helmet)": "19/174",
+   "missed(no_helmet->helmet)": 7,
+   "dropped_as_not_head": 25,
+   "unclear_u_forced_calls": 64
+  },
+  "night_city": {
+   "persons": 22,
+   "not_sure": 0.0,
+   "accuracy_called": 1.0,
+   "no_helmet_caught": "9/12",
+   "no_helmet_recall": 0.75,
+   "wrong_challans(helmet->no_helmet)": "0/1",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 12,
+   "unclear_u_forced_calls": 1
+  },
+  "pune": {
+   "persons": 152,
+   "not_sure": 0.0329,
+   "accuracy_called": 0.8242,
+   "no_helmet_caught": "61/82",
+   "no_helmet_recall": 0.7439,
+   "wrong_challans(helmet->no_helmet)": "0/14",
+   "missed(no_helmet->helmet)": 16,
+   "dropped_as_not_head": 12,
+   "unclear_u_forced_calls": 44
+  },
+  "rally": {
+   "persons": 150,
+   "not_sure": 0.04,
+   "accuracy_called": 0.9048,
+   "no_helmet_caught": "32/42",
+   "no_helmet_recall": 0.7619,
+   "wrong_challans(helmet->no_helmet)": "4/57",
+   "missed(no_helmet->helmet)": 4,
+   "dropped_as_not_head": 34,
+   "unclear_u_forced_calls": 26
+  },
+  "sdelhi": {
+   "persons": 63,
+   "not_sure": 0.0159,
+   "accuracy_called": 0.9706,
+   "no_helmet_caught": "0/0",
+   "no_helmet_recall": 0.0,
+   "wrong_challans(helmet->no_helmet)": "1/36",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 4,
+   "unclear_u_forced_calls": 24
+  },
+  "traffic_sound": {
+   "persons": 18,
+   "not_sure": 0.0,
+   "accuracy_called": 0.8,
+   "no_helmet_caught": "2/6",
+   "no_helmet_recall": 0.3333,
+   "wrong_challans(helmet->no_helmet)": "0/2",
+   "missed(no_helmet->helmet)": 1,
+   "dropped_as_not_head": 7,
+   "unclear_u_forced_calls": 6
+  },
+  "vns_cross": {
+   "persons": 29,
+   "not_sure": 0.0,
+   "accuracy_called": 1.0,
+   "no_helmet_caught": "13/14",
+   "no_helmet_recall": 0.9286,
+   "wrong_challans(helmet->no_helmet)": "0/2",
+   "missed(no_helmet->helmet)": 0,
+   "dropped_as_not_head": 8,
+   "unclear_u_forced_calls": 6
+  },
+  "vns_narrow": {
+   "persons": 29,
+   "not_sure": 0.0,
+   "accuracy_called": 0.913,
+   "no_helmet_caught": "21/25",
+   "no_helmet_recall": 0.84,
+   "wrong_challans(helmet->no_helmet)": "0/0",
+   "missed(no_helmet->helmet)": 2,
+   "dropped_as_not_head": 3,
+   "unclear_u_forced_calls": 3
+  },
+  "vns_street": {
+   "persons": 28,
+   "not_sure": 0.0,
+   "accuracy_called": 0.8,
+   "no_helmet_caught": "19/24",
+   "no_helmet_recall": 0.7917,
+   "wrong_challans(helmet->no_helmet)": "0/1",
+   "missed(no_helmet->helmet)": 5,
+   "dropped_as_not_head": 1,
+   "unclear_u_forced_calls": 2
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "type": "dashes",
+ "note": "M6: left-carriageway lane lines only (UK TSRGD 1005.1: 2 m mark / 7 m gap)",
+ "cycle_m": 9.0,
+ "dash_m": 2.0,
+ "tolerance": 0.02,
+ "vp": [
+  978,
+  350
+ ],
+ "lines": {
+  "C_left_outer": {
+   "m": -1.3,
+   "dashes": [
+    [
+     613,
+     624
+    ],
+    [
+     679,
+     697
+    ],
+    [
+     781,
+     813
+    ],
+    [
+     979,
+     1048
+    ]
+   ]
+  },
+  "D_left_inner": {
+   "m": -0.85,
+   "dashes": [
+    [
+     610,
+     621
+    ],
+    [
+     674,
+     691
+    ],
+    [
+     775,
+     804
+    ],
+    [
+     962,
+     1027
+    ]
+   ]
+  }
+ },
+ "coords": "background"
+}

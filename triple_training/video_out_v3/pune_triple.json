@@ -1,0 +1,4047 @@
+{
+ "video": "pune.mp4",
+ "summary": {
+  "triple": 0,
+  "not_triple": 104,
+  "not_sure": 1
+ },
+ "motorcycles": [
+  {
+   "track": 73,
+   "decision": "not_triple",
+   "confidence": 0.996,
+   "score": 0.0043,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 2.2,
+   "last_box": [
+    967,
+    42,
+    1063,
+    183
+   ]
+  },
+  {
+   "track": 202,
+   "decision": "not_triple",
+   "confidence": 0.991,
+   "score": 0.0091,
+   "p_triple": 0.0,
+   "p_two": 0.007,
+   "p_one": 0.874,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.87",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 5.0,
+   "last_box": [
+    308,
+    102,
+    376,
+    262
+   ]
+  },
+  {
+   "track": 221,
+   "decision": "not_triple",
+   "confidence": 0.993,
+   "score": 0.0069,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 8,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 8 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 8 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 5.2,
+   "last_box": [
+    947,
+    221,
+    988,
+    294
+   ]
+  },
+  {
+   "track": 245,
+   "decision": "not_triple",
+   "confidence": 0.949,
+   "score": 0.0513,
+   "p_triple": 0.0,
+   "p_two": 0.044,
+   "p_one": 0.526,
+   "frames": 7,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.04, P(1)=0.53",
+    "0 of 7 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 7 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 5.4,
+   "last_box": [
+    248,
+    204,
+    374,
+    402
+   ]
+  },
+  {
+   "track": 13,
+   "decision": "not_triple",
+   "confidence": 0.993,
+   "score": 0.0074,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 10,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 10 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 10 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 5.8,
+   "last_box": [
+    931,
+    204,
+    966,
+    278
+   ]
+  },
+  {
+   "track": 341,
+   "decision": "not_triple",
+   "confidence": 0.987,
+   "score": 0.0131,
+   "p_triple": 0.0,
+   "p_two": 0.01,
+   "p_one": 0.658,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.66",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 6.4,
+   "last_box": [
+    346,
+    319,
+    410,
+    467
+   ]
+  },
+  {
+   "track": 379,
+   "decision": "not_triple",
+   "confidence": 0.991,
+   "score": 0.009,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.991,
+   "frames": 10,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.99",
+    "0 of 10 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 10 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 6.8,
+   "last_box": [
+    562,
+    196,
+    628,
+    307
+   ]
+  },
+  {
+   "track": 394,
+   "decision": "not_triple",
+   "confidence": 0.981,
+   "score": 0.019,
+   "p_triple": 0.0,
+   "p_two": 0.022,
+   "p_one": 0.978,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.02, P(1)=0.98",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.0,
+   "last_box": [
+    941,
+    220,
+    977,
+    289
+   ]
+  },
+  {
+   "track": 421,
+   "decision": "not_triple",
+   "confidence": 0.96,
+   "score": 0.0397,
+   "p_triple": 0.0,
+   "p_two": 0.045,
+   "p_one": 0.954,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.04, P(1)=0.95",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.2,
+   "last_box": [
+    631,
+    185,
+    667,
+    295
+   ]
+  },
+  {
+   "track": 121,
+   "decision": "not_triple",
+   "confidence": 0.245,
+   "score": 0.7553,
+   "p_triple": 0.022,
+   "p_two": 0.792,
+   "p_one": 0.187,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.02, P(2)=0.79, P(1)=0.19",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.2,
+   "last_box": [
+    1278,
+    103,
+    1920,
+    881
+   ]
+  },
+  {
+   "track": 444,
+   "decision": "not_triple",
+   "confidence": 0.979,
+   "score": 0.021,
+   "p_triple": 0.0,
+   "p_two": 0.012,
+   "p_one": 0.495,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.50",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.6,
+   "last_box": [
+    304,
+    168,
+    401,
+    334
+   ]
+  },
+  {
+   "track": 224,
+   "decision": "not_triple",
+   "confidence": 0.994,
+   "score": 0.0063,
+   "p_triple": 0.0,
+   "p_two": 0.005,
+   "p_one": 0.995,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.99",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.6,
+   "last_box": [
+    985,
+    197,
+    1085,
+    289
+   ]
+  },
+  {
+   "track": 383,
+   "decision": "not_triple",
+   "confidence": 0.97,
+   "score": 0.0303,
+   "p_triple": 0.0,
+   "p_two": 0.452,
+   "p_one": 0.548,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.45, P(1)=0.55",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.8,
+   "last_box": [
+    953,
+    185,
+    998,
+    259
+   ]
+  },
+  {
+   "track": 393,
+   "decision": "not_triple",
+   "confidence": 0.992,
+   "score": 0.0084,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.998,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 7.8,
+   "last_box": [
+    909,
+    173,
+    937,
+    259
+   ]
+  },
+  {
+   "track": 486,
+   "decision": "not_triple",
+   "confidence": 0.777,
+   "score": 0.2227,
+   "p_triple": 0.001,
+   "p_two": 0.336,
+   "p_one": 0.663,
+   "frames": 33,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    1,
+    3,
+    2,
+    3,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.34, P(1)=0.66",
+    "0 of 33 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 2 of 33 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 8.2,
+   "last_box": [
+    893,
+    406,
+    937,
+    488
+   ]
+  },
+  {
+   "track": 543,
+   "decision": "not_triple",
+   "confidence": 0.963,
+   "score": 0.0371,
+   "p_triple": 0.0,
+   "p_two": 0.53,
+   "p_one": 0.152,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.53, P(1)=0.15",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 9.6,
+   "last_box": [
+    591,
+    190,
+    651,
+    283
+   ]
+  },
+  {
+   "track": 498,
+   "decision": "not_triple",
+   "confidence": 0.59,
+   "score": 0.4104,
+   "p_triple": 0.0,
+   "p_two": 0.942,
+   "p_one": 0.058,
+   "frames": 71,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    3,
+    2,
+    2,
+    1,
+    1,
+    3,
+    2,
+    2,
+    2,
+    2,
+    1,
+    3,
+    4,
+    2,
+    3,
+    2,
+    4,
+    3,
+    3,
+    2,
+    3,
+    2,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.94, P(1)=0.06",
+    "0 of 71 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 4, 3+ in 9 of 71 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 14.8,
+   "last_box": [
+    0,
+    161,
+    159,
+    877
+   ]
+  },
+  {
+   "track": 649,
+   "decision": "not_triple",
+   "confidence": 0.893,
+   "score": 0.1068,
+   "p_triple": 0.001,
+   "p_two": 0.222,
+   "p_one": 0.775,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.22, P(1)=0.77",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 15.0,
+   "last_box": [
+    0,
+    389,
+    260,
+    660
+   ]
+  },
+  {
+   "track": 1014,
+   "decision": "not_triple",
+   "confidence": 0.979,
+   "score": 0.0205,
+   "p_triple": 0.0,
+   "p_two": 0.008,
+   "p_one": 0.989,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.99",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 16.2,
+   "last_box": [
+    1693,
+    275,
+    1797,
+    390
+   ]
+  },
+  {
+   "track": 902,
+   "decision": "not_triple",
+   "confidence": 0.991,
+   "score": 0.0086,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.513,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.51",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 18.4,
+   "last_box": [
+    30,
+    342,
+    210,
+    592
+   ]
+  },
+  {
+   "track": 1197,
+   "decision": "not_triple",
+   "confidence": 0.993,
+   "score": 0.0074,
+   "p_triple": 0.0,
+   "p_two": 0.01,
+   "p_one": 0.665,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.66",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 19.8,
+   "last_box": [
+    481,
+    377,
+    564,
+    484
+   ]
+  },
+  {
+   "track": 1027,
+   "decision": "not_triple",
+   "confidence": 0.984,
+   "score": 0.0156,
+   "p_triple": 0.0,
+   "p_two": 0.08,
+   "p_one": 0.885,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.08, P(1)=0.88",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 19.8,
+   "last_box": [
+    607,
+    347,
+    666,
+    433
+   ]
+  },
+  {
+   "track": 1104,
+   "decision": "not_triple",
+   "confidence": 0.992,
+   "score": 0.0081,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 16,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 16 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 16 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 20.8,
+   "last_box": [
+    692,
+    387,
+    737,
+    459
+   ]
+  },
+  {
+   "track": 1288,
+   "decision": "not_triple",
+   "confidence": 0.994,
+   "score": 0.0058,
+   "p_triple": 0.0,
+   "p_two": 0.003,
+   "p_one": 0.869,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.87",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 21.0,
+   "last_box": [
+    549,
+    380,
+    599,
+    470
+   ]
+  },
+  {
+   "track": 1289,
+   "decision": "not_triple",
+   "confidence": 0.989,
+   "score": 0.0115,
+   "p_triple": 0.0,
+   "p_two": 0.01,
+   "p_one": 0.983,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.98",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 21.0,
+   "last_box": [
+    589,
+    355,
+    637,
+    452
+   ]
+  },
+  {
+   "track": 1305,
+   "decision": "not_triple",
+   "confidence": 0.992,
+   "score": 0.0077,
+   "p_triple": 0.0,
+   "p_two": 0.02,
+   "p_one": 0.932,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.02, P(1)=0.93",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 21.2,
+   "last_box": [
+    524,
+    367,
+    577,
+    477
+   ]
+  },
+  {
+   "track": 1386,
+   "decision": "not_triple",
+   "confidence": 0.994,
+   "score": 0.006,
+   "p_triple": 0.0,
+   "p_two": 0.004,
+   "p_one": 0.839,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.84",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 22.0,
+   "last_box": [
+    448,
+    351,
+    515,
+    470
+   ]
+  },
+  {
+   "track": 1284,
+   "decision": "not_triple",
+   "confidence": 0.977,
+   "score": 0.0231,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 0.993,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.99",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 23.2,
+   "last_box": [
+    689,
+    367,
+    757,
+    441
+   ]
+  },
+  {
+   "track": 1632,
+   "decision": "not_triple",
+   "confidence": 0.922,
+   "score": 0.0776,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.999,
+   "frames": 195,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    1,
+    1,
+    3,
+    3,
+    4,
+    2,
+    2,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+    2,
+    2,
+    3,
+    2,
+    2,
+    2,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    4,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 195 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 4, 3+ in 22 of 195 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 27.0,
+   "last_box": [
+    778,
+    350,
+    811,
+    417
+   ]
+  },
+  {
+   "track": 1794,
+   "decision": "not_triple",
+   "confidence": 0.891,
+   "score": 0.109,
+   "p_triple": 0.0,
+   "p_two": 0.015,
+   "p_one": 0.916,
+   "frames": 278,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    3,
+    2,
+    2,
+    3,
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    3,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    3,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.92",
+    "0 of 278 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 5 of 278 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 34.0,
+   "last_box": [
+    1016,
+    279,
+    1055,
+    348
+   ]
+  },
+  {
+   "track": 1804,
+   "decision": "not_triple",
+   "confidence": 0.962,
+   "score": 0.0382,
+   "p_triple": 0.0,
+   "p_two": 0.008,
+   "p_one": 0.99,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    1,
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.99",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 34.8,
+   "last_box": [
+    858,
+    305,
+    905,
+    374
+   ]
+  },
+  {
+   "track": 1825,
+   "decision": "not_triple",
+   "confidence": 0.96,
+   "score": 0.04,
+   "p_triple": 0.001,
+   "p_two": 0.001,
+   "p_one": 0.99,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.99",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 35.4,
+   "last_box": [
+    884,
+    305,
+    945,
+    373
+   ]
+  },
+  {
+   "track": 1819,
+   "decision": "not_triple",
+   "confidence": 0.76,
+   "score": 0.24,
+   "p_triple": 0.006,
+   "p_two": 0.729,
+   "p_one": 0.13,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.01, P(2)=0.73, P(1)=0.13",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 35.6,
+   "last_box": [
+    905,
+    271,
+    930,
+    357
+   ]
+  },
+  {
+   "track": 1837,
+   "decision": "not_triple",
+   "confidence": 0.903,
+   "score": 0.0974,
+   "p_triple": 0.0,
+   "p_two": 0.116,
+   "p_one": 0.882,
+   "frames": 8,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    2,
+    1,
+    1,
+    2,
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.12, P(1)=0.88",
+    "0 of 8 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 8 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 35.8,
+   "last_box": [
+    1662,
+    195,
+    1796,
+    332
+   ]
+  },
+  {
+   "track": 1878,
+   "decision": "not_triple",
+   "confidence": 0.982,
+   "score": 0.0176,
+   "p_triple": 0.0,
+   "p_two": 0.166,
+   "p_one": 0.77,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.17, P(1)=0.77",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 37.8,
+   "last_box": [
+    1711,
+    202,
+    1784,
+    318
+   ]
+  },
+  {
+   "track": 1866,
+   "decision": "not_triple",
+   "confidence": 0.885,
+   "score": 0.1148,
+   "p_triple": 0.036,
+   "p_two": 0.001,
+   "p_one": 0.751,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.04, P(2)=0.00, P(1)=0.75",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 37.8,
+   "last_box": [
+    1057,
+    179,
+    1870,
+    1080
+   ]
+  },
+  {
+   "track": 1892,
+   "decision": "not_triple",
+   "confidence": 0.975,
+   "score": 0.0249,
+   "p_triple": 0.0,
+   "p_two": 0.178,
+   "p_one": 0.763,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.18, P(1)=0.76",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 38.8,
+   "last_box": [
+    694,
+    280,
+    745,
+    368
+   ]
+  },
+  {
+   "track": 1897,
+   "decision": "not_triple",
+   "confidence": 0.775,
+   "score": 0.2255,
+   "p_triple": 0.002,
+   "p_two": 0.313,
+   "p_one": 0.66,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.31, P(1)=0.66",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 39.2,
+   "last_box": [
+    814,
+    238,
+    900,
+    342
+   ]
+  },
+  {
+   "track": 1915,
+   "decision": "not_triple",
+   "confidence": 0.972,
+   "score": 0.0283,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.996,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 39.8,
+   "last_box": [
+    910,
+    248,
+    960,
+    338
+   ]
+  },
+  {
+   "track": 1811,
+   "decision": "not_triple",
+   "confidence": 0.917,
+   "score": 0.083,
+   "p_triple": 0.0,
+   "p_two": 0.812,
+   "p_one": 0.185,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.81, P(1)=0.18",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 41.6,
+   "last_box": [
+    792,
+    261,
+    857,
+    343
+   ]
+  },
+  {
+   "track": 1907,
+   "decision": "not_triple",
+   "confidence": 0.989,
+   "score": 0.0105,
+   "p_triple": 0.0,
+   "p_two": 0.002,
+   "p_one": 0.776,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.78",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 42.2,
+   "last_box": [
+    863,
+    256,
+    898,
+    353
+   ]
+  },
+  {
+   "track": 1999,
+   "decision": "not_triple",
+   "confidence": 0.964,
+   "score": 0.0364,
+   "p_triple": 0.0,
+   "p_two": 0.697,
+   "p_one": 0.042,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.70, P(1)=0.04",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 44.6,
+   "last_box": [
+    1698,
+    203,
+    1782,
+    335
+   ]
+  },
+  {
+   "track": 2152,
+   "decision": "not_triple",
+   "confidence": 0.644,
+   "score": 0.3558,
+   "p_triple": 0.002,
+   "p_two": 0.027,
+   "p_one": 0.971,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.03, P(1)=0.97",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 47.4,
+   "last_box": [
+    639,
+    379,
+    681,
+    469
+   ]
+  },
+  {
+   "track": 2167,
+   "decision": "not_triple",
+   "confidence": 0.75,
+   "score": 0.2497,
+   "p_triple": 0.001,
+   "p_two": 0.191,
+   "p_one": 0.79,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    3,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.19, P(1)=0.79",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 47.8,
+   "last_box": [
+    789,
+    382,
+    867,
+    486
+   ]
+  },
+  {
+   "track": 2174,
+   "decision": "not_triple",
+   "confidence": 0.704,
+   "score": 0.2962,
+   "p_triple": 0.0,
+   "p_two": 0.95,
+   "p_one": 0.049,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    5
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.95, P(1)=0.05",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 5, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 48.0,
+   "last_box": [
+    763,
+    387,
+    813,
+    481
+   ]
+  },
+  {
+   "track": 2198,
+   "decision": "not_triple",
+   "confidence": 0.953,
+   "score": 0.0474,
+   "p_triple": 0.0,
+   "p_two": 0.871,
+   "p_one": 0.129,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.87, P(1)=0.13",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 48.6,
+   "last_box": [
+    658,
+    406,
+    712,
+    499
+   ]
+  },
+  {
+   "track": 2226,
+   "decision": "not_triple",
+   "confidence": 0.895,
+   "score": 0.1052,
+   "p_triple": 0.0,
+   "p_two": 0.951,
+   "p_one": 0.049,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.95, P(1)=0.05",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 49.0,
+   "last_box": [
+    806,
+    382,
+    832,
+    468
+   ]
+  },
+  {
+   "track": 2228,
+   "decision": "not_triple",
+   "confidence": 0.662,
+   "score": 0.3375,
+   "p_triple": 0.006,
+   "p_two": 0.623,
+   "p_one": 0.328,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.01, P(2)=0.62, P(1)=0.33",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 49.2,
+   "last_box": [
+    673,
+    383,
+    738,
+    491
+   ]
+  },
+  {
+   "track": 2181,
+   "decision": "not_triple",
+   "confidence": 0.902,
+   "score": 0.098,
+   "p_triple": 0.0,
+   "p_two": 0.999,
+   "p_one": 0.001,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=1.00, P(1)=0.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 49.6,
+   "last_box": [
+    841,
+    350,
+    894,
+    465
+   ]
+  },
+  {
+   "track": 2250,
+   "decision": "not_triple",
+   "confidence": 0.97,
+   "score": 0.0298,
+   "p_triple": 0.0,
+   "p_two": 0.001,
+   "p_one": 0.874,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.87",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 49.8,
+   "last_box": [
+    901,
+    350,
+    958,
+    446
+   ]
+  },
+  {
+   "track": 2258,
+   "decision": "not_triple",
+   "confidence": 0.99,
+   "score": 0.0095,
+   "p_triple": 0.0,
+   "p_two": 0.003,
+   "p_one": 0.997,
+   "frames": 6,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 6 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 6 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 50.0,
+   "last_box": [
+    1694,
+    222,
+    1812,
+    398
+   ]
+  },
+  {
+   "track": 2296,
+   "decision": "not_triple",
+   "confidence": 0.937,
+   "score": 0.063,
+   "p_triple": 0.001,
+   "p_two": 0.043,
+   "p_one": 0.956,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.04, P(1)=0.96",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 50.7,
+   "last_box": [
+    792,
+    339,
+    882,
+    436
+   ]
+  },
+  {
+   "track": 2326,
+   "decision": "not_triple",
+   "confidence": 0.786,
+   "score": 0.2142,
+   "p_triple": 0.0,
+   "p_two": 0.03,
+   "p_one": 0.969,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    6,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.03, P(1)=0.97",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 6, 3+ in 1 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 51.3,
+   "last_box": [
+    784,
+    317,
+    847,
+    419
+   ]
+  },
+  {
+   "track": 2265,
+   "decision": "not_triple",
+   "confidence": 0.721,
+   "score": 0.2794,
+   "p_triple": 0.001,
+   "p_two": 0.947,
+   "p_one": 0.052,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.95, P(1)=0.05",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 52.5,
+   "last_box": [
+    803,
+    336,
+    859,
+    413
+   ]
+  },
+  {
+   "track": 2411,
+   "decision": "not_triple",
+   "confidence": 0.952,
+   "score": 0.0477,
+   "p_triple": 0.001,
+   "p_two": 0.001,
+   "p_one": 0.977,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.98",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 53.9,
+   "last_box": [
+    700,
+    333,
+    740,
+    433
+   ]
+  },
+  {
+   "track": 2389,
+   "decision": "not_triple",
+   "confidence": 0.721,
+   "score": 0.2793,
+   "p_triple": 0.001,
+   "p_two": 0.985,
+   "p_one": 0.006,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.99, P(1)=0.01",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 54.3,
+   "last_box": [
+    888,
+    307,
+    913,
+    399
+   ]
+  },
+  {
+   "track": 2403,
+   "decision": "not_triple",
+   "confidence": 0.334,
+   "score": 0.6662,
+   "p_triple": 0.227,
+   "p_two": 0.379,
+   "p_one": 0.247,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.23, P(2)=0.38, P(1)=0.25",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 54.5,
+   "last_box": [
+    868,
+    298,
+    897,
+    406
+   ]
+  },
+  {
+   "track": 2455,
+   "decision": "not_triple",
+   "confidence": 0.983,
+   "score": 0.0166,
+   "p_triple": 0.0,
+   "p_two": 0.004,
+   "p_one": 0.994,
+   "frames": 6,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    2,
+    1,
+    1,
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.99",
+    "0 of 6 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 6 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 55.3,
+   "last_box": [
+    1736,
+    290,
+    1855,
+    371
+   ]
+  },
+  {
+   "track": 2414,
+   "decision": "not_triple",
+   "confidence": 0.946,
+   "score": 0.0536,
+   "p_triple": 0.0,
+   "p_two": 0.943,
+   "p_one": 0.057,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2,
+    2,
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.94, P(1)=0.06",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 55.7,
+   "last_box": [
+    1614,
+    259,
+    1659,
+    391
+   ]
+  },
+  {
+   "track": 2465,
+   "decision": "not_triple",
+   "confidence": 0.919,
+   "score": 0.0807,
+   "p_triple": 0.0,
+   "p_two": 0.632,
+   "p_one": 0.129,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.63, P(1)=0.13",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 56.5,
+   "last_box": [
+    1757,
+    271,
+    1805,
+    392
+   ]
+  },
+  {
+   "track": 2471,
+   "decision": "not_triple",
+   "confidence": 0.422,
+   "score": 0.5781,
+   "p_triple": 0.0,
+   "p_two": 0.993,
+   "p_one": 0.006,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    4
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.99, P(1)=0.01",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 4, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 56.7,
+   "last_box": [
+    1662,
+    253,
+    1705,
+    370
+   ]
+  },
+  {
+   "track": 2485,
+   "decision": "not_triple",
+   "confidence": 0.972,
+   "score": 0.0275,
+   "p_triple": 0.0,
+   "p_two": 0.826,
+   "p_one": 0.153,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.83, P(1)=0.15",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 57.7,
+   "last_box": [
+    1669,
+    282,
+    1703,
+    387
+   ]
+  },
+  {
+   "track": 2540,
+   "decision": "not_triple",
+   "confidence": 0.997,
+   "score": 0.0028,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 0.997,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 57.9,
+   "last_box": [
+    1774,
+    265,
+    1845,
+    380
+   ]
+  },
+  {
+   "track": 2474,
+   "decision": "not_triple",
+   "confidence": 0.524,
+   "score": 0.4762,
+   "p_triple": 0.043,
+   "p_two": 0.3,
+   "p_one": 0.523,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.04, P(2)=0.30, P(1)=0.52",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 58.7,
+   "last_box": [
+    735,
+    303,
+    774,
+    427
+   ]
+  },
+  {
+   "track": 2661,
+   "decision": "not_triple",
+   "confidence": 0.95,
+   "score": 0.0505,
+   "p_triple": 0.0,
+   "p_two": 0.024,
+   "p_one": 0.975,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.02, P(1)=0.98",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 63.1,
+   "last_box": [
+    1703,
+    295,
+    1811,
+    400
+   ]
+  },
+  {
+   "track": 2681,
+   "decision": "not_triple",
+   "confidence": 0.987,
+   "score": 0.0131,
+   "p_triple": 0.0,
+   "p_two": 0.024,
+   "p_one": 0.968,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.02, P(1)=0.97",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 63.9,
+   "last_box": [
+    1479,
+    260,
+    1512,
+    392
+   ]
+  },
+  {
+   "track": 2558,
+   "decision": "not_triple",
+   "confidence": 0.919,
+   "score": 0.0814,
+   "p_triple": 0.0,
+   "p_two": 0.571,
+   "p_one": 0.421,
+   "frames": 8,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    1,
+    3,
+    1,
+    3,
+    1,
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.57, P(1)=0.42",
+    "0 of 8 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 2 of 8 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 64.3,
+   "last_box": [
+    1630,
+    242,
+    1728,
+    380
+   ]
+  },
+  {
+   "track": 2861,
+   "decision": "not_triple",
+   "confidence": 0.949,
+   "score": 0.0507,
+   "p_triple": 0.0,
+   "p_two": 0.048,
+   "p_one": 0.935,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.05, P(1)=0.93",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 68.5,
+   "last_box": [
+    1576,
+    283,
+    1643,
+    374
+   ]
+  },
+  {
+   "track": 2759,
+   "decision": "not_triple",
+   "confidence": 0.99,
+   "score": 0.0099,
+   "p_triple": 0.0,
+   "p_two": 0.003,
+   "p_one": 0.994,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=0.99",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 69.1,
+   "last_box": [
+    1610,
+    282,
+    1663,
+    375
+   ]
+  },
+  {
+   "track": 2776,
+   "decision": "not_triple",
+   "confidence": 0.841,
+   "score": 0.1592,
+   "p_triple": 0.007,
+   "p_two": 0.631,
+   "p_one": 0.175,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.01, P(2)=0.63, P(1)=0.17",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 69.3,
+   "last_box": [
+    1742,
+    247,
+    1866,
+    384
+   ]
+  },
+  {
+   "track": 2731,
+   "decision": "not_triple",
+   "confidence": 0.979,
+   "score": 0.0212,
+   "p_triple": 0.0,
+   "p_two": 0.116,
+   "p_one": 0.873,
+   "frames": 6,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.12, P(1)=0.87",
+    "0 of 6 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 6 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 69.7,
+   "last_box": [
+    1524,
+    261,
+    1581,
+    353
+   ]
+  },
+  {
+   "track": 2997,
+   "decision": "not_triple",
+   "confidence": 0.986,
+   "score": 0.0141,
+   "p_triple": 0.0,
+   "p_two": 0.04,
+   "p_one": 0.958,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.04, P(1)=0.96",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 72.9,
+   "last_box": [
+    1504,
+    268,
+    1549,
+    358
+   ]
+  },
+  {
+   "track": 2750,
+   "decision": "not_triple",
+   "confidence": 0.68,
+   "score": 0.3196,
+   "p_triple": 0.002,
+   "p_two": 0.947,
+   "p_one": 0.048,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.95, P(1)=0.05",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 76.5,
+   "last_box": [
+    873,
+    317,
+    915,
+    404
+   ]
+  },
+  {
+   "track": 3111,
+   "decision": "not_sure",
+   "confidence": 0.5,
+   "score": 0.8544,
+   "p_triple": 0.099,
+   "p_two": 0.802,
+   "p_one": 0.096,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.10, P(2)=0.80, P(1)=0.10",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 1 frames",
+    "score between the 'not triple' and 'TRIPLE' limits"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 76.9,
+   "last_box": [
+    849,
+    319,
+    876,
+    406
+   ]
+  },
+  {
+   "track": 3128,
+   "decision": "not_triple",
+   "confidence": 0.882,
+   "score": 0.1183,
+   "p_triple": 0.0,
+   "p_two": 0.64,
+   "p_one": 0.323,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    3,
+    2,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.64, P(1)=0.32",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 77.3,
+   "last_box": [
+    1766,
+    269,
+    1821,
+    377
+   ]
+  },
+  {
+   "track": 3162,
+   "decision": "not_triple",
+   "confidence": 0.929,
+   "score": 0.0707,
+   "p_triple": 0.0,
+   "p_two": 0.992,
+   "p_one": 0.008,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.99, P(1)=0.01",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.1,
+   "last_box": [
+    1395,
+    258,
+    1453,
+    372
+   ]
+  },
+  {
+   "track": 3064,
+   "decision": "not_triple",
+   "confidence": 0.957,
+   "score": 0.0429,
+   "p_triple": 0.0,
+   "p_two": 0.462,
+   "p_one": 0.538,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.46, P(1)=0.54",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.1,
+   "last_box": [
+    1460,
+    257,
+    1533,
+    363
+   ]
+  },
+  {
+   "track": 3104,
+   "decision": "not_triple",
+   "confidence": 0.951,
+   "score": 0.0488,
+   "p_triple": 0.0,
+   "p_two": 0.006,
+   "p_one": 0.974,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.97",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.1,
+   "last_box": [
+    833,
+    311,
+    863,
+    411
+   ]
+  },
+  {
+   "track": 3095,
+   "decision": "not_triple",
+   "confidence": 0.829,
+   "score": 0.1709,
+   "p_triple": 0.015,
+   "p_two": 0.273,
+   "p_one": 0.69,
+   "frames": 2,
+   "frames_voting_triple": 1,
+   "heads_on_seat": [
+    0,
+    0
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.01, P(2)=0.27, P(1)=0.69",
+    "1 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 0, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.3,
+   "last_box": [
+    750,
+    308,
+    833,
+    400
+   ]
+  },
+  {
+   "track": 2826,
+   "decision": "not_triple",
+   "confidence": 0.395,
+   "score": 0.6046,
+   "p_triple": 0.264,
+   "p_two": 0.666,
+   "p_one": 0.06,
+   "frames": 2,
+   "frames_voting_triple": 1,
+   "heads_on_seat": [
+    0,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.26, P(2)=0.67, P(1)=0.06",
+    "1 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.5,
+   "last_box": [
+    713,
+    296,
+    786,
+    398
+   ]
+  },
+  {
+   "track": 3093,
+   "decision": "not_triple",
+   "confidence": 0.983,
+   "score": 0.0167,
+   "p_triple": 0.0,
+   "p_two": 0.122,
+   "p_one": 0.878,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.12, P(1)=0.88",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.7,
+   "last_box": [
+    1491,
+    237,
+    1573,
+    356
+   ]
+  },
+  {
+   "track": 3191,
+   "decision": "not_triple",
+   "confidence": 0.792,
+   "score": 0.2081,
+   "p_triple": 0.0,
+   "p_two": 0.834,
+   "p_one": 0.166,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    4
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.83, P(1)=0.17",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 4, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 78.9,
+   "last_box": [
+    1539,
+    221,
+    1619,
+    346
+   ]
+  },
+  {
+   "track": 3213,
+   "decision": "not_triple",
+   "confidence": 0.978,
+   "score": 0.022,
+   "p_triple": 0.0,
+   "p_two": 0.491,
+   "p_one": 0.508,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.49, P(1)=0.51",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 79.1,
+   "last_box": [
+    1340,
+    227,
+    1405,
+    321
+   ]
+  },
+  {
+   "track": 3538,
+   "decision": "not_triple",
+   "confidence": 0.994,
+   "score": 0.0056,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 83.5,
+   "last_box": [
+    852,
+    200,
+    893,
+    270
+   ]
+  },
+  {
+   "track": 3524,
+   "decision": "not_triple",
+   "confidence": 0.991,
+   "score": 0.0085,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 83.7,
+   "last_box": [
+    846,
+    226,
+    883,
+    291
+   ]
+  },
+  {
+   "track": 3634,
+   "decision": "not_triple",
+   "confidence": 0.982,
+   "score": 0.0177,
+   "p_triple": 0.0,
+   "p_two": 0.006,
+   "p_one": 0.994,
+   "frames": 10,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.01, P(1)=0.99",
+    "0 of 10 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 10 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 85.5,
+   "last_box": [
+    811,
+    296,
+    845,
+    363
+   ]
+  },
+  {
+   "track": 3671,
+   "decision": "not_triple",
+   "confidence": 0.836,
+   "score": 0.1645,
+   "p_triple": 0.0,
+   "p_two": 0.501,
+   "p_one": 0.481,
+   "frames": 6,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    4,
+    2,
+    2,
+    3,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.50, P(1)=0.48",
+    "0 of 6 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 4, 3+ in 2 of 6 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 86.3,
+   "last_box": [
+    1347,
+    247,
+    1623,
+    378
+   ]
+  },
+  {
+   "track": 3683,
+   "decision": "not_triple",
+   "confidence": 0.929,
+   "score": 0.0715,
+   "p_triple": 0.0,
+   "p_two": 0.993,
+   "p_one": 0.006,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.99, P(1)=0.01",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 86.3,
+   "last_box": [
+    1413,
+    217,
+    1478,
+    310
+   ]
+  },
+  {
+   "track": 3708,
+   "decision": "not_triple",
+   "confidence": 0.976,
+   "score": 0.0239,
+   "p_triple": 0.0,
+   "p_two": 0.046,
+   "p_one": 0.939,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.05, P(1)=0.94",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 86.5,
+   "last_box": [
+    1512,
+    249,
+    1609,
+    325
+   ]
+  },
+  {
+   "track": 3779,
+   "decision": "not_triple",
+   "confidence": 0.888,
+   "score": 0.1123,
+   "p_triple": 0.0,
+   "p_two": 0.569,
+   "p_one": 0.396,
+   "frames": 5,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    3,
+    2,
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.57, P(1)=0.40",
+    "0 of 5 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 5 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 86.9,
+   "last_box": [
+    1220,
+    251,
+    1319,
+    342
+   ]
+  },
+  {
+   "track": 3792,
+   "decision": "not_triple",
+   "confidence": 0.995,
+   "score": 0.0053,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 15,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 15 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 15 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 87.1,
+   "last_box": [
+    741,
+    306,
+    783,
+    385
+   ]
+  },
+  {
+   "track": 3805,
+   "decision": "not_triple",
+   "confidence": 0.985,
+   "score": 0.0147,
+   "p_triple": 0.0,
+   "p_two": 0.002,
+   "p_one": 0.997,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 87.1,
+   "last_box": [
+    1236,
+    234,
+    1272,
+    327
+   ]
+  },
+  {
+   "track": 3701,
+   "decision": "not_triple",
+   "confidence": 0.96,
+   "score": 0.0399,
+   "p_triple": 0.0,
+   "p_two": 0.658,
+   "p_one": 0.34,
+   "frames": 3,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.66, P(1)=0.34",
+    "0 of 3 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 3 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 87.1,
+   "last_box": [
+    1792,
+    226,
+    1920,
+    371
+   ]
+  },
+  {
+   "track": 3681,
+   "decision": "not_triple",
+   "confidence": 0.921,
+   "score": 0.0786,
+   "p_triple": 0.0,
+   "p_two": 0.996,
+   "p_one": 0.004,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=1.00, P(1)=0.00",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 87.3,
+   "last_box": [
+    1770,
+    219,
+    1920,
+    363
+   ]
+  },
+  {
+   "track": 3822,
+   "decision": "not_triple",
+   "confidence": 0.994,
+   "score": 0.0056,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 87.3,
+   "last_box": [
+    1251,
+    232,
+    1306,
+    331
+   ]
+  },
+  {
+   "track": 3904,
+   "decision": "not_triple",
+   "confidence": 0.948,
+   "score": 0.0516,
+   "p_triple": 0.0,
+   "p_two": 0.926,
+   "p_one": 0.056,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.93, P(1)=0.06",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.1,
+   "last_box": [
+    1404,
+    236,
+    1721,
+    393
+   ]
+  },
+  {
+   "track": 3728,
+   "decision": "not_triple",
+   "confidence": 0.934,
+   "score": 0.0659,
+   "p_triple": 0.0,
+   "p_two": 0.987,
+   "p_one": 0.005,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.99, P(1)=0.00",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.1,
+   "last_box": [
+    1292,
+    248,
+    1498,
+    369
+   ]
+  },
+  {
+   "track": 3917,
+   "decision": "not_triple",
+   "confidence": 0.883,
+   "score": 0.1172,
+   "p_triple": 0.0,
+   "p_two": 0.002,
+   "p_one": 0.998,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    3
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.3,
+   "last_box": [
+    495,
+    319,
+    611,
+    469
+   ]
+  },
+  {
+   "track": 3930,
+   "decision": "not_triple",
+   "confidence": 0.982,
+   "score": 0.018,
+   "p_triple": 0.0,
+   "p_two": 0.192,
+   "p_one": 0.803,
+   "frames": 2,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.19, P(1)=0.80",
+    "0 of 2 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 2 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.3,
+   "last_box": [
+    1632,
+    215,
+    1838,
+    422
+   ]
+  },
+  {
+   "track": 3854,
+   "decision": "not_triple",
+   "confidence": 0.952,
+   "score": 0.0477,
+   "p_triple": 0.0,
+   "p_two": 0.875,
+   "p_one": 0.114,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.87, P(1)=0.11",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.3,
+   "last_box": [
+    1265,
+    243,
+    1429,
+    360
+   ]
+  },
+  {
+   "track": 3956,
+   "decision": "not_triple",
+   "confidence": 0.987,
+   "score": 0.0129,
+   "p_triple": 0.0,
+   "p_two": 0.0,
+   "p_one": 1.0,
+   "frames": 8,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1,
+    2,
+    1,
+    3,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.00, P(1)=1.00",
+    "0 of 8 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 1 of 8 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.5,
+   "last_box": [
+    588,
+    293,
+    737,
+    505
+   ]
+  },
+  {
+   "track": 3948,
+   "decision": "not_triple",
+   "confidence": 0.737,
+   "score": 0.2628,
+   "p_triple": 0.0,
+   "p_two": 0.913,
+   "p_one": 0.082,
+   "frames": 6,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2,
+    1,
+    3,
+    3,
+    2,
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.91, P(1)=0.08",
+    "0 of 6 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 3, 3+ in 2 of 6 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 88.9,
+   "last_box": [
+    242,
+    353,
+    386,
+    625
+   ]
+  },
+  {
+   "track": 3623,
+   "decision": "not_triple",
+   "confidence": 0.985,
+   "score": 0.0145,
+   "p_triple": 0.0,
+   "p_two": 0.05,
+   "p_one": 0.95,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.05, P(1)=0.95",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 89.1,
+   "last_box": [
+    1761,
+    136,
+    1920,
+    431
+   ]
+  },
+  {
+   "track": 3434,
+   "decision": "not_triple",
+   "confidence": 0.943,
+   "score": 0.0568,
+   "p_triple": 0.0,
+   "p_two": 0.584,
+   "p_one": 0.41,
+   "frames": 1,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    2
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.58, P(1)=0.41",
+    "0 of 1 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 2, 3+ in 0 of 1 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 89.1,
+   "last_box": [
+    481,
+    303,
+    542,
+    453
+   ]
+  },
+  {
+   "track": 3928,
+   "decision": "not_triple",
+   "confidence": 0.889,
+   "score": 0.1105,
+   "p_triple": 0.0,
+   "p_two": 0.968,
+   "p_one": 0.032,
+   "frames": 4,
+   "frames_voting_triple": 0,
+   "heads_on_seat": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "reasons": [
+    "classifier: P(3+ riders)=0.00, P(2)=0.97, P(1)=0.03",
+    "0 of 4 frames individually say 3+ riders (need 3)",
+    "heads on this bike's seat: up to 1, 3+ in 0 of 4 frames"
+   ],
+   "thresholds": {
+    "triple_if_score_at_least": 0.89733,
+    "min_agreeing_frames": 3,
+    "not_triple_if_score_at_most": 0.83922
+   },
+   "first_seen_s": 89.3,
+   "last_box": [
+    442,
+    335,
+    533,
+    464
+   ]
+  }
+ ]
+}

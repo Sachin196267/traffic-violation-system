@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Results — Traffic Violation System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="page-header">
+    <div class="logo">🚦 <span>ITMS</span> Enforcement</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/history">History</a>
+    </nav>
+    <div class="nav-user">
+      <span id="nav-email"></span>
+      <button id="btn-logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h1 style="font-size:26px; margin:0;" id="page-title">Job Analysis Results</h1>
+        <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;" id="page-subtitle">Multi-frame enforcement dossier and digital twin replica</p>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a id="btn-session-report" href="#" target="_blank" class="btn btn-primary btn-sm" style="display:none;">
+          📑 Download Full Enforcement Report (PDF)
+        </a>
+        <a href="/history" class="btn btn-secondary btn-sm">← Back to History</a>
+      </div>
+    </div>
+
+    <!-- Job Summary Card -->
+    <div id="job-info"></div>
+
+    <!-- Dual Visualizer: Annotated Video + Mini Digital Twin -->
+    <div class="grid-2" style="margin-top:24px; gap:20px;">
+      <!-- Camera Surveillance Video -->
+      <div class="card" id="video-section">
+        <h2 class="card-title">🎥 Annotated Output Video</h2>
+        <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">
+          Lanes, tracked vehicles, bounding boxes, speeds, and active violation alerts.
+        </p>
+        <div class="video-container" style="background:#000; border-radius:8px; overflow:hidden;">
+          <video id="output-video" controls style="width:100%; max-height:460px; display:block;" preload="metadata"></video>
+        </div>
+      </div>
+
+      <!-- Mini Digital Twin Visualization -->
+      <div class="card" id="twin-section">
+        <h2 class="card-title">🌐 Mini Digital Twin View</h2>
+        <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">
+          Lightweight 2.5D road corridor, vehicle avatars, trajectory trails, and signal HUD.
+        </p>
+        <div class="video-container" style="background:#141821; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+          <video id="twin-video" controls loop muted autoplay style="width:100%; max-height:460px; display:block;" preload="metadata"></video>
+          <img id="twin-preview-img" style="width:100%; max-height:460px; object-fit:contain; display:none;" alt="Digital Twin Snapshot">
+        </div>
+      </div>
+    </div>
+
+    <!-- Dedicated Roadway Segmentation & Lane Verification Display -->
+    <div class="card" style="margin-top:24px;" id="lane-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <h2 class="card-title" style="margin-bottom:2px;">🛣 Roadway Segmentation & Lane Corridor Calibration</h2>
+          <p style="font-size:12px; color:var(--text-secondary); margin:0;">
+            Calibrated spatial corridor boundaries (Lane 1, 2, 3), junction stop line (Y=490), and vanishing perspective ground grid.
+          </p>
+        </div>
+        <span class="badge badge-done" style="font-size:12px;">Evidence Context (Non-Punitive)</span>
+      </div>
+      <div style="background:#0f172a; border-radius:8px; overflow:hidden; border:1px solid var(--border); text-align:center;">
+        <img id="lane-result-img" style="width:100%; max-height:480px; object-fit:contain; display:block; margin:0 auto;" alt="Roadway Segmentation & Lane Calibration">
+      </div>
+    </div>
+
+    <!-- Challans Section -->
+    <div class="card" style="margin-top:28px;" id="challans-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+        <h2 class="card-title" style="margin-bottom:0;">📋 Generated e-Challans & Explainable Evidence</h2>
+        <span id="challan-count-badge" class="badge badge-queued" style="font-size:13px;">0 Violations</span>
+      </div>
+      <div id="challans-list"></div>
+    </div>
+  </div>
+
+  <!-- Evidence Modal -->
+  <div id="evidence-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:1000; padding:20px; overflow-y:auto;" onclick="closeModal()">
+    <div style="max-width:1100px; margin:20px auto; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px;" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+        <h2 id="modal-title" style="font-size:18px; margin:0;"></h2>
+        <button onclick="closeModal()" style="background:none; border:none; color:var(--text-secondary); font-size:28px; cursor:pointer; line-height:1;">&times;</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script>
+    requireAuth();
+    setupNavbar();
+
+    const params = new URLSearchParams(window.location.search);
+    const jobId = params.get('job');
+
+    if (!jobId) {
+      window.location.href = '/history';
+    }
+
+    async function loadResults() {
+      try {
+        const job = await apiJSON(`/api/jobs/${jobId}`);
+        const challans = await apiJSON(`/api/jobs/${jobId}/challans`);
+
+        document.getElementById('page-title').textContent = `Job Analysis: ${jobId}`;
+        document.getElementById('challan-count-badge').textContent = `${(challans || []).length} Recorded`;
+        document.getElementById('challan-count-badge').className = `badge ${(challans && challans.length > 0) ? 'badge-failed' : 'badge-done'}`;
+
+        // Job info card
+        document.getElementById('job-info').innerHTML = `
+          <div class="card">
+            <div class="grid-4">
+              <div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">Pipeline Status</div>
+                <div>${statusBadge(job.status)}</div>
+              </div>
+              <div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">Input Source</div>
+                <div style="font-size:14px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${job.input_source || ''}">
+                  ${job.input_source || '—'}
+                </div>
+              </div>
+              <div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">Frames Analyzed</div>
+                <div style="font-size:14px; font-weight:600;">${job.max_frames} frames</div>
+              </div>
+              <div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">Total Violations</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent);">${job.total_challans} challans</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Output Video & Media Assets
+        const token = getToken();
+        const tokenParam = token ? `?token=${encodeURIComponent(token)}` : '';
+
+        if (job.status === 'done') {
+          const videoEl = document.getElementById('output-video');
+          videoEl.src = `/api/files/${jobId}/video${tokenParam}`;
+
+          const twinEl = document.getElementById('twin-video');
+          twinEl.src = `/api/files/${jobId}/twin${tokenParam}`;
+          twinEl.onerror = () => {
+            twinEl.style.display = 'none';
+            const twinImg = document.getElementById('twin-preview-img');
+            twinImg.src = `/api/files/${jobId}/twin${tokenParam}`;
+            twinImg.style.display = 'block';
+          };
+
+          // Roadway Lane Verification Image
+          const laneImg = document.getElementById('lane-result-img');
+          laneImg.src = `/api/files/${jobId}/lane_result${tokenParam}`;
+
+          // Session Enforcement Report PDF
+          const reportBtn = document.getElementById('btn-session-report');
+          if (reportBtn) {
+            reportBtn.href = `/api/files/${jobId}/report${tokenParam}`;
+            reportBtn.style.display = 'inline-flex';
+          }
+        } else {
+          document.getElementById('video-section').innerHTML = `
+            <div class="empty-state">
+              <p>Annotated video processing ${job.status === 'processing' ? 'in progress (' + job.progress + '%)' : 'pending'}…</p>
+            </div>
+          `;
+          document.getElementById('twin-section').innerHTML = `
+            <div class="empty-state">
+              <p>Mini digital twin visualization will generate upon job completion.</p>
+            </div>
+          `;
+          document.getElementById('lane-section').innerHTML = `
+            <div class="empty-state">
+              <p>Roadway segmentation calibration image will generate upon job completion.</p>
+            </div>
+          `;
+        }
+
+        // Challans
+        if (!challans || challans.length === 0) {
+          document.getElementById('challans-list').innerHTML = `
+            <div class="empty-state">
+              <div style="font-size:32px; margin-bottom:8px;">✅</div>
+              <p>No statutory traffic infractions detected in this video segment.</p>
+            </div>
+          `;
+        } else {
+          document.getElementById('challans-list').innerHTML = challans.map(c => {
+            const xai = c.xai_data || {};
+            const reasons = Array.isArray(xai.reasons) ? xai.reasons : [];
+            const statute = xai.statute || 'Motor Vehicles Act statutory enforcement';
+            const rationale = xai.rationale || '';
+
+            return `
+              <div class="challan-card" style="margin-bottom:20px;">
+                <div class="challan-header" style="flex-wrap:wrap; gap:10px;">
+                  <div>
+                    <span style="font-weight:700; font-family:monospace; font-size:15px; color:#93c5fd;">${c.id}</span>
+                    ${severityBadge(c.severity_level)}
+                    <span style="font-size:12px; color:var(--text-secondary); margin-left:8px;">
+                      Frame #${c.frame_idx} • ${c.timestamp_str || ''}
+                    </span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <span class="badge" style="background:rgba(59,130,246,0.15); color:#93c5fd; border:1px solid rgba(59,130,246,0.35); font-weight:600; font-size:11px; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">CERTIFIED RECORD</span>
+                    <a href="/api/files/${jobId}/challans/${c.id}.pdf${tokenParam}" target="_blank" class="btn btn-sm btn-secondary">
+                      📄 Download e-Challan PDF
+                    </a>
+                  </div>
+                </div>
+
+                <div class="challan-meta" style="margin-top:12px; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; background:rgba(15,23,42,0.6); padding:12px; border-radius:8px;">
+                  <div><strong>Vehicle Class:</strong> ${c.vehicle_class || '—'}</div>
+                  <div><strong>License Plate:</strong> <span style="font-family:monospace; font-weight:700; color:#fbbf24;">${c.plate_number || 'UNKNOWN'}</span></div>
+                  <div><strong>Speed:</strong> ${c.speed_kmh ? c.speed_kmh + ' km/h' : '—'}</div>
+                  <div><strong>Lane Context:</strong> <span style="color:#60a5fa;">${c.lane || 'Corridor (Evidence Only)'}</span></div>
+                  <div><strong>Severity Index:</strong> ${c.severity_score || 0}/100</div>
+                  <div><strong>Track ID:</strong> #${c.track_id}</div>
+                </div>
+
+                <!-- Violations -->
+                <div style="margin-top:12px;">
+                  <div style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">INFRACTIONS:</div>
+                  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    ${(c.violations || []).map(v => `
+                      <span class="badge" style="background:#3b1e2a; color:#f87171; border:1px solid #7f1d1d; font-weight:600;">
+                        ⚠ ${v.replace(/_/g, ' ')}
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Explainable AI (XAI) Block -->
+                <div style="margin-top:14px; background:rgba(30,41,59,0.7); border-left:3px solid var(--accent); padding:12px 14px; border-radius:0 8px 8px 0;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <div style="font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.5px;">
+                      🧠 Explainable AI (XAI) Reasoning & Grounding
+                    </div>
+                    <span style="font-size:11px; color:var(--text-secondary);">${statute}</span>
+                  </div>
+                  ${rationale ? `<div style="font-size:13px; color:var(--text-primary); margin-bottom:8px; line-height:1.4;">${rationale}</div>` : ''}
+                  ${reasons.length > 0 ? `
+                    <ul style="font-size:12px; color:var(--text-secondary); margin:0; padding-left:18px; line-height:1.5;">
+                      ${reasons.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                  ` : ''}
+                </div>
+
+                <!-- Actions -->
+                <div style="margin-top:14px; display:flex; gap:10px;">
+                  <button class="btn btn-sm btn-primary" onclick="showEvidence('${c.id}')">
+                    🔍 View Evidence Dossier (4-Panel)
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+      } catch (err) {
+        console.error('Load error:', err);
+        document.getElementById('job-info').innerHTML = `
+          <div class="alert alert-error">Failed to load results: ${err.message}</div>
+        `;
+      }
+    }
+
+    function showEvidence(challanId) {
+      const modal = document.getElementById('evidence-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+      const token = getToken();
+      const tokenParam = token ? `?token=${encodeURIComponent(token)}` : '';
+
+      title.textContent = `Evidence Dossier — ${challanId}`;
+      content.innerHTML = `
+        <div class="grid-4" style="gap:16px;">
+          <div style="text-align:center;">
+            <div style="background:#0f172a; padding:6px; border-radius:8px; border:1px solid var(--border);">
+              <img src="/api/files/${jobId}/evidence/${challanId}_scene.jpg${tokenParam}" class="evidence-img" style="max-height:220px; object-fit:contain;" alt="Scene Context">
+            </div>
+            <div class="evidence-label" style="font-weight:600; margin-top:8px;">1. Scene Context (Lane & Stop Line)</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#0f172a; padding:6px; border-radius:8px; border:1px solid var(--border);">
+              <img src="/api/files/${jobId}/evidence/${challanId}_vehicle.jpg${tokenParam}" class="evidence-img" style="max-height:220px; object-fit:contain;" alt="Vehicle Crop">
+            </div>
+            <div class="evidence-label" style="font-weight:600; margin-top:8px;">2. Vehicle Crop (Tracked Target)</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#0f172a; padding:6px; border-radius:8px; border:1px solid var(--border);">
+              <img src="/api/files/${jobId}/evidence/${challanId}_plate.jpg${tokenParam}" class="evidence-img" style="max-height:220px; object-fit:contain;" alt="ANPR Plate">
+            </div>
+            <div class="evidence-label" style="font-weight:600; margin-top:8px;">3. ANPR License Plate ROI</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="background:#0f172a; padding:6px; border-radius:8px; border:1px solid var(--border);">
+              <img src="/api/files/${jobId}/evidence/${challanId}_gradcam.jpg${tokenParam}" class="evidence-img" style="max-height:220px; object-fit:contain;" alt="XAI Grad-CAM">
+            </div>
+            <div class="evidence-label" style="font-weight:600; margin-top:8px;">4. XAI Grad-CAM Attention Heatmap</div>
+          </div>
+        </div>
+      `;
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('evidence-modal').style.display = 'none';
+    }
+
+    loadResults();
+  </script>
+</body>
+</html>

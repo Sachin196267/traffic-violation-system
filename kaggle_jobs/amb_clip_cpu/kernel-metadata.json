@@ -1,0 +1,18 @@
+{
+ "id": "sachin196267/tvs-amb-clip-cpu",
+ "title": "tvs-amb-clip-cpu",
+ "code_file": "amb_clip.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "ganeshmohane/indian-emergency-vehicles-dataset",
+  "daudshah/pakistani-ambulances-dataset",
+  "ikramali585/emergency-vs-non-emergency-vehicles",
+  "abhisheksinghblr/emergency-vehicles-identification"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

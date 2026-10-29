@@ -1,0 +1,22 @@
+{
+ "video": "bombay traffic [zxxfvP8-lrU].mp4",
+ "resolution": "1280x720",
+ "samples": 90,
+ "two_wheelers": 1550,
+ "full640": {
+  "helmet": 8,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 17,
+  "no_helmet": 0
+ },
+ "crop": {
+  "crops": 1550,
+  "head_found": 77,
+  "helmet": 77,
+  "no_helmet": 2,
+  "head_found_rate": 0.05
+ },
+ "two_wheeler_height_px_median": 68
+}

@@ -1,0 +1,13 @@
+# Autopilot 4: long junction videos
+- 09-27 19:29 started
+- 09-27 19:29 round 1: 3 still blocked by YouTube - retry in 30 min
+- 09-27 19:59 round 2: 3 still blocked by YouTube - retry in 30 min
+- 09-27 20:29 round 3: 3 still blocked by YouTube - retry in 30 min
+- 09-27 21:05 downloaded long-01
+- 09-28 00:30 long-01 analysed (automatic mode): {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 1} | shots ready: 1 / 2
+- 09-28 00:35 downloaded long-02
+- 09-28 02:58 long-01 e-challan: {"video": "long-01.mp4", "checks": ["redlight", "helmet"], "challans": 0, "review": 0, "exempt": 0, "notes": ["red light, shot 385-600 s not checked: could not confirm the controlled direction from tr
+- 09-28 04:19 long-02 analysed (automatic mode): {"VIOLATION": 1, "NOT SURE": 0, "EXEMPT": 0, "OK": 97} | shots ready: 1 / 1
+- 09-28 04:25 downloaded long-03
+- 09-28 05:08 long-03 analysed (automatic mode): {"VIOLATION": 0, "NOT SURE": 0, "EXEMPT": 0, "OK": 0} | shots ready: 0 / 1
+- 09-28 05:08 AUTOPILOT4 DONE - remaining (manual): camera setup + grading of long-* clips

@@ -1,0 +1,16 @@
+{
+ "id": "sachin196267/tvs-tl-state",
+ "title": "tvs-tl-state",
+ "code_file": "tl_state_train.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "mbornoe/lisa-traffic-light-dataset",
+  "guisahanes/traffic-violation-detection-dataset"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

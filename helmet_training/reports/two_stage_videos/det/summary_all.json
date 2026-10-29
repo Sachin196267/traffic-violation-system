@@ -1,0 +1,74 @@
+{
+ "4K_Road_traffic_video_for_object_detection_and_t": {
+  "video": "4K Road traffic video for object detection and tracking - free download now! [MNn9qKG2UFI].mp4",
+  "samples": 90,
+  "two_wheelers": 7,
+  "helmet": 7,
+  "no_helmet": 0,
+  "undecided": 4,
+  "no_helmet_share": 0.0
+ },
+ "4K_Video_of_Highway_Traffic_KBsqQez_O4w": {
+  "video": "4K Video of Highway Traffic! [KBsqQez-O4w].mp4",
+  "samples": 77,
+  "two_wheelers": 0,
+  "helmet": 0,
+  "no_helmet": 0,
+  "undecided": 34,
+  "no_helmet_share": 0.0
+ },
+ "HTC_Sensation_FULL_HD_1080p_Video_Sample_highway": {
+  "video": "HTC Sensation FULL HD 1080p Video Sample (highway traffic) [wWLAc6mdJrs].mp4",
+  "samples": 80,
+  "two_wheelers": 1,
+  "helmet": 1,
+  "no_helmet": 0,
+  "undecided": 22,
+  "no_helmet_share": 0.0
+ },
+ "Highway_sounds_cars_trucks_passing_by_for_sleepi": {
+  "video": "Highway sounds cars trucks passing by for sleeping relaxing [TW3EH4cnFZo].mp4",
+  "samples": 90,
+  "two_wheelers": 1,
+  "helmet": 1,
+  "no_helmet": 0,
+  "undecided": 12,
+  "no_helmet_share": 0.0
+ },
+ "Original_Traffic_Sound_of_Delhi_Roads_Real_Delhi": {
+  "video": "Original Traffic Sound of Delhi Roads \uff5c Real Delhi Traffic \uff5c 1 Minute [D2m3THw-b78].mp4",
+  "samples": 30,
+  "two_wheelers": 78,
+  "helmet": 78,
+  "no_helmet": 0,
+  "undecided": 226,
+  "no_helmet_share": 0.0
+ },
+ "Traffic_congestion_due_to_Metro_work_South_Delhi": {
+  "video": "Traffic congestion due to Metro work - South Delhi [-EnB6E3hApQ].mp4",
+  "samples": 62,
+  "two_wheelers": 23,
+  "helmet": 23,
+  "no_helmet": 0,
+  "undecided": 125,
+  "no_helmet_share": 0.0
+ },
+ "bombay_traffic_zxxfvP8_lrU": {
+  "video": "bombay traffic [zxxfvP8-lrU].mp4",
+  "samples": 90,
+  "two_wheelers": 347,
+  "helmet": 347,
+  "no_helmet": 0,
+  "undecided": 1216,
+  "no_helmet_share": 0.0
+ },
+ "model2_test": {
+  "video": "model2_test.mp4",
+  "samples": 54,
+  "two_wheelers": 115,
+  "helmet": 114,
+  "no_helmet": 1,
+  "undecided": 223,
+  "no_helmet_share": 0.009
+ }
+}

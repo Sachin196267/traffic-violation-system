@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job History — Traffic Violation System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="page-header">
+    <div class="logo">🚦 <span>ITMS</span> Enforcement</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/history">History</a>
+    </nav>
+    <div class="nav-user">
+      <span id="nav-email"></span>
+      <button id="btn-logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <h1 style="font-size:26px; margin:0;">Analysis Job History</h1>
+      <a href="/dashboard" class="btn btn-primary btn-sm">+ Submit New Video</a>
+    </div>
+
+    <div class="card">
+      <div id="jobs-list"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script>
+    requireAuth();
+    setupNavbar();
+
+    async function loadJobs() {
+      try {
+        const jobs = await apiJSON('/api/jobs');
+        const container = document.getElementById('jobs-list');
+
+        if (!jobs || jobs.length === 0) {
+          container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📂</div><p>No jobs recorded yet. Submit a surveillance video from the dashboard.</p></div>';
+          return;
+        }
+
+        const rows = jobs.map(j => {
+          const isDone = j.status === 'done';
+          return `
+            <tr style="cursor:${isDone ? 'pointer' : 'default'};" data-job-id="${j.id}" data-done="${isDone}">
+              <td>
+                <div style="font-weight:700; font-family:monospace; font-size:13px; color:#93c5fd;">${j.id}</div>
+              </td>
+              <td>${statusBadge(j.status)}</td>
+              <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${j.input_source || ''}">
+                ${j.input_source || '—'}
+              </td>
+              <td><strong>${j.total_challans || 0}</strong></td>
+              <td style="font-size:13px; color:var(--text-secondary);">
+                ${formatDate(j.created_at)}
+              </td>
+              <td>
+                ${isDone ? `<a href="/results?job=${j.id}" class="btn btn-sm btn-primary">View Results</a>` : `<span style="font-size:12px; color:var(--text-secondary);">${j.status}</span>`}
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>Status</th>
+                <th>Input Source</th>
+                <th>Violations</th>
+                <th>Submitted</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+        `;
+
+        document.querySelectorAll('tr[data-job-id]').forEach(row => {
+          row.addEventListener('click', (e) => {
+            if (row.dataset.done === 'true' && !e.target.closest('a')) {
+              window.location.href = '/results?job=' + row.dataset.jobId;
+            }
+          });
+        });
+
+      } catch (err) {
+        console.error('Load error:', err);
+        document.getElementById('jobs-list').innerHTML = `
+          <div class="alert alert-error">Failed to load jobs: ${err.message}</div>
+        `;
+      }
+    }
+
+    loadJobs();
+  </script>
+</body>
+</html>

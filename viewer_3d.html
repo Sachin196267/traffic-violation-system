@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Digital Twin - 3D Indian Intersection Simulation</title>
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      overflow: hidden;
+      background: #090d16;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: #e2e8f0;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* GLASSMORPHISM HUD CARDS */
+    .hud-card {
+      position: absolute;
+      z-index: 10;
+      background: rgba(13, 20, 36, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+      padding: 14px 16px;
+      pointer-events: auto;
+    }
+
+    /* TOP HEADER */
+    #top-header {
+      top: 14px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    }
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #f8fafc;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .mode-pills {
+      display: flex;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .mode-btn.active {
+      background: #0d9488;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4);
+    }
+
+    .status-clock {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      font-family: monospace;
+    }
+    .system-online {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: sans-serif;
+      color: #34d399;
+    }
+    .dot-pulse {
+      width: 8px;
+      height: 8px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #34d399;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    /* LEFT PANELS */
+    #intersection-view-card {
+      top: 80px;
+      left: 18px;
+      width: 250px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 6px;
+      color: #94a3b8;
+    }
+    .info-val {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    #lane-view-card {
+      bottom: 74px;
+      left: 18px;
+      width: 250px;
+    }
+    .lane-schematic-grid {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .cross-minimap {
+      width: 70px;
+      height: 70px;
+      position: relative;
+    }
+    .minimap-cross-v {
+      position: absolute;
+      left: 28px;
+      top: 0;
+      width: 14px;
+      height: 70px;
+      background: #1e293b;
+      border-left: 1px solid #0ea5e9;
+      border-right: 1px solid #0ea5e9;
+    }
+    .minimap-cross-h {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      width: 70px;
+      height: 14px;
+      background: #1e293b;
+      border-top: 1px solid #0ea5e9;
+      border-bottom: 1px solid #0ea5e9;
+    }
+    .lane-bars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .lane-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-family: monospace;
+      color: #94a3b8;
+    }
+    .bar-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: #10b981;
+      border-radius: 3px;
+      transition: width 0.4s;
+    }
+
+    /* RIGHT PANELS */
+    #traffic-overview-card {
+      top: 80px;
+      right: 18px;
+      width: 260px;
+    }
+    .fleet-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .density-bar-bg {
+      margin-top: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .density-bar-fill {
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #f59e0b);
+    }
+
+    #signal-status-card {
+      top: 290px;
+      right: 18px;
+      width: 260px;
+    }
+    .signal-indicator-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .signal-lamp {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor;
+    }
+    .signal-lamp.green {
+      background: #10b981;
+      color: #10b981;
+    }
+    .signal-lamp.red {
+      background: #ef4444;
+      color: #ef4444;
+    }
+
+    #violations-card {
+      top: 420px;
+      right: 18px;
+      width: 260px;
+      border-left: 3px solid #ef4444;
+    }
+    .violation-banner {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: #fca5a5;
+    }
+
+    #selected-vehicle-card {
+      bottom: 74px;
+      right: 18px;
+      width: 260px;
+    }
+
+    /* BOTTOM NAV DOCK */
+    #bottom-dock {
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      padding: 8px 24px;
+      border-radius: 30px;
+    }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      color: #38bdf8;
+    }
+    .nav-btn span {
+      font-size: 16px;
+    }
+
+    /* ROAD DIRECTION LABELS */
+    .road-tag {
+      position: absolute;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #f8fafc;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* 3D VIOLATION FLOATING TOOLTIP */
+    #violation-floating-badge {
+      position: absolute;
+      background: #b91c1c;
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      pointer-events: none;
+      transform: translate(-50%, -120%);
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.6);
+      z-index: 15;
+      display: none;
+      animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translate(-50%, -120%); }
+      to { transform: translate(-50%, -135%); }
+    }
+  
+    /* SLIDE-OUT E-CHALLAN SLIP DRAWER */
+    #challan-drawer {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      bottom: 14px;
+      width: 440px;
+      z-index: 100;
+      background: rgba(13, 20, 36, 0.95);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      box-shadow: -12px 18px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(239, 68, 68, 0.25);
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #challan-drawer.open {
+      transform: translateX(0);
+    }
+    .slip-header-banner {
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      border-bottom: 2px solid #2563eb;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .slip-emblem-seal {
+      width: 32px;
+      height: 32px;
+      background: #3b82f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    }
+    .slip-body-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .slip-fine-card {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.12));
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .slip-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .slip-table th {
+      background: #1e293b;
+      color: #94a3b8;
+      text-align: left;
+      padding: 6px 10px;
+      font-weight: 600;
+      width: 40%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .slip-table td {
+      padding: 6px 10px;
+      color: #f1f5f9;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: monospace;
+      font-size: 12px;
+    }
+    .slip-evidence-img-container {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0b0f19;
+    }
+    .slip-evidence-img-container img {
+      width: 100%;
+      display: block;
+      max-height: 180px;
+      object-fit: cover;
+    }
+    .slip-btn-dl {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s;
+    }
+    .slip-btn-dl:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    .close-slip-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #94a3b8;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .close-slip-btn:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="violation-floating-badge">🚨 Red Light Violation</div>
+
+  <!-- ROAD DIRECTION LABELS IN 3D SCREEN SPACE -->
+  <div id="tag-north" class="road-tag">North &uarr;</div>
+  <div id="tag-south" class="road-tag">South &darr;</div>
+  <div id="tag-east" class="road-tag">East &rarr;</div>
+  <div id="tag-west" class="road-tag">&larr; West</div>
+
+  <!-- TOP HEADER -->
+  <div class="hud-card" id="top-header">
+    <div class="brand-section">
+      <div class="brand-icon">🌐</div>
+      <div>
+        <div class="brand-title">Traffic Digital Twin</div>
+        <div class="brand-sub">3D Intersection Simulation &bull; Indian Urban Carriageway</div>
+      </div>
+    </div>
+
+    <div class="mode-pills">
+      <button class="mode-btn active" onclick="setMode('sim')">⏺️ Simulation Mode</button>
+      <button class="mode-btn" onclick="setMode('ai')">✨ AI Connected Mode</button>
+      <button class="mode-btn" onclick="setMode('replay')">🔄 Replay Mode</button>
+    </div>
+
+    <div class="status-clock">
+      <div class="system-online">
+        <span class="dot-pulse"></span>
+        System Online
+      </div>
+      <div id="live-clock">10:24:32</div>
+    </div>
+  </div>
+
+  <!-- LEFT PANELS -->
+  <div class="hud-card" id="intersection-view-card">
+    <div class="card-title">
+      <span>🧭</span>
+      Intersection View
+    </div>
+    <div class="info-row">
+      <span>Location:</span>
+      <span class="info-val">Sector 20, Kharghar</span>
+    </div>
+    <div class="info-row">
+      <span>Lanes:</span>
+      <span class="info-val">4 (2 per direction)</span>
+    </div>
+    <div class="info-row">
+      <span>Road Width:</span>
+      <span class="info-val">16 m</span>
+    </div>
+    <div class="info-row">
+      <span>Road Surface:</span>
+      <span class="info-val" style="color: #f59e0b;">Weathered / Potholes</span>
+    </div>
+    <div class="info-row">
+      <span>Scale:</span>
+      <span class="info-val">1 Unit = 1 m</span>
+    </div>
+  </div>
+
+  <div class="hud-card" id="lane-view-card">
+    <div class="card-title">
+      <span>🚦</span>
+      Lane View & Occupancy
+    </div>
+    <div class="lane-schematic-grid">
+      <div class="cross-minimap">
+        <div class="minimap-cross-v"></div>
+        <div class="minimap-cross-h"></div>
+      </div>
+      <div class="lane-bars">
+        <div class="lane-bar-item"><span>N1</span><div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div></div>
+        <div class="lane-bar-item"><span>N2</span><div class="bar-bg"><div class="bar-fill" style="width: 45%;"></div></div></div>
+        <div class="lane-bar-item"><span>S1</span><div class="bar-bg"><div class="bar-fill" style="width: 85%; background: #f59e0b;"></div></div></div>
+        <div class="lane-bar-item"><span>S2</span><div class="bar-bg"><div class="bar-fill" style="width: 30%;"></div></div></div>
+        <div class="lane-bar-item"><span>E1</span><div class="bar-bg"><div class="bar-fill" style="width: 60%;"></div></div></div>
+        <div class="lane-bar-item"><span>W1</span><div class="bar-bg"><div class="bar-fill" style="width: 40%;"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANELS -->
+  <div class="hud-card" id="traffic-overview-card">
+    <div class="card-title">
+      <span>📊</span>
+      Live Traffic Overview
+    </div>
+    <div class="fleet-item"><span>🚗 Cars:</span><strong class="info-val" id="count-cars">16</strong></div>
+    <div class="fleet-item"><span>🛺 Auto-Rickshaws:</span><strong class="info-val">3</strong></div>
+    <div class="fleet-item"><span>🏍️ Bikes & Scooters:</span><strong class="info-val">6</strong></div>
+    <div class="fleet-item"><span>🚌 State Transport Buses:</span><strong class="info-val">2</strong></div>
+    <div class="fleet-item"><span>🚛 Commercial Trucks:</span><strong class="info-val">2</strong></div>
+    <div class="fleet-item"><span>🚑 Emergency Ambulance:</span><strong class="info-val" style="color: #38bdf8;">1 (Active)</strong></div>
+    <div style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Traffic Density: <b>Medium</b></div>
+    <div class="density-bar-bg"><div class="density-bar-fill"></div></div>
+  </div>
+
+  <div class="hud-card" id="signal-status-card">
+    <div class="card-title">
+      <span>⏱️</span>
+      Signal Status
+    </div>
+    <div class="signal-indicator-box">
+      <div class="signal-lamp green" id="lamp-ns"></div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: #f8fafc;">North - South</div>
+        <div style="font-size: 11px; color: #34d399;" id="timer-ns">Green (32s)</div>
+      </div>
+    </div>
+    <div class="signal-indicator-box">
+      <div class="signal-lamp red" id="lamp-ew"></div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: #f8fafc;">East - West</div>
+        <div style="font-size: 11px; color: #f87171;" id="timer-ew">Red (48s)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hud-card" id="violations-card">
+    <div class="card-title" style="color: #f87171;">
+      <span>⚠️</span>
+      Violations / Alerts
+    </div>
+    <div style="margin-bottom: 8px;">
+      <label style="font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Active Violation Scenario:</label>
+      <select id="violation-scenario-select" onchange="switchViolationScenario(this.value)" style="width: 100%; background: #0f172a; color: #f8fafc; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 5px 8px; font-size: 11px; margin-top: 4px; outline: none; cursor: pointer;">
+        <option value="RED_LIGHT_VIOLATION">🚨 Red Light Violation (₹5,000)</option>
+        <option value="SPEEDING">⚡ Excessive Speeding 84 km/h (₹2,000)</option>
+        <option value="WRONG_WAY_DRIVING">⛔ Wrong-Way Driving (₹5,000)</option>
+        <option value="OUTSIDE_DRIVABLE_ROAD">🚜 Off-Road / Carriageway Breach (₹1,000)</option>
+        <option value="STOP_LINE_ENCROACHMENT">🛑 Stop Line / Zebra Encroachment (₹500)</option>
+        <option value="EMERGENCY_OBSTRUCTION">🚑 Emergency Ambulance Block (₹10,000)</option>
+        <option value="NO_HELMET">🏍️ Helmet Rule Violation (₹1,000)</option>
+      </select>
+    </div>
+    <div class="violation-banner" id="active-violation-banner" onclick="triggerCurrentViolationDrawer()" style="cursor: pointer;" title="Click to view full e-Challan evidence slip">
+      <div style="font-weight: 700; color: #ef4444;" id="banner-title">🚨 Red Light Breach</div>
+      <div id="banner-meta">Vehicle ID: <b>V26</b> | Approach: <b>S1</b></div>
+      <div style="font-size: 10px; color: #cbd5e1; margin-top: 2px;" id="banner-sub">Penalty: <b>INR 5,000</b> &bull; Click to open slip &rarr;</div>
+    </div>
+  </div>
+
+  <div class="hud-card" id="selected-vehicle-card">
+    <div class="card-title">
+      <span>🚘</span>
+      Selected Vehicle (<span id="sel-id">V26</span>)
+    </div>
+    <div class="info-row"><span>Number Plate:</span><span class="info-val" style="color: #facc15; font-family: monospace; font-weight: 700;" id="sel-plate">MH 46 AX 4296</span></div>
+    <div class="info-row"><span>Type:</span><span class="info-val" id="sel-type">Sedan Car</span></div>
+    <div class="info-row"><span>Lane:</span><span class="info-val" id="sel-lane">S1 (Southbound)</span></div>
+    <div class="info-row"><span>Speed:</span><span class="info-val" id="sel-speed">38 km/h</span></div>
+    <div class="info-row"><span>Status:</span><span class="info-val" style="color: #ef4444;" id="sel-status">Violating (Signal Red)</span></div>
+  </div>
+
+  <!-- BOTTOM DOCK -->
+  <div class="hud-card" id="bottom-dock">
+    <button class="nav-btn active"><span>🏠</span>Home</button>
+    <button class="nav-btn" onclick="focusAmbulance()"><span>🚑</span>Emergency</button>
+    <button class="nav-btn" onclick="focusViolator()"><span>🚨</span>Violator V26</button>
+    <button class="nav-btn" onclick="toggleViewMode()"><span>📷</span>Toggle Cam</button>
+    <button class="nav-btn" onclick="toggleNightMode()"><span>🌙</span>Day/Night</button>
+    <button class="nav-btn" onclick="resetSim()"><span>🔄</span>Reset</button>
+  </div>
+
+  <script>
+    // --- 1. THREE.JS SCENE SETUP ---
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x93b5cf);
+    scene.fog = new THREE.FogExp2(0x93b5cf, 0.0035);
+
+    const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // Isometric aerial camera angle matching the reference image!
+    camera.position.set(0, 115, 125);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.target.set(0, 0, 0);
+    controls.maxPolarAngle = Math.PI / 2 - 0.05;
+
+    // Lighting
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x556677, 0.85);
+    scene.add(hemiLight);
+
+    const sunLight = new THREE.DirectionalLight(0xfff6e6, 1.4);
+    sunLight.position.set(80, 140, 70);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 10;
+    sunLight.shadow.camera.far = 350;
+    sunLight.shadow.camera.left = -110;
+    sunLight.shadow.camera.right = 110;
+    sunLight.shadow.camera.top = 110;
+    sunLight.shadow.camera.bottom = -110;
+    sunLight.shadow.bias = -0.0004;
+    scene.add(sunLight);
+
+    // --- 2. PROCEDURAL INDIAN ROAD TEXTURE WITH POTHOLES & PATCHES ---
+    function generateIndianAsphaltTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1024;
+      canvas.height = 1024;
+      const ctx = canvas.getContext('2d');
+
+      // Base weathered asphalt
+      ctx.fillStyle = "#2c3138";
+      ctx.fillRect(0, 0, 1024, 1024);
+
+      // Grain / aggregate noise
+      for (let i = 0; i < 40000; i++) {
+        const x = Math.random() * 1024;
+        const y = Math.random() * 1024;
+        const c = Math.floor(35 + Math.random() * 40);
+        ctx.fillStyle = `rgb(${c},${c},${c})`;
+        ctx.fillRect(x, y, 1.5, 1.5);
+      }
+
+      // Asphalt repair patches (dark fresh bitumen squares/rectangles common on Indian roads)
+      const patches = [
+        { x: 220, y: 380, w: 120, h: 70 },
+        { x: 680, y: 720, w: 160, h: 90 },
+        { x: 420, y: 150, w: 90, h: 140 },
+        { x: 800, y: 310, w: 110, h: 80 }
+      ];
+      patches.forEach(p => {
+        ctx.fillStyle = "#1e2227";
+        ctx.beginPath();
+        ctx.roundRect(p.x, p.y, p.w, p.h, [8, 12, 6, 14]);
+        ctx.fill();
+        ctx.strokeStyle = "#15181c";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      });
+
+      // Realistic Potholes (recessed dark rough holes with broken rim)
+      const potholes = [
+        { x: 310, y: 640, r: 28 },
+        { x: 740, y: 440, r: 34 },
+        { x: 490, y: 820, r: 22 }
+      ];
+      potholes.forEach(ph => {
+        // Outer broken edge
+        ctx.fillStyle = "#474f58";
+        ctx.beginPath();
+        ctx.arc(ph.x, ph.y, ph.r + 5, 0, Math.PI * 2);
+        ctx.fill();
+        // Inner hole
+        ctx.fillStyle = "#121418";
+        ctx.beginPath();
+        ctx.arc(ph.x, ph.y, ph.r, 0, Math.PI * 2);
+        ctx.fill();
+        // Inner gravel specs
+        for (let g = 0; g < 40; g++) {
+          const gx = ph.x + (Math.random() - 0.5) * ph.r * 1.5;
+          const gy = ph.y + (Math.random() - 0.5) * ph.r * 1.5;
+          ctx.fillStyle = "#3a4048";
+          ctx.fillRect(gx, gy, 2, 2);
+        }
+      });
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(4, 4);
+      return tex;
+    }
+    const asphaltTexture = generateIndianAsphaltTexture();
+
+    // --- 3. 4-WAY INTERSECTION GEOMETRY ---
+    const ROAD_W = 16.0;   // 16 meters wide (2 lanes each direction = 4 lanes total)
+    const HALF_W = ROAD_W / 2;
+    const ARM_LEN = 110.0; // Length of each 4 road arms
+
+    // Ground Plane (Paving & Surrounding Terrain)
+    const groundGeo = new THREE.PlaneGeometry(300, 300);
+    const groundMat = new THREE.MeshStandardMaterial({ color: 0x5a6358, roughness: 0.95 });
+    const ground = new THREE.Mesh(groundGeo, groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // North-South Road
+    const nsRoadGeo = new THREE.PlaneGeometry(ROAD_W, ARM_LEN * 2);
+    const roadMat = new THREE.MeshStandardMaterial({
+      map: asphaltTexture,
+      roughness: 0.85,
+      metalness: 0.1
+    });
+    const nsRoad = new THREE.Mesh(nsRoadGeo, roadMat);
+    nsRoad.rotation.x = -Math.PI / 2;
+    nsRoad.position.y = 0.02;
+    nsRoad.receiveShadow = true;
+    scene.add(nsRoad);
+
+    // East-West Road
+    const ewRoadGeo = new THREE.PlaneGeometry(ARM_LEN * 2, ROAD_W);
+    const ewRoad = new THREE.Mesh(ewRoadGeo, roadMat);
+    ewRoad.rotation.x = -Math.PI / 2;
+    ewRoad.position.y = 0.02;
+    ewRoad.receiveShadow = true;
+    scene.add(ewRoad);
+
+    // Central Intersection Junction Square
+    const centerJuncGeo = new THREE.PlaneGeometry(ROAD_W, ROAD_W);
+    const centerJuncMat = new THREE.MeshStandardMaterial({
+      map: asphaltTexture,
+      roughness: 0.88,
+      metalness: 0.1
+    });
+    const centerJunc = new THREE.Mesh(centerJuncGeo, centerJuncMat);
+    centerJunc.rotation.x = -Math.PI / 2;
+    centerJunc.position.y = 0.03;
+    centerJunc.receiveShadow = true;
+    scene.add(centerJunc);
+
+    // --- 4. INDIAN CURBS (BLACK & YELLOW ALTERNATING) & SIDEWALKS ---
+    const sidewalkMat = new THREE.MeshStandardMaterial({ color: 0x9ca3af, roughness: 0.8 });
+    const curbYellow = new THREE.MeshStandardMaterial({ color: 0xeab308, roughness: 0.6 });
+    const curbBlack = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.7 });
+
+    function buildCornerSidewalk(cx, cz) {
+      const cornerGroup = new THREE.Group();
+      // Raised sidewalk block
+      const swW = ARM_LEN - HALF_W;
+      const swH = 0.35;
+      const swGeo = new THREE.BoxGeometry(swW, swH, swW);
+      const swMesh = new THREE.Mesh(swGeo, sidewalkMat);
+      swMesh.position.set(cx * (HALF_W + swW / 2), swH / 2, cz * (HALF_W + swW / 2));
+      swMesh.receiveShadow = true;
+      swMesh.castShadow = true;
+      cornerGroup.add(swMesh);
+
+      // Alternating Black & Yellow Curb Blocks along corner road edges
+      const curbLen = 2.0;
+      for (let offset = HALF_W; offset < ARM_LEN; offset += curbLen) {
+        const isYellow = Math.floor(offset / curbLen) % 2 === 0;
+        const mat = isYellow ? curbYellow : curbBlack;
+
+        // Along NS road
+        const curbV = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.4, curbLen), mat);
+        curbV.position.set(cx * (HALF_W + 0.15), 0.2, cz * (offset + curbLen / 2));
+        curbV.castShadow = true;
+        cornerGroup.add(curbV);
+
+        // Along EW road
+        const curbH = new THREE.Mesh(new THREE.BoxGeometry(curbLen, 0.4, 0.3), mat);
+        curbH.position.set(cx * (offset + curbLen / 2), 0.2, cz * (HALF_W + 0.15));
+        curbH.castShadow = true;
+        cornerGroup.add(curbH);
+      }
+
+      // Add urban roadside trees and street buildings
+      for (let t = 0; t < 6; t++) {
+        const treeX = cx * (HALF_W + 5 + Math.random() * 35);
+        const treeZ = cz * (HALF_W + 5 + Math.random() * 35);
+        cornerGroup.add(createTree(treeX, treeZ));
+      }
+
+      // Urban commercial buildings around corner
+      const bldW = 22 + Math.random() * 14;
+      const bldH = 20 + Math.random() * 35;
+      const bldD = 24 + Math.random() * 12;
+      const bldGeo = new THREE.BoxGeometry(bldW, bldH, bldD);
+      const bldMat = new THREE.MeshStandardMaterial({
+        color: (cx > 0 && cz > 0) ? 0xe2e8f0 : 0xcfd8dc,
+        roughness: 0.65,
+        metalness: 0.2
+      });
+      const bld = new THREE.Mesh(bldGeo, bldMat);
+      bld.position.set(cx * (HALF_W + 28), bldH / 2, cz * (HALF_W + 28));
+      bld.castShadow = true;
+      bld.receiveShadow = true;
+      cornerGroup.add(bld);
+
+      return cornerGroup;
+    }
+
+    function createTree(x, z) {
+      const tree = new THREE.Group();
+      const trunkMat = new THREE.MeshStandardMaterial({ color: 0x4a3728, roughness: 0.9 });
+      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.45, 4.5, 8), trunkMat);
+      trunk.position.set(x, 2.25, z);
+      trunk.castShadow = true;
+      tree.add(trunk);
+
+      const leafMat = new THREE.MeshStandardMaterial({ color: 0x2e5c2a, roughness: 0.8 });
+      const foliage = new THREE.Mesh(new THREE.DodecahedronGeometry(3.2, 1), leafMat);
+      foliage.position.set(x, 5.8, z);
+      foliage.castShadow = true;
+      tree.add(foliage);
+      return tree;
+    }
+
+    scene.add(buildCornerSidewalk(1, 1));
+    scene.add(buildCornerSidewalk(1, -1));
+    scene.add(buildCornerSidewalk(-1, 1));
+    scene.add(buildCornerSidewalk(-1, -1));
+
+    // --- 5. ROAD MARKINGS: ZEBRA CROSSINGS, DOUBLE YELLOW DIVIDERS & TURNING ARCS ---
+    const markings = new THREE.Group();
+    const whiteLineMat = new THREE.MeshBasicMaterial({ color: 0xf1f5f9 });
+    const doubleYellowMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
+
+    function addZebraCrossing(isVertical, pos) {
+      const zebraGroup = new THREE.Group();
+      const stripeW = 0.6;
+      const stripeL = 3.6;
+      const gap = 0.55;
+      const count = 14;
+
+      for (let i = -count / 2; i < count / 2; i++) {
+        const stripeGeo = new THREE.PlaneGeometry(stripeW, stripeL);
+        const stripe = new THREE.Mesh(stripeGeo, whiteLineMat);
+        stripe.rotation.x = -Math.PI / 2;
+        if (isVertical) {
+          stripe.position.set(i * (stripeW + gap), 0.04, pos);
+        } else {
+          stripe.rotation.z = Math.PI / 2;
+          stripe.position.set(pos, 0.04, i * (stripeW + gap));
+        }
+        zebraGroup.add(stripe);
+      }
+      return zebraGroup;
+    }
+
+    // Zebra Crossings at all 4 arms
+    markings.add(addZebraCrossing(true, HALF_W + 3.0));  // South
+    markings.add(addZebraCrossing(true, -(HALF_W + 3.0))); // North
+    markings.add(addZebraCrossing(false, HALF_W + 3.0)); // East
+    markings.add(addZebraCrossing(false, -(HALF_W + 3.0)));// West
+
+    // Double Yellow Center Dividers & Dashed Lane Dividers
+    function addArmMarkings(isNS) {
+      const group = new THREE.Group();
+      // Double Yellow Line
+      const yLine1 = new THREE.Mesh(new THREE.PlaneGeometry(0.16, ARM_LEN - HALF_W - 6), doubleYellowMat);
+      yLine1.rotation.x = -Math.PI / 2;
+      const yLine2 = new THREE.Mesh(new THREE.PlaneGeometry(0.16, ARM_LEN - HALF_W - 6), doubleYellowMat);
+      yLine2.rotation.x = -Math.PI / 2;
+
+      const centerZ = HALF_W + 6 + (ARM_LEN - HALF_W - 6) / 2;
+      if (isNS) {
+        yLine1.position.set(-0.15, 0.04, centerZ);
+        yLine2.position.set(0.15, 0.04, centerZ);
+        // Opposite side
+        const yLine3 = yLine1.clone(); yLine3.position.z = -centerZ;
+        const yLine4 = yLine2.clone(); yLine4.position.z = -centerZ;
+        group.add(yLine1, yLine2, yLine3, yLine4);
+
+        // Dashed White Lane Separator (Lane 1 / Lane 2) at X = -HALF_W/2 and +HALF_W/2
+        [-HALF_W / 2, HALF_W / 2].forEach(x => {
+          for (let z = HALF_W + 7; z < ARM_LEN; z += 8) {
+            const dash = new THREE.Mesh(new THREE.PlaneGeometry(0.18, 3.5), whiteLineMat);
+            dash.rotation.x = -Math.PI / 2;
+            dash.position.set(x, 0.04, z);
+            const dashOpp = dash.clone(); dashOpp.position.z = -z;
+            group.add(dash, dashOpp);
+          }
+        });
+      } else {
+        // EW arm
+        yLine1.rotation.z = Math.PI / 2;
+        yLine2.rotation.z = Math.PI / 2;
+        yLine1.position.set(centerZ, 0.04, -0.15);
+        yLine2.position.set(centerZ, 0.04, 0.15);
+        const yLine3 = yLine1.clone(); yLine3.position.x = -centerZ;
+        const yLine4 = yLine2.clone(); yLine4.position.x = -centerZ;
+        group.add(yLine1, yLine2, yLine3, yLine4);
+
+        [-HALF_W / 2, HALF_W / 2].forEach(z => {
+          for (let x = HALF_W + 7; x < ARM_LEN; x += 8) {
+            const dash = new THREE.Mesh(new THREE.PlaneGeometry(3.5, 0.18), whiteLineMat);
+            dash.rotation.x = -Math.PI / 2;
+            dash.position.set(x, 0.04, z);
+            const dashOpp = dash.clone(); dashOpp.position.x = -x;
+            group.add(dash, dashOpp);
+          }
+        });
+      }
+      return group;
+    }
+    markings.add(addArmMarkings(true));
+    markings.add(addArmMarkings(false));
+
+    // Curved Intersection Turning Guidelines
+    const curve1 = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-HALF_W / 2, 0.04, HALF_W),
+      new THREE.Vector3(-HALF_W / 2, 0.04, HALF_W / 2),
+      new THREE.Vector3(-HALF_W, 0.04, HALF_W / 2)
+    );
+    const curvePoints = curve1.getPoints(24);
+    const curveGeo = new THREE.BufferGeometry().setFromPoints(curvePoints);
+    const curveMat = new THREE.LineDashedMaterial({ color: 0xffffff, dashSize: 0.8, gapSize: 0.6 });
+    const curveLine = new THREE.Line(curveGeo, curveMat);
+    curveLine.computeLineDistances();
+    markings.add(curveLine);
+
+    scene.add(markings);
+
+    // --- 6. 4-WAY TRAFFIC LIGHT SIGNALS WITH REAL LAMPS ---
+    const trafficSignals = [];
+    function buildTrafficLightPole(px, pz, rotY) {
+      const pole = new THREE.Group();
+      const metalMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.85, roughness: 0.3 });
+
+      // Vertical pole
+      const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 6.5, 12), metalMat);
+      mast.position.y = 3.25;
+      mast.castShadow = true;
+      pole.add(mast);
+
+      // Signal Head Box
+      const box = new THREE.Mesh(new THREE.BoxGeometry(0.7, 1.8, 0.5), new THREE.MeshStandardMaterial({ color: 0x0f172a }));
+      box.position.set(0, 5.0, 0);
+      box.castShadow = true;
+      pole.add(box);
+
+      // 3 Lamps: Red, Amber, Green
+      const lampGeo = new THREE.SphereGeometry(0.2, 12, 12);
+      const redMat = new THREE.MeshBasicMaterial({ color: 0x220505 });
+      const ambMat = new THREE.MeshBasicMaterial({ color: 0x221a05 });
+      const grnMat = new THREE.MeshBasicMaterial({ color: 0x052210 });
+
+      const redLamp = new THREE.Mesh(lampGeo, redMat); redLamp.position.set(0, 5.55, 0.22);
+      const ambLamp = new THREE.Mesh(lampGeo, ambMat); ambLamp.position.set(0, 5.0, 0.22);
+      const grnLamp = new THREE.Mesh(lampGeo, grnMat); grnLamp.position.set(0, 4.45, 0.22);
+      pole.add(redLamp, ambLamp, grnLamp);
+
+      pole.position.set(px, 0, pz);
+      pole.rotation.y = rotY;
+      scene.add(pole);
+
+      return { pole, redLamp, ambLamp, grnLamp };
+    }
+
+    // 4 Corner Poles facing their incoming traffic
+    trafficSignals.push({ id: "S", ...buildTrafficLightPole(HALF_W + 1.2, HALF_W + 1.2, Math.PI) });
+    trafficSignals.push({ id: "N", ...buildTrafficLightPole(-HALF_W - 1.2, -HALF_W - 1.2, 0) });
+    trafficSignals.push({ id: "E", ...buildTrafficLightPole(HALF_W + 1.2, -HALF_W - 1.2, Math.PI / 2) });
+    trafficSignals.push({ id: "W", ...buildTrafficLightPole(-HALF_W - 1.2, HALF_W + 1.2, -Math.PI / 2) });
+
+    // --- 7. INDIAN VEHICLE MODELS (AUTO-RICKSHAW, BUS, AMBULANCE, TRUCK, CARS) ---
+    function createAutoRickshaw() {
+      const auto = new THREE.Group();
+      const greenMat = new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.4 }); // Green body
+      const yellowMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.5 }); // Yellow top canvas
+      const darkMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8 });
+
+      // Lower body shell
+      const body = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.75, 2.6), greenMat);
+      body.position.y = 0.65;
+      body.castShadow = true;
+      auto.add(body);
+
+      // Yellow canvas canopy roof
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(1.35, 0.7, 2.3), yellowMat);
+      roof.position.set(0, 1.45, -0.15);
+      roof.castShadow = true;
+      auto.add(roof);
+
+      // 3 Wheels (1 front, 2 rear)
+      const wheelGeo = new THREE.CylinderGeometry(0.28, 0.28, 0.2, 12);
+      const wFront = new THREE.Mesh(wheelGeo, darkMat); wFront.rotation.z = Math.PI / 2; wFront.position.set(0, 0.28, 1.1);
+      const wRL = new THREE.Mesh(wheelGeo, darkMat); wRL.rotation.z = Math.PI / 2; wRL.position.set(-0.65, 0.28, -0.8);
+      const wRR = new THREE.Mesh(wheelGeo, darkMat); wRR.rotation.z = Math.PI / 2; wRR.position.set(0.65, 0.28, -0.8);
+      auto.add(wFront, wRL, wRR);
+
+      return auto;
+    }
+
+    function createIndianBus() {
+      const bus = new THREE.Group();
+      const redMat = new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.35, metalness: 0.3 }); // Red BEST Bus
+      const glassMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.85 });
+
+      // Lower body
+      const body = new THREE.Mesh(new THREE.BoxGeometry(2.5, 1.4, 9.2), redMat);
+      body.position.y = 1.2;
+      body.castShadow = true;
+      bus.add(body);
+
+      // Continuous passenger window band
+      const windows = new THREE.Mesh(new THREE.BoxGeometry(2.46, 0.9, 8.8), glassMat);
+      windows.position.y = 2.25;
+      bus.add(windows);
+
+      // Roof
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.35, 9.2), redMat);
+      roof.position.y = 2.85;
+      roof.castShadow = true;
+      bus.add(roof);
+
+      return bus;
+    }
+
+    function createAmbulance() {
+      const amb = new THREE.Group();
+      const whiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.3, metalness: 0.2 });
+      const redStripeMat = new THREE.MeshStandardMaterial({ color: 0xdc2626 });
+
+      // Main van body
+      const body = new THREE.Mesh(new THREE.BoxGeometry(2.1, 1.8, 4.8), whiteMat);
+      body.position.y = 1.3;
+      body.castShadow = true;
+      amb.add(body);
+
+      // Red cross stripe
+      const stripe = new THREE.Mesh(new THREE.BoxGeometry(2.14, 0.4, 4.6), redStripeMat);
+      stripe.position.y = 1.3;
+      amb.add(stripe);
+
+      // Emergency Beacon lightbar (flashing)
+      const beaconGeo = new THREE.BoxGeometry(0.9, 0.2, 0.35);
+      const beaconBlue = new THREE.Mesh(beaconGeo, new THREE.MeshBasicMaterial({ color: 0x0284c7 }));
+      beaconBlue.position.set(0, 2.3, 0.6);
+      amb.add(beaconBlue);
+      amb.beacon = beaconBlue;
+
+      return amb;
+    }
+
+    function createTruck() {
+      const truck = new THREE.Group();
+      const cabMat = new THREE.MeshStandardMaterial({ color: 0xeab308, roughness: 0.4 }); // Yellow Indian truck cab
+      const cargoMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.6 });
+
+      // Cab
+      const cab = new THREE.Mesh(new THREE.BoxGeometry(2.4, 2.4, 2.4), cabMat);
+      cab.position.set(0, 1.6, 2.6);
+      cab.castShadow = true;
+      truck.add(cab);
+
+      // Cargo body
+      const cargo = new THREE.Mesh(new THREE.BoxGeometry(2.5, 2.6, 6.2), cargoMat);
+      cargo.position.set(0, 1.8, -1.6);
+      cargo.castShadow = true;
+      truck.add(cargo);
+
+      return truck;
+    }
+
+    function createCar(colorHex = 0x2563eb) {
+      const car = new THREE.Group();
+      const paintMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.25, metalness: 0.8 });
+      const glassMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.8 });
+
+      const lower = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.65, 4.2), paintMat);
+      lower.position.y = 0.6;
+      lower.castShadow = true;
+      car.add(lower);
+
+      const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.65, 2.2), glassMat);
+      cabin.position.set(0, 1.2, -0.1);
+      car.add(cabin);
+
+      return car;
+    }
+
+    function createBoundingBox(w = 2.3, h = 1.8, d = 4.6, color = 0x22c55e) {
+      const geo = new THREE.BoxGeometry(w, h, d);
+      const edges = new THREE.EdgesGeometry(geo);
+      const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: color, linewidth: 2 }));
+      line.position.y = h / 2;
+      return line;
+    }
+
+    // --- 8. POPULATE VEHICLES AT THE 4-WAY INTERSECTION ---
+    const activeVehicles = [];
+
+    // 1. Red Light Violator Car (V26) - Red Sedan approaching from South heading North
+    const violatorCar = createCar(0xdc2626);
+    violatorCar.position.set(HALF_W / 4, 0, 18);
+    const violatorBBox = createBoundingBox(2.2, 1.7, 4.4, 0xef4444);
+    violatorCar.add(violatorBBox);
+    scene.add(violatorCar);
+    activeVehicles.push({
+      mesh: violatorCar,
+      id: "V26",
+      type: "Car",
+      lane: "S1",
+      dir: "North",
+      speed: 0.45,
+      isViolating: true,
+      bbox: violatorBBox
+    });
+
+    // 2. Emergency Ambulance (V03) in center junction
+    const ambulance = createAmbulance();
+    ambulance.position.set(-HALF_W / 4, 0, 2.5);
+    const ambBBox = createBoundingBox(2.4, 2.2, 5.0, 0x38bdf8);
+    ambulance.add(ambBBox);
+    scene.add(ambulance);
+    activeVehicles.push({
+      mesh: ambulance,
+      id: "V03",
+      type: "Ambulance",
+      lane: "Center",
+      dir: "North",
+      speed: 0.35,
+      isEmergency: true,
+      bbox: ambBBox
+    });
+
+    // 3. Red State Transport Bus (V13) on North approach
+    const redBus = createIndianBus();
+    redBus.position.set(-HALF_W / 4, 0, -28);
+    const busBBox = createBoundingBox(2.8, 3.2, 9.6, 0x22c55e);
+    redBus.add(busBBox);
+    scene.add(redBus);
+    activeVehicles.push({ mesh: redBus, id: "V13", type: "Bus", lane: "N1", dir: "South", speed: 0.25, bbox: busBBox });
+
+    // 4. Yellow Cargo Truck on East approach (V12)
+    const cargoTruck = createTruck();
+    cargoTruck.position.set(38, 0, -HALF_W / 4);
+    cargoTruck.rotation.y = -Math.PI / 2;
+    const truckBBox = createBoundingBox(2.8, 3.2, 8.8, 0x22c55e);
+    cargoTruck.add(truckBBox);
+    scene.add(cargoTruck);
+    activeVehicles.push({ mesh: cargoTruck, id: "V12", type: "Truck", lane: "E1", dir: "West", speed: 0.3, bbox: truckBBox });
+
+    // 5. White SUV (V72) on North approach
+    const whiteSUV = createCar(0xffffff);
+    whiteSUV.position.set(-3 * HALF_W / 4, 0, -48);
+    const suvBBox = createBoundingBox(2.2, 1.8, 4.4, 0x22c55e);
+    whiteSUV.add(suvBBox);
+    scene.add(whiteSUV);
+    activeVehicles.push({ mesh: whiteSUV, id: "V72", type: "SUV", lane: "N2", dir: "South", speed: 0.32, bbox: suvBBox });
+
+    // 6. Auto-Rickshaw on South approach (V20)
+    const rickshaw = createAutoRickshaw();
+    rickshaw.position.set(3 * HALF_W / 4, 0, 36);
+    const rickBBox = createBoundingBox(1.6, 1.8, 2.8, 0x22c55e);
+    rickshaw.add(rickBBox);
+    scene.add(rickshaw);
+    activeVehicles.push({ mesh: rickshaw, id: "V20", type: "Auto", lane: "S2", dir: "North", speed: 0.28, bbox: rickBBox });
+
+    // 7. Ambient White Car on East (V21)
+    const carE = createCar(0xe2e8f0);
+    carE.position.set(65, 0, -HALF_W / 4);
+    carE.rotation.y = -Math.PI / 2;
+    scene.add(carE);
+    activeVehicles.push({ mesh: carE, id: "V21", type: "Car", lane: "E1", dir: "West", speed: 0.32 });
+
+    // 8. Westbound Blue Car on West (V09)
+    const carW = createCar(0x0284c7);
+    carW.position.set(-45, 0, HALF_W / 4);
+    carW.rotation.y = Math.PI / 2;
+    scene.add(carW);
+    activeVehicles.push({ mesh: carW, id: "V09", type: "Car", lane: "W1", dir: "East", speed: 0.29 });
+
+    // --- 9. INTERACTIVE SELECTION & RAYCASTING ---
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    window.addEventListener('click', (e) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+
+      const meshes = activeVehicles.map(v => v.mesh);
+      const intersects = raycaster.intersectObjects(meshes, true);
+      if (intersects.length > 0) {
+        let topObj = intersects[0].object;
+        while (topObj.parent && !activeVehicles.find(v => v.mesh === topObj)) {
+          topObj = topObj.parent;
+        }
+        const vData = activeVehicles.find(v => v.mesh === topObj);
+        if (vData) {
+          selectVehicle(vData);
+        }
+      }
+    });
+
+    function selectVehicle(v) {
+      document.getElementById('sel-id').innerText = v.id;
+      document.getElementById('sel-type').innerText = v.type;
+      const plateEl = document.getElementById('sel-plate');
+      if (plateEl) {
+        const plates = { 'V26': 'MH 46 AX 4296', 'V03': 'MH 46 EM 1080', 'V13': 'MH 01 BR 4512', 'V12': 'MH 43 AT 8891', 'V72': 'MH 46 CZ 2045', 'V20': 'MH 46 R 6721' };
+        plateEl.innerText = plates[v.id] || 'MH 46 AX 4296';
+      }
+      document.getElementById('sel-lane').innerText = `${v.lane} (${v.dir}bound)`;
+      document.getElementById('sel-speed').innerText = `${Math.round(v.speed * 85)} km/h`;
+      const statusEl = document.getElementById('sel-status');
+      if (v.isViolating) {
+        statusEl.innerText = "Violating (Red Light Run)";
+        statusEl.style.color = "#ef4444";
+      } else if (v.isEmergency) {
+        statusEl.innerText = "Emergency Priority Active";
+        statusEl.style.color = "#38bdf8";
+      } else {
+        statusEl.innerText = "Normal Compliant";
+        statusEl.style.color = "#10b981";
+      }
+    }
+
+    // --- 10. REAL-TIME SIGNAL LOGIC & UI UPDATES ---
+    let signalTimer = 32;
+    let isNSGreen = true;
+    const lampNS = document.getElementById('lamp-ns');
+    const lampEW = document.getElementById('lamp-ew');
+    const timerNS = document.getElementById('timer-ns');
+    const timerEW = document.getElementById('timer-ew');
+
+    setInterval(() => {
+      signalTimer--;
+      if (signalTimer <= 0) {
+        isNSGreen = !isNSGreen;
+        signalTimer = isNSGreen ? 35 : 45;
+      }
+
+      if (isNSGreen) {
+        lampNS.className = "signal-lamp green";
+        lampEW.className = "signal-lamp red";
+        timerNS.innerText = `Green (${signalTimer}s)`;
+        timerNS.style.color = "#34d399";
+        timerEW.innerText = `Red (${signalTimer + 10}s)`;
+        timerEW.style.color = "#f87171";
+
+        // Update 3D Lamp materials
+        trafficSignals.forEach(s => {
+          if (s.id === 'N' || s.id === 'S') {
+            s.grnLamp.material.color.setHex(0x10b981);
+            s.redLamp.material.color.setHex(0x220505);
+          } else {
+            s.grnLamp.material.color.setHex(0x052210);
+            s.redLamp.material.color.setHex(0xef4444);
+          }
+        });
+      } else {
+        lampNS.className = "signal-lamp red";
+        lampEW.className = "signal-lamp green";
+        timerNS.innerText = `Red (${signalTimer + 8}s)`;
+        timerNS.style.color = "#f87171";
+        timerEW.innerText = `Green (${signalTimer}s)`;
+        timerEW.style.color = "#34d399";
+
+        trafficSignals.forEach(s => {
+          if (s.id === 'N' || s.id === 'S') {
+            s.grnLamp.material.color.setHex(0x052210);
+            s.redLamp.material.color.setHex(0xef4444);
+          } else {
+            s.grnLamp.material.color.setHex(0x10b981);
+            s.redLamp.material.color.setHex(0x220505);
+          }
+        });
+      }
+    }, 1000);
+
+    // --- 11. DOCK ACTIONS & CAMERA MODES ---
+    let viewMode = 0;
+    function toggleViewMode() {
+      viewMode = (viewMode + 1) % 3;
+      if (viewMode === 0) {
+        // High Aerial Intersection view (matches uploaded image)
+        camera.position.set(0, 115, 125);
+        controls.target.set(0, 0, 0);
+      } else if (viewMode === 1) {
+        // Street CCTV angle
+        camera.position.set(-HALF_W - 8, 14, HALF_W + 18);
+        controls.target.set(0, 2, 0);
+      } else {
+        // Top-Down Orthogonal
+        camera.position.set(0, 140, 0);
+        controls.target.set(0, 0, 0);
+      }
+    }
+
+    function focusAmbulance() {
+      controls.target.copy(ambulance.position);
+      camera.position.set(ambulance.position.x - 12, 14, ambulance.position.z + 24);
+      selectVehicle(activeVehicles.find(v => v.id === "V03"));
+    }
+
+    function focusViolator() {
+      controls.target.copy(violatorCar.position);
+      camera.position.set(violatorCar.position.x - 10, 12, violatorCar.position.z + 20);
+      selectVehicle(activeVehicles.find(v => v.id === "V26"));
+    }
+
+    let isNight = false;
+    function toggleNightMode() {
+      isNight = !isNight;
+      if (isNight) {
+        scene.background.setHex(0x090d16);
+        scene.fog.color.setHex(0x090d16);
+        sunLight.intensity = 0.2;
+        hemiLight.intensity = 0.35;
+      } else {
+        scene.background.setHex(0x93b5cf);
+        scene.fog.color.setHex(0x93b5cf);
+        sunLight.intensity = 1.4;
+        hemiLight.intensity = 0.85;
+      }
+    }
+
+    function resetSim() {
+      violatorCar.position.set(HALF_W / 4, 0, 32);
+      ambulance.position.set(-HALF_W / 4, 0, 2.5);
+    }
+
+    function setMode(mode) {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // --- 12. SCREEN-SPACE TAG PROJECTION ---
+    function updateScreenTag(obj, el) {
+      const pos = obj.position.clone();
+      pos.y += 1.5;
+      pos.project(camera);
+      const sx = (pos.x * 0.5 + 0.5) * window.innerWidth;
+      const sy = (-(pos.y * 0.5) + 0.5) * window.innerHeight;
+      el.style.left = `${sx}px`;
+      el.style.top = `${sy}px`;
+    }
+
+    const tagN = document.getElementById('tag-north');
+    const tagS = document.getElementById('tag-south');
+    const tagE = document.getElementById('tag-east');
+    const tagW = document.getElementById('tag-west');
+    const violatorFloatingBadge = document.getElementById('violation-floating-badge');
+
+    const dummyN = new THREE.Object3D(); dummyN.position.set(0, 0, -ARM_LEN + 15); scene.add(dummyN);
+    const dummyS = new THREE.Object3D(); dummyS.position.set(0, 0, ARM_LEN - 15); scene.add(dummyS);
+    const dummyE = new THREE.Object3D(); dummyE.position.set(ARM_LEN - 15, 0, 0); scene.add(dummyE);
+    const dummyW = new THREE.Object3D(); dummyW.position.set(-ARM_LEN + 15, 0, 0); scene.add(dummyW);
+
+    
+  // --- 15. AUTOMATIC SIDE E-CHALLAN SLIP GENERATION & EXPANDED VIOLATIONS ---
+  const challanDrawer = document.getElementById('challan-drawer');
+
+  const VIOLATION_SCENARIOS = {
+    RED_LIGHT_VIOLATION: {
+      id: 'TVS-20260919-000120-0042',
+      fine: 'INR 5,000',
+      offense: 'RED_LIGHT_VIOLATION',
+      vehicle: 'Vehicle #V26 (Red Sedan)',
+      plate: 'MH 46 AX 4296',
+      owner: 'Rajesh M. Sharma',
+      model: 'Honda City ZX (Radiant Red)',
+      rto: 'MH-46 Navi Mumbai (Panvel)',
+      lane: 'Lane S1 (Southbound Approach)',
+      speed: '38.4 km/h',
+      status: 'RED LIGHT BREACH',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000120-0042.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000120-0042.pdf',
+      xaiScore: '0.98',
+      xaiReasons: [
+        'Stop line crossed 4.2s after Red Signal initiation.',
+        'Contact point entered pedestrian zebra crossing zone.'
+      ]
+    },
+    SPEEDING: {
+      id: 'TVS-20260919-000214-0018',
+      fine: 'INR 2,000',
+      offense: 'SPEEDING (RADAR / IPM)',
+      vehicle: 'Vehicle #V18 (White SUV)',
+      plate: 'MH 12 QK 8831',
+      owner: 'Aditya S. Deshmukh',
+      model: 'Hyundai Creta SX (Polar White)',
+      rto: 'MH-12 Pune Central',
+      lane: 'Lane N2 (Express Outbound)',
+      speed: '84.2 km/h (Limit: 65 km/h)',
+      status: 'OVERSPEED BREACH (+19.2 km/h)',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000214-0018.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000214-0018.pdf',
+      xaiScore: '0.94',
+      xaiReasons: [
+        'BEV metric displacement confirmed speed of 84.2 km/h.',
+        'Exceeded corridor statutory velocity by 29.5% over 18 frames.'
+      ]
+    },
+    WRONG_WAY_DRIVING: {
+      id: 'TVS-20260919-000305-0077',
+      fine: 'INR 5,000',
+      offense: 'WRONG_WAY_DRIVING',
+      vehicle: 'Vehicle #V77 (Blue Hatchback)',
+      plate: 'MH 04 ET 5019',
+      owner: 'Vikram K. Patil',
+      model: 'Maruti Suzuki Swift (Deep Blue)',
+      rto: 'MH-04 Thane RTO',
+      lane: 'Lane S2 (Northbound Lane)',
+      speed: '27.6 km/h',
+      status: 'HEAD-ON HAZARD',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000305-0077.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000305-0077.pdf',
+      xaiScore: '0.99',
+      xaiReasons: [
+        'Trajectory vector heading opposes assigned lane flow by 168 degrees.',
+        'High severity head-on risk in active high-density carriageway.'
+      ]
+    },
+    OUTSIDE_DRIVABLE_ROAD: {
+      id: 'TVS-20260919-000412-0051',
+      fine: 'INR 1,000',
+      offense: 'OUTSIDE_DRIVABLE_ROAD',
+      vehicle: 'Vehicle #V51 (Black Pickup)',
+      plate: 'MH 01 CC 9104',
+      owner: 'Karan J. Mehta',
+      model: 'Mahindra Scorpio-N (Napoli Black)',
+      rto: 'MH-01 Mumbai South (Tardeo)',
+      lane: 'Curb / Shoulder Median',
+      speed: '22.0 km/h',
+      status: 'OFF-CARRIAGEWAY',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000412-0051.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000412-0051.pdf',
+      xaiScore: '0.91',
+      xaiReasons: [
+        'Contact point deviated 42px past boundary curb line into unpaved shoulder.',
+        'Temporal voting debounce confirmed breach across 6 consecutive evaluations.'
+      ]
+    },
+    STOP_LINE_ENCROACHMENT: {
+      id: 'TVS-20260919-000520-0033',
+      fine: 'INR 500',
+      offense: 'STOP_LINE_ENCROACHMENT',
+      vehicle: 'Vehicle #V33 (Silver Sedan)',
+      plate: 'DL 3C CC 4410',
+      owner: 'Sunil R. Verma',
+      model: 'Honda Amaze (Lunar Silver)',
+      rto: 'DL-03 Sheikh Sarai Delhi',
+      lane: 'Lane W1 (West Approach)',
+      speed: '0.0 km/h (Stationary)',
+      status: 'ZEBRA CROSSING BLOCK',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000520-0033.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000520-0033.pdf',
+      xaiScore: '0.86',
+      xaiReasons: [
+        'Vehicle front overhang halted 1.8m beyond painted solid white stop line.',
+        'Direct obstruction of designated pedestrian crossing corridor.'
+      ]
+    },
+    EMERGENCY_OBSTRUCTION: {
+      id: 'TVS-20260919-000635-0012',
+      fine: 'INR 10,000',
+      offense: 'EMERGENCY_OBSTRUCTION',
+      vehicle: 'Vehicle #V12 (Yellow Auto-Rickshaw)',
+      plate: 'MH 03 CN 7728',
+      owner: 'Ganesh P. Shinde',
+      model: 'Bajaj RE Compact (Yellow/Green)',
+      rto: 'MH-03 Mumbai East (Wadala)',
+      lane: 'Lane S1 (Ambulance Corridor)',
+      speed: '14.5 km/h',
+      status: 'AMBULANCE YIELD FAILURE',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000635-0012.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000635-0012.pdf',
+      xaiScore: '0.97',
+      xaiReasons: [
+        'Active CATS emergency ambulance detected with siren/beacon priority.',
+        'Preceding commercial vehicle failed to clear right-of-way within statutory 5 seconds.'
+      ]
+    },
+    NO_HELMET: {
+      id: 'TVS-20260919-000780-0089',
+      fine: 'INR 1,000',
+      offense: 'NO_HELMET (SECTION 129 MVA)',
+      vehicle: 'Vehicle #V89 (Motorcycle)',
+      plate: 'MH 43 BF 3920',
+      owner: 'Nitin D. Chavan',
+      model: 'Hero Splendor Plus (Black/Purple)',
+      rto: 'MH-43 Navi Mumbai (Vashi)',
+      lane: 'Lane E1 (East Approach)',
+      speed: '36.8 km/h',
+      status: 'HEADGEAR VIOLATION',
+      evidence: 'outputs/test_challan_output/evidence_TVS-20260919-000780-0089.jpg',
+      pdf: 'outputs/test_challan_output/TVS-20260919-000780-0089.pdf',
+      xaiScore: '0.95',
+      xaiReasons: [
+        'Secondary YOLOv8 helmet detection model classified rider head as without_helmet.',
+        'Confidence 94.2% verified against two-wheeler rider ROI.'
+      ]
+    }
+  };
+
+  let currentScenarioKey = 'RED_LIGHT_VIOLATION';
+
+  window.switchViolationScenario = function(key) {
+    if (!VIOLATION_SCENARIOS[key]) return;
+    currentScenarioKey = key;
+    const sc = VIOLATION_SCENARIOS[key];
+    document.getElementById('banner-title').innerText = sc.offense;
+    document.getElementById('banner-meta').innerHTML = `Vehicle: <b>${sc.vehicle}</b> | Lane: <b>${sc.lane}</b>`;
+    document.getElementById('banner-sub').innerHTML = `Penalty: <b>${sc.fine}</b> &bull; Click to open slip &rarr;`;
+
+    // Also update selected vehicle card
+    document.getElementById('sel-id').innerText = sc.vehicle.split(' ')[1] || 'V26';
+    document.getElementById('sel-plate').innerText = sc.plate;
+    document.getElementById('sel-type').innerText = sc.model;
+    document.getElementById('sel-lane').innerText = sc.lane;
+    document.getElementById('sel-speed').innerText = sc.speed;
+    document.getElementById('sel-status').innerText = sc.status;
+
+    openChallanSlip(sc);
+  };
+
+  window.triggerCurrentViolationDrawer = function() {
+    openChallanSlip(VIOLATION_SCENARIOS[currentScenarioKey]);
+  };
+
+  window.openChallanSlip = function(data) {
+    if (!data) data = VIOLATION_SCENARIOS[currentScenarioKey];
+
+    document.getElementById('drawer-id').innerText = data.id;
+    document.getElementById('drawer-fine').innerText = data.fine;
+    document.getElementById('drawer-offense').innerText = data.offense;
+    document.getElementById('drawer-vehicle').innerText = data.vehicle;
+    document.getElementById('drawer-lane').innerText = data.lane;
+    document.getElementById('drawer-speed').innerText = data.speed;
+    document.getElementById('drawer-badge-status').innerText = data.status;
+    document.getElementById('drawer-time').innerText = new Date().toISOString().replace('T', ' ').substring(0, 19);
+
+    // Plate & Registry
+    if (document.getElementById('drawer-plate-num')) {
+      document.getElementById('drawer-plate-num').innerText = data.plate;
+    }
+    const regOwnerEl = document.querySelector('#challan-drawer b');
+    if (regOwnerEl && data.owner) regOwnerEl.innerText = data.owner;
+
+    if (data.evidence && document.getElementById('drawer-evidence-img')) {
+      document.getElementById('drawer-evidence-img').src = data.evidence;
+    }
+    if (data.pdf && document.getElementById('drawer-pdf-link')) {
+      document.getElementById('drawer-pdf-link').href = data.pdf;
+    }
+
+    if (challanDrawer) {
+      challanDrawer.classList.add('open');
+    }
+  };
+
+  window.closeChallanDrawer = function() {
+    if (challanDrawer) {
+      challanDrawer.classList.remove('open');
+    }
+  };
+
+  window.endorseChallan = function() {
+    const sc = VIOLATION_SCENARIOS[currentScenarioKey];
+    alert(`✅ Challan ${sc.id} (${sc.offense} - ${sc.fine}) endorsed and transmitted to National VAHAN portal.`);
+    closeChallanDrawer();
+  };
+
+  // --- 13. ANIMATION LOOP ---
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      const elapsed = clock.getElapsedTime();
+
+      // Clock HUD
+      const now = new Date();
+      document.getElementById('live-clock').innerText = now.toTimeString().split(' ')[0];
+
+      // Violator Motion (Moving North past red signal)
+      violatorCar.position.z -= violatorCar.position.z > -ARM_LEN ? 0.35 : -ARM_LEN;
+      if (violatorCar.position.z < -ARM_LEN) violatorCar.position.z = ARM_LEN;
+
+      // Ambulance Flashing Beacon
+      if (ambulance.beacon) {
+        ambulance.beacon.material.color.setRGB(
+          Math.sin(elapsed * 12) > 0 ? 1.0 : 0.0,
+          0.1,
+          Math.sin(elapsed * 12 + Math.PI) > 0 ? 1.0 : 0.1
+        );
+      }
+
+      // Pulse Violator Bounding Box
+      if (violatorBBox) {
+        const p = Math.sin(elapsed * 8) * 0.4 + 0.6;
+        violatorBBox.material.color.setRGB(1.0, 1.0 - p, 1.0 - p);
+      }
+
+      // Update Screen Space Road Tags
+      updateScreenTag(dummyN, tagN);
+      updateScreenTag(dummyS, tagS);
+      updateScreenTag(dummyE, tagE);
+      updateScreenTag(dummyW, tagW);
+
+      // Violator floating tag
+      if (violatorCar.position.z > -HALF_W && violatorCar.position.z < HALF_W + 15) {
+        violatorFloatingBadge.style.display = 'block';
+        updateScreenTag(violatorCar, violatorFloatingBadge);
+      } else {
+        violatorFloatingBadge.style.display = 'none';
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+  <!-- SLIDE-OUT E-CHALLAN SLIP DRAWER (GENERATES AUTOMATICALLY ON VIOLATION) -->
+  <div id="challan-drawer">
+    <div class="slip-header-banner">
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <div class="slip-emblem-seal">🏛️</div>
+        <div>
+          <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.5px; color: #f8fafc;">GOVERNMENT OF MAHARASHTRA</div>
+          <div style="font-size: 10px; color: #93c5fd;">INTELLIGENT TRAFFIC ENFORCEMENT BRANCH</div>
+          <div style="font-size: 9.5px; color: #60a5fa; font-weight: 700; letter-spacing: 0.8px;">AUTOMATED E-CHALLAN EVIDENCE SLIP</div>
+        </div>
+      </div>
+      <button class="close-slip-btn" onclick="closeChallanDrawer()">✕</button>
+    </div>
+
+    <div class="slip-body-scroll">
+      <!-- Indian High-Security Registration Plate (HSRP) Badge -->
+      <div style="background: #ffffff; color: #111827; border-radius: 8px; border: 2.5px solid #1f2937; padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 14px rgba(0,0,0,0.5);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #1e3a8a; color: #ffffff; padding: 3px 6px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; font-size: 8px; font-weight: 800; line-height: 1.1;">
+            <span style="font-size: 10px;">🇮🇳</span>
+            <span>IND</span>
+          </div>
+          <div style="font-family: 'Courier New', monospace, sans-serif; font-size: 20px; font-weight: 900; letter-spacing: 2px; color: #111827;" id="drawer-plate-num">
+            MH 46 AX 4296
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 8.5px; font-weight: 800; color: #15803d; background: #dcfce7; padding: 2px 7px; border-radius: 4px; display: inline-block;">ANPR: 98.4%</div>
+          <div style="font-size: 7.5px; color: #6b7280; margin-top: 2px; font-weight: 600;">HSRP HOLOGRAM VALID</div>
+        </div>
+      </div>
+
+      <!-- VAHAN Vehicle Registry Info -->
+      <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; font-size: 11px;">
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 4px; margin-bottom: 5px;">
+          <span style="color: #94a3b8;">Registered Owner:</span>
+          <b style="color: #f1f5f9;">Rajesh M. Sharma</b>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+          <span style="color: #94a3b8;">Vehicle Model:</span>
+          <span style="color: #e2e8f0;">Honda City ZX (Radiant Red)</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+          <span style="color: #94a3b8;">RTO Registered:</span>
+          <span style="color: #38bdf8; font-weight: 600;">MH-46 Navi Mumbai (Panvel)</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">Insurance & PUC:</span>
+          <span style="color: #34d399; font-weight: 600;">Certified Valid (Dec 2026)</span>
+        </div>
+      </div>
+
+      <!-- Fine Callout Banner -->
+      <div class="slip-fine-card">
+        <div>
+          <div style="font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #fca5a5;">Total Statutory Penalty</div>
+          <div style="font-size: 19px; font-weight: 800; color: #ffffff;" id="drawer-fine">INR 5,000</div>
+        </div>
+        <div style="background: #b91c1c; color: #fff; font-size: 9.5px; font-weight: 700; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px;" id="drawer-badge-status">RED LIGHT BREACH</div>
+      </div>
+
+      <!-- Metadata Table -->
+      <table class="slip-table">
+        <tr><th>Challan ID</th><td id="drawer-id">TVS-20260919-000120-0042</td></tr>
+        <tr><th>Issued At</th><td id="drawer-time">2026-09-19 14:15:22</td></tr>
+        <tr><th>Offense Type</th><td style="color: #ef4444; font-weight: 700;" id="drawer-offense">RED_LIGHT_VIOLATION</td></tr>
+        <tr><th>Offending Vehicle</th><td id="drawer-vehicle">Vehicle #V26 (Red Sedan)</td></tr>
+        <tr><th>Lane / Approach</th><td id="drawer-lane">Lane S1 (Southbound Approach)</td></tr>
+        <tr><th>Speed Recorded</th><td id="drawer-speed">38.4 km/h</td></tr>
+        <tr><th>Intersection</th><td>Sector 20, Kharghar, Navi Mumbai</td></tr>
+      </table>
+
+      <!-- Evidence Image Preview -->
+      <div style="font-size: 10px; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px;">EVIDENCE SNAPSHOT (CONTEXT & DETAIL ZOOM)</div>
+      <div class="slip-evidence-img-container">
+        <img id="drawer-evidence-img" src="outputs/test_challan_output/evidence_TVS-20260919-000120-0042.jpg" alt="Evidence Composite" />
+      </div>
+
+      <!-- Explainable AI Section -->
+      <div style="font-size: 10px; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px;">EXPLAINABLE AI (XAI) EVIDENCE LOG</div>
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 10px; font-size: 11px;">
+        <div style="color: #38bdf8; font-weight: 600; margin-bottom: 2px;">Decision Score: 0.98 | Threshold: 0.50</div>
+        <div style="color: #cbd5e1;">&bull; <b>Signal Phase:</b> Stop line crossed 4.2s after Red Signal initiation.</div>
+        <div style="color: #cbd5e1;">&bull; <b>Spatial Encroachment:</b> Contact point entered pedestrian zebra crossing zone.</div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; gap: 8px; margin-top: 4px;">
+        <a id="drawer-pdf-link" href="outputs/test_challan_output/TVS-20260919-000120-0042.pdf" target="_blank" class="slip-btn-dl" style="flex: 1;">
+          📄 Download PDF Slip
+        </a>
+        <button class="btn" style="padding: 9px 12px; font-size: 11px;" onclick="endorseChallan()">
+          ✅ Endorse
+        </button>
+      </div>
+
+      <div style="font-size: 9.5px; color: #64748b; line-height: 1.3; text-align: justify; margin-top: 2px;">
+        Statutory Notice: Automatically issued by Intelligent Traffic Management System. Review source video before legal penalty dispatch.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+<script>
+  // --- 14. REAL AI MODEL INTEGRATION BRIDGE ---
+  let aiReportData = null;
+  let aiPlaybackActive = false;
+  let aiFrameIdx = 0;
+  let aiVehiclesMap = new THREE.Group();
+  scene.add(aiVehiclesMap);
+
+  async function loadAIReport() {
+    try {
+      const resp = await fetch('outputs/test_integrated_verification/integrated_report.json');
+      if (!resp.ok) throw new Error("Could not load integrated_report.json");
+      aiReportData = await resp.json();
+      console.log("AI Model Report Loaded Successfully:", aiReportData);
+      return true;
+    } catch (err) {
+      console.warn("Falling back to local simulation data:", err);
+      return false;
+    }
+  }
+
+  window.setMode = async function(mode) {
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if (mode === 'ai') {
+      const ok = await loadAIReport();
+      if (ok && aiReportData && aiReportData.frames) {
+        aiPlaybackActive = true;
+        aiFrameIdx = 0;
+        // Hide ambient simulation cars, display AI real-world tracks
+        activeVehicles.forEach(v => v.mesh.visible = false);
+        aiVehiclesMap.visible = true;
+
+        document.getElementById('intersection-view-card').querySelector('.info-row:nth-child(2) .info-val').innerText = 
+          aiReportData.video ? aiReportData.video.split('/').pop().substring(0, 20) + "..." : "Highway Cam 1";
+        document.getElementById('intersection-view-card').querySelector('.info-row:nth-child(3) .info-val').innerText = 
+          `${aiReportData.lane_model ? aiReportData.lane_model.num_lanes : 2} Inferred Lanes`;
+        
+        showNotification("✨ AI Connected Mode Active: Streaming real YOLO + Tracker + Lane Assigner data!");
+      } else {
+        alert("Integrated AI model report not found. Running in simulation mode.");
+      }
+    } else {
+      aiPlaybackActive = false;
+      aiVehiclesMap.visible = false;
+      activeVehicles.forEach(v => v.mesh.visible = true);
+    }
+  };
+
+  function showNotification(msg) {
+    const card = document.getElementById('violations-card');
+    card.style.display = 'block';
+    card.querySelector('.card-title').innerText = "🤖 AI Model Stream";
+    card.querySelector('.card-title').style.color = "#38bdf8";
+    card.querySelector('.violation-banner').innerText = msg;
+    card.querySelector('.violation-banner').style.borderColor = "#0284c7";
+    card.querySelector('.violation-banner').style.color = "#e0f2fe";
+  }
+
+  // Update AI Model Frame during animation
+  function updateAIPlayback() {
+    if (!aiPlaybackActive || !aiReportData || !aiReportData.frames || aiReportData.frames.length === 0) return;
+
+    const frameData = aiReportData.frames[aiFrameIdx];
+    if (!frameData) return;
+
+    // Update Telemetry from real AI model
+    document.getElementById('timer-ns').innerText = `AI Frame #${frameData.frame} / ${aiReportData.processed_frames}`;
+    if (frameData.lane_confidence) {
+      document.querySelector('#traffic-overview-card .density-bar-fill').style.width = `${Math.round(frameData.lane_confidence * 100)}%`;
+    }
+
+    // Advance frame
+    if (Math.random() < 0.35) {
+      aiFrameIdx = (aiFrameIdx + 1) % aiReportData.frames.length;
+    }
+  }
+
+  // Hook into animate loop
+  const origAnimate = animate;
+  animate = function() {
+    updateAIPlayback();
+    origAnimate();
+  };
+</script>

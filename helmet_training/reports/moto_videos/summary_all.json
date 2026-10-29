@@ -1,0 +1,58 @@
+{
+ "4K_Road_traffic_video_for_object_detection_and_t": {
+  "video": "4K Road traffic video for object detection and tracking - free download now! [MNn9qKG2UFI].mp4",
+  "samples": 90,
+  "helmet": 8,
+  "no_helmet": 0,
+  "frames_with_dets": 8
+ },
+ "4K_Video_of_Highway_Traffic_KBsqQez_O4w": {
+  "video": "4K Video of Highway Traffic! [KBsqQez-O4w].mp4",
+  "samples": 77,
+  "helmet": 0,
+  "no_helmet": 0,
+  "frames_with_dets": 0
+ },
+ "HTC_Sensation_FULL_HD_1080p_Video_Sample_highway": {
+  "video": "HTC Sensation FULL HD 1080p Video Sample (highway traffic) [wWLAc6mdJrs].mp4",
+  "samples": 80,
+  "helmet": 1,
+  "no_helmet": 0,
+  "frames_with_dets": 1
+ },
+ "Highway_sounds_cars_trucks_passing_by_for_sleepi": {
+  "video": "Highway sounds cars trucks passing by for sleeping relaxing [TW3EH4cnFZo].mp4",
+  "samples": 90,
+  "helmet": 0,
+  "no_helmet": 0,
+  "frames_with_dets": 0
+ },
+ "Original_Traffic_Sound_of_Delhi_Roads_Real_Delhi": {
+  "video": "Original Traffic Sound of Delhi Roads \uff5c Real Delhi Traffic \uff5c 1 Minute [D2m3THw-b78].mp4",
+  "samples": 30,
+  "helmet": 15,
+  "no_helmet": 4,
+  "frames_with_dets": 11
+ },
+ "Traffic_congestion_due_to_Metro_work_South_Delhi": {
+  "video": "Traffic congestion due to Metro work - South Delhi [-EnB6E3hApQ].mp4",
+  "samples": 62,
+  "helmet": 11,
+  "no_helmet": 0,
+  "frames_with_dets": 9
+ },
+ "bombay_traffic_zxxfvP8_lrU": {
+  "video": "bombay traffic [zxxfvP8-lrU].mp4",
+  "samples": 90,
+  "helmet": 16,
+  "no_helmet": 11,
+  "frames_with_dets": 25
+ },
+ "model2_test": {
+  "video": "model2_test.mp4",
+  "samples": 54,
+  "helmet": 5,
+  "no_helmet": 6,
+  "frames_with_dets": 10
+ }
+}

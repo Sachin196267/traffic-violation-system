@@ -1,0 +1,94 @@
+# Configuration for Robust Automatic Lane Detection System (Indian Traffic Context)
+
+model:
+  # Use your trained IDD detector (has autorickshaw / rider classes), not generic COCO
+  path: "runs/detect/runs/detect/idd_traffic_v2/weights/best.pt"
+  tracker: "botsort.yaml"
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  device: "mps"                # "mps" for Apple Silicon GPU, or "cpu"
+
+tracking:
+  min_track_length: 8
+  min_displacement_px: 8.0     # captures crawling traffic in congestion
+  max_stale_frames: 30
+  contact_point_offset: 0.98
+
+classes:
+  # Verify with: YOLO(weights).names  -- these must match your model's class names exactly
+  vehicle:
+    - "car"
+    - "bus"
+    - "truck"
+    - "motorcycle"
+    - "autorickshaw"
+    - "vehicle fallback"
+  pedestrian:
+    - "person"
+    - "rider"
+
+perspective:
+  ipm_width: 600
+  ipm_height: 900
+  auto_vanishing_point: true
+  default_vp_y_ratio: 0.25
+  road_roi_top_ratio: 0.41     # now read by SceneAnalyzer AND LaneAssigner
+  road_roi_bottom_ratio: 0.98
+  meters_per_bev_pixel: 0.09   # UNCALIBRATED - measure a known distance before trusting speed
+
+scene:
+  occupancy_close_kernel: 45
+  min_corridor_width_px: 300
+  divider_min_gap_px: 75
+  curb_exclusion_margin_px: 15
+  direction_consensus: 0.80    # corridor needs >=80% of tracks in one direction, else "mixed" (wrong-way disabled)
+
+lane_inference:
+  density_bins: 120
+  kde_bandwidth: 35.0
+  min_lane_width_px: 110.0
+  max_lane_width_px: 600.0     # was 250 -> forced >=3 lanes per corridor with ipm_width 600
+  poly_degree: 2
+  min_tracks_for_clustering: 5
+
+temporal_model:
+  ema_alpha: 0.12
+  hysteresis_frames: 6
+  min_confidence: 0.50
+  max_gap_frames: 45
+
+lane_assignment:
+  lateral_tolerance_px: 25.0
+  wrong_way_angle_deg: 120.0
+
+  # --- OUTSIDE_DRIVABLE_ROAD ---
+  outside_road_enabled: false           # false = never issue OUTSIDE_DRIVABLE_ROAD violations
+  outside_min_lane_confidence: 0.85     # ~5+ supporting tracks; synthetic lanes (0.55-0.60) never trigger
+  outside_required_votes: 8
+  outside_min_track_observations: 15
+  outside_min_displacement_px: 40.0
+  outside_margin_multiplier: 3.0
+
+  # --- General enforcement readiness ---
+  min_violation_track_observations: 20
+  min_violation_displacement_px: 60.0
+
+  # --- Scene-health gate: lane-based rules only fire if lanes contain this fraction of vehicles ---
+  outside_min_coverage: 0.60
+  coverage_min_vehicles: 5
+
+  # --- Rules disabled until calibrated for the specific camera ---
+  speed_enforcement_enabled: false      # needs meters_per_bev_pixel calibration
+  speed_limit_kmh: 65.0
+  signal_rules_enabled: false           # red-light / stop-line need a per-camera stop line
+  stop_line_y_ratio: 0.72
+  stop_line_tolerance_px: 28.0
+
+visualization:
+  fill_alpha: 0.25
+  line_thickness: 3
+  show_contact_points: true
+  show_trajectories: true
+  show_birdseye_hud: true
+  birdseye_hud_w: 320
+  birdseye_hud_h: 360

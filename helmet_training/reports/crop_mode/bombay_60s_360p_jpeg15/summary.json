@@ -1,0 +1,16 @@
+{
+ "FINAL": {
+  "crops": 15,
+  "any_head": 0,
+  "helmet": 0,
+  "no_helmet": 0,
+  "head_found_rate": 0.0
+ },
+ "OLD": {
+  "crops": 15,
+  "any_head": 1,
+  "helmet": 1,
+  "no_helmet": 0,
+  "head_found_rate": 0.067
+ }
+}

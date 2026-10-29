@@ -1,0 +1,22 @@
+{
+ "video": "4K Road traffic video for object detection and tracking - free download now! [MNn9qKG2UFI].mp4",
+ "resolution": "3840x2160",
+ "samples": 90,
+ "two_wheelers": 13,
+ "full640": {
+  "helmet": 0,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 1,
+  "no_helmet": 0
+ },
+ "crop": {
+  "crops": 13,
+  "head_found": 7,
+  "helmet": 7,
+  "no_helmet": 0,
+  "head_found_rate": 0.538
+ },
+ "two_wheeler_height_px_median": 191
+}

@@ -1,0 +1,26 @@
+{
+ "day": {
+  "id": "kloofendal_48d_partly_cloudy_puresky",
+  "azimuth": 214.1,
+  "elevation": 47.99,
+  "peak": 10408.7724609375
+ },
+ "evening": {
+  "id": "qwantani_dusk_2_puresky",
+  "azimuth": 217.79,
+  "elevation": 11.43,
+  "peak": 5.777466773986816
+ },
+ "night": {
+  "id": "qwantani_night_puresky",
+  "azimuth": 224.65,
+  "elevation": 0.7,
+  "peak": 21.998218536376953
+ },
+ "rain": {
+  "id": "kloofendal_overcast_puresky",
+  "azimuth": 209.53,
+  "elevation": 23.03,
+  "peak": 5.483892440795898
+ }
+}

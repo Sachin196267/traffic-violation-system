@@ -1,0 +1,7 @@
+{
+ "video": "model2_test.mp4",
+ "samples": 54,
+ "helmet": 5,
+ "no_helmet": 6,
+ "frames_with_dets": 10
+}

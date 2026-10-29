@@ -1,0 +1,41 @@
+model: cct
+
+rescaling:
+  scale: 0.00392156862745098
+  offset: 0.0
+
+tokenizer:
+  blocks:
+    - { layer: Conv2D, filters: 32, kernel_size: 3, strides: 1, padding: valid, activation: silu, use_bias: true }
+    - { layer: MaxBlurPooling2D, pool_size: 2, filter_size: 3 }
+    - { layer: Conv2D, filters: 48, kernel_size: 3, strides: 1, padding: valid, activation: silu, use_bias: true }
+    - { layer: Conv2D, filters: 64, kernel_size: 3, strides: 1, padding: valid, activation: silu, use_bias: true }
+    - { layer: MaxBlurPooling2D, pool_size: 2, filter_size: 3 }
+    - { layer: Conv2D, filters: 80, kernel_size: 3, strides: 1, padding: valid, activation: silu, use_bias: true }
+    - { layer: Conv2D, filters: 96, kernel_size: 3, strides: 1, padding: valid, activation: silu, use_bias: true }
+
+  positional_emb: true
+  patch_size: 2
+  patch_mlp:
+    layer: MLP
+    hidden_units: [ 96 ]
+    activation: silu
+    dropout_rate: 0.15
+
+transformer_encoder:
+  layers: 3
+  heads: 2
+  projection_dim: 96
+  attention_layout: split_projection
+  units: [ 96, 96 ]
+  activation: silu
+  stochastic_depth: 0.1
+  attention_dropout: 0.1
+  mlp_dropout: 0.15
+  head_mlp_dropout: 0.15
+  token_reducer_heads: 2
+  token_reducer_use_query_residual: true
+  token_reducer_use_output_norm: true
+  post_token_reducer_layers: 3
+  region_pre_seqpool_layers: 1
+  normalization: dyt

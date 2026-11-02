@@ -1,0 +1,25 @@
+{
+ "thr": 0.9,
+ "nh_thr": 0.98,
+ "target_not_sure": "not fixed; 44% on the 7 unseen test videos (71 of 162 'not sure' riders were unreadable for a person too)",
+ "chosen_on": "5-fold leave-videos-out out-of-fold predictions (24 videos)",
+ "cv_person_level": {
+  "persons": 3366,
+  "not_sure": 0.0333,
+  "accuracy_called": 0.9177,
+  "no_helmet_caught": "667/873",
+  "no_helmet_recall": 0.764,
+  "wrong_challans(helmet->no_helmet)": "50/1228",
+  "missed(no_helmet->helmet)": 107,
+  "dropped_as_not_head": 465,
+  "unclear_u_forced_calls": 881
+ },
+ "previous_3pct_setting": {
+  "thr": 0.5504,
+  "nh_thr": 0.4
+ },
+ "nh_min_frames": 3,
+ "policy": "precision-first (user, 2026-09-26): prefer 'not sure' over any wrong call. helmet needs p>=0.9; no_helmet needs p>=0.98 over >=3 frames; confident frames must agree (<15% opposite) and the clearest view must not say the opposite",
+ "max_disagree": 0.15,
+ "unseen_test": "7 new videos, 367 riders graded by eye: 204 answers, 4 wrong (1 wrong no_helmet challan), 27/81 clear no-helmet riders caught; see helmet_training/reports/FINAL_REPORT.md section 12"
+}

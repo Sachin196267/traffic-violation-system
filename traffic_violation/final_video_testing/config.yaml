@@ -1,0 +1,76 @@
+video:
+  input_path: "traffic_violation/final_video_testing/raw_input.mp4"
+  output_path: "traffic_violation/final_video_testing/processed_traffic_output.mp4"
+  width: 1280
+  height: 720
+  fps: 30
+
+spatial:
+  # Imaginary virtual lane polygon in camera pixel space (1280x720)
+  virtual_lane_polygon:
+    - [380, 320]
+    - [720, 320]
+    - [980, 620]
+    - [160, 620]
+  # Stop line across the imaginary lane
+  stop_line:
+    p1: [250, 490]
+    p2: [900, 490]
+  # Homography ground plane source points (camera) -> destination (Digital Twin BEV)
+  homography:
+    src_points:
+      - [380, 320]
+      - [720, 320]
+      - [980, 620]
+      - [160, 620]
+    dst_points:
+      - [150, 80]
+      - [450, 80]
+      - [450, 580]
+      - [150, 580]
+
+digital_twin:
+  canvas_width: 600
+  canvas_height: 720
+  road_color: [35, 38, 46]
+  lane_marking_color: [255, 215, 0]
+  curb_color: [75, 85, 99]
+
+models:
+  primary_detector: "models/traffic.pt"
+  helmet_classifier: "runs/detect/runs/model2/helmet_nohelmet-2/weights/best.pt"
+  license_plate_detector: "models/license_plate_best.pt"
+  device: "mps"  # mps for Apple Silicon, or cpu/cuda
+
+signal:
+  green_duration: 5.0
+  yellow_duration: 2.0
+  red_duration: 5.0
+  start_phase: "GREEN"
+
+violations:
+  min_consecutive_frames: 3
+  cooldown_frames: 60
+  helmet_conf_threshold: 0.55
+  triple_riding_min_count: 3
+  statutes:
+    NO_HELMET:
+      statute: "Motor Vehicles Act Section 129 / Rule 138"
+      description: "Operating two-wheeler without protective headgear conforming to BIS standards"
+    TRIPLE_RIDING:
+      statute: "Motor Vehicles Act Section 128 / Rule 123"
+      description: "Carrying more than one pillion rider on a two-wheeled motorcycle"
+    SIGNAL_LIGHT_VIOLATION:
+      statute: "Motor Vehicles Act Section 184 / Section 119"
+      description: "Breaching junction stop line and entering intersection during Red signal state"
+
+severity:
+  levels:
+    CRITICAL: 80
+    HIGH: 65
+    MEDIUM: 40
+    LOW: 0
+  base_scores:
+    SIGNAL_LIGHT_VIOLATION: 75
+    TRIPLE_RIDING: 60
+    NO_HELMET: 55

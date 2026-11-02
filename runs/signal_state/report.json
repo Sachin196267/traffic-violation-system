@@ -1,0 +1,29 @@
+{
+ "val": {
+  "lisa:red": {
+   "red": 2252
+  },
+  "lisa:not_light": {
+   "not_light": 456,
+   "green": 3,
+   "red": 2
+  },
+  "lisa:green": {
+   "green": 1114,
+   "not_light": 14,
+   "yellow": 2,
+   "red": 2
+  },
+  "lisa:yellow": {
+   "yellow": 72
+  },
+  "tvd:red": {
+   "red": 72,
+   "green": 1
+  },
+  "tvd:green": {
+   "green": 76,
+   "red": 2
+  }
+ }
+}

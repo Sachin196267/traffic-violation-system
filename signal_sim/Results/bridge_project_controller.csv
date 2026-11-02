@@ -1,0 +1,19 @@
+scenario,seed,controller,avg_wait_s,person_wait_s,max_wait_s,amb_wait_s,amb_served,served,throughput_veh_h,red_jumps_h,box_blocked_pct,queued_at_end
+City balanced,1,Project SmartSignalController,27.74,25.31,116.3,17.30,2,1174,2348,30.0,3.6,24
+City balanced,2,Project SmartSignalController,31.31,30.47,149.3,0.10,3,1168,2336,32.0,5.3,46
+City balanced,3,Project SmartSignalController,30.20,23.68,219.9,0.00,0,1218,2436,48.0,6.2,49
+Office rush N-S,1,Project SmartSignalController,23.95,21.44,242.4,1.40,2,1208,2416,52.0,5.7,29
+Office rush N-S,2,Project SmartSignalController,27.84,28.39,173.1,5.30,3,1212,2424,68.0,6.2,31
+Office rush N-S,3,Project SmartSignalController,36.27,32.09,309.2,0.00,0,1228,2456,72.0,10.8,38
+Market road,1,Project SmartSignalController,22.21,21.06,131.5,0.10,2,1106,2212,18.0,3.3,26
+Market road,2,Project SmartSignalController,24.64,21.99,132.9,0.10,3,1100,2200,44.0,5.4,37
+Market road,3,Project SmartSignalController,35.91,32.18,180.9,0.00,0,1150,2300,88.0,12.2,43
+Peak near capacity,1,Project SmartSignalController,119.98,121.93,389.8,67.50,2,1421,2842,410.0,22.9,203
+Peak near capacity,2,Project SmartSignalController,103.75,100.95,344.9,68.20,3,1375,2750,268.0,20.0,264
+Peak near capacity,3,Project SmartSignalController,72.33,62.13,196.5,0.00,0,713,1426,116.0,58.8,992
+Night,1,Project SmartSignalController,8.17,4.23,81.5,0.30,1,333,666,2.0,0.0,3
+Night,2,Project SmartSignalController,9.92,4.44,133.4,0.10,2,309,618,6.0,0.1,2
+Night,3,Project SmartSignalController,10.54,5.07,124.1,0.00,0,339,678,8.0,0.0,3
+Ambulance corridor,1,Project SmartSignalController,21.25,20.79,102.7,2.63,9,1087,2174,16.0,5.5,16
+Ambulance corridor,2,Project SmartSignalController,23.40,20.12,168.5,0.28,5,1077,2154,12.0,4.2,32
+Ambulance corridor,3,Project SmartSignalController,24.54,21.91,123.8,0.00,0,1129,2258,30.0,3.8,31

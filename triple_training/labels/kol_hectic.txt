@@ -1,0 +1,1 @@
+kol_hectic:2458=u kol_hectic:3012=u kol_hectic:4125=u kol_hectic:6643=u kol_hectic:7530=x kol_hectic:7714=x kol_hectic:8061=x kol_hectic:9088=u kol_hectic:11189=2 kol_hectic:12626=1 kol_hectic:12840=u kol_hectic:13672=2 kol_hectic:14621=u kol_hectic:14720=u kol_hectic:14973=u kol_hectic:15045=u

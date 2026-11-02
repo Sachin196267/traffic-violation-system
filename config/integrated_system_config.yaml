@@ -1,0 +1,202 @@
+# Integrated traffic violation system configuration.
+# Model roles are explicit so downloaded weights are not guessed by filename.
+
+model:
+  path: "models/traffic.pt"
+  tracker: "botsort.yaml"
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  device: "mps"
+
+secondary_models:
+  enabled: true
+  run_every_n_frames: 5
+  device: "mps"
+  license_plate:
+    path: "models/license_plate_best.pt"
+    conf_threshold: 0.35
+    enabled: true
+  emergency_vehicle:
+    path: "models/ambulance_best.pt"
+    conf_threshold: 0.35
+    enabled: true
+  helmet:
+    path: "runs/detect/runs/model2/helmet_nohelmet-2/weights/best.pt"
+    conf_threshold: 0.35
+    crop_padding_top: 0.60
+    crop_padding_sides: 0.25
+    enabled: true
+    no_helmet_labels:
+      - "no_helmet"
+      - "without_helmet"
+      - "rider_no_helmet"
+      - "faceWithNoHelmet"
+
+tracking:
+  min_track_length: 8
+  min_displacement_px: 8.0
+  max_stale_frames: 30
+  contact_point_offset: 0.98
+
+classes:
+  vehicle:
+    - "car"
+    - "bus"
+    - "truck"
+    - "motorcycle"
+    - "autorickshaw"
+    - "vehicle fallback"
+  pedestrian:
+    - "person"
+    - "rider"
+
+perspective:
+  ipm_width: 600
+  ipm_height: 900
+  auto_vanishing_point: true
+  default_vp_y_ratio: 0.25
+  road_roi_top_ratio: 0.41
+  road_roi_bottom_ratio: 0.98
+
+scene:
+  occupancy_close_kernel: 45
+  min_corridor_width_px: 300
+  divider_min_gap_px: 75
+  curb_exclusion_margin_px: 15
+
+lane_inference:
+  density_bins: 120
+  kde_bandwidth: 35.0
+  min_lane_width_px: 110.0
+  max_lane_width_px: 250.0
+  poly_degree: 2
+  min_tracks_for_clustering: 5
+
+temporal_model:
+  ema_alpha: 0.12
+  hysteresis_frames: 6
+  min_confidence: 0.50
+  max_gap_frames: 45
+
+lane_assignment:
+  lateral_tolerance_px: 25.0
+  wrong_way_angle_deg: 120.0
+  speed_limit_kmh: 65.0
+  stop_line_y_ratio: 0.72
+  stop_line_tolerance_px: 30.0
+  outside_min_lane_confidence: 0.65
+  outside_min_track_observations: 6
+  outside_min_displacement_px: 18.0
+  outside_required_votes: 3
+  outside_margin_multiplier: 2.5
+  min_violation_track_observations: 8
+  min_violation_displacement_px: 25.0
+
+visualization:
+  fill_alpha: 0.25
+  line_thickness: 3
+  show_contact_points: true
+  show_trajectories: true
+  show_birdseye_hud: true
+  birdseye_hud_w: 320
+  birdseye_hud_h: 360
+
+reporting:
+  save_secondary_detections: true
+  save_violation_snapshots: true
+  violation_cooldown_frames: 300
+
+temporal_violations:
+  rider_required_votes: 3
+  no_helmet_required_votes: 3
+  association_iou_threshold: 0.03
+  association_distance_px: 180.0
+  plate_interval_frames: 15
+  two_wheeler_crop_padding_top: 0.55
+  two_wheeler_crop_padding_sides: 0.30
+
+fines:
+  currency: "INR"
+  compound_policy: "sum" # options: sum, max, highest_plus_half
+  rules:
+    WRONG_WAY_DRIVING:
+      amount: 5000
+      statute: "Motor Vehicles Act Section 184 (Dangerous Driving)"
+      description: "Driving against designated carriageway flow direction"
+    SPEEDING:
+      amount: 2000
+      statute: "Motor Vehicles Act Section 112/183 (Speed Violation)"
+      description: "Exceeding corridor speed limit"
+    RED_LIGHT_VIOLATION:
+      amount: 5000
+      statute: "Motor Vehicles Act Section 184 / Rule 119"
+      description: "Crossing intersection stop line during RED traffic signal"
+    STOP_LINE_ENCROACHMENT:
+      amount: 500
+      statute: "Motor Vehicles Act Section 177 / Zebra Crossing Rule"
+      description: "Encroaching pedestrian zebra crossing boundary during red phase"
+    DANGEROUS_WEAVING:
+      amount: 2000
+      statute: "Motor Vehicles Act Section 184 (Erratic Driving)"
+      description: "Multiple rapid lateral lane switches posing collision hazard"
+    NO_HELMET:
+      amount: 1000
+      statute: "Motor Vehicles Act Section 129 / Rule 138 (Protective Headgear)"
+      description: "Riding two-wheeler without approved protective headgear"
+    TRIPLE_RIDING:
+      amount: 1000
+      statute: "Motor Vehicles Act Section 128 (Safety Measures for Pillion)"
+      description: "Carrying more than one pillion rider on two-wheeler"
+    EMERGENCY_OBSTRUCTION:
+      amount: 10000
+      statute: "Motor Vehicles Act Section 194E (Obstruction to Emergency Vehicle)"
+      description: "Failing to draw to side and yield corridor to emergency responder"
+
+severity:
+  enabled: true
+  levels:
+    LOW:
+      min_score: 0
+      max_score: 35
+      badge_color: "#10b981"
+    MEDIUM:
+      min_score: 36
+      max_score: 65
+      badge_color: "#f59e0b"
+    HIGH:
+      min_score: 66
+      max_score: 85
+      badge_color: "#f97316"
+    CRITICAL:
+      min_score: 86
+      max_score: 100
+      badge_color: "#ef4444"
+  base_scores:
+    EMERGENCY_OBSTRUCTION: 90
+    WRONG_WAY_DRIVING: 85
+    RED_LIGHT_VIOLATION: 75
+    TRIPLE_RIDING: 65
+    DANGEROUS_WEAVING: 60
+    NO_HELMET: 55
+    SPEEDING: 50
+    STOP_LINE_ENCROACHMENT: 30
+  modifiers:
+    speed_excess_factor: 1.0 # 1 point per km/h over speed limit
+    heavy_vehicle_bonus: 15 # extra risk if bus or truck
+    compound_violation_bonus: 15 # bonus per additional violation on same vehicle
+    unprotected_two_wheeler_compound_bonus: 10 # extra risk when both no helmet and triple riding
+
+smart_signal:
+  enabled: true
+  approaches:
+    - "north_south"
+    - "east_west"
+  min_green_seconds: 10
+  max_green_seconds: 60
+  yellow_seconds: 3
+  all_red_seconds: 1
+  default_cycle_seconds: 90
+  update_interval_frames: 15
+  queue_ema_alpha: 0.35
+  saturation_rate_vehicles_per_second: 0.55
+  emergency_hold_frames: 90

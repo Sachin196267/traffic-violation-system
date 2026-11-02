@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Traffic Violation System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="page-header">
+    <div class="logo">🚦 <span>ITMS</span> Enforcement</div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/history">History</a>
+    </nav>
+    <div class="nav-user">
+      <span id="nav-email"></span>
+      <button id="btn-logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <h1 style="font-size:28px; margin-bottom:24px;">Submit Video for Analysis</h1>
+
+    <div id="notice-alert" class="alert" style="display:none; max-width:800px; margin-bottom:20px;"></div>
+
+    <div class="card" style="max-width:800px;">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="upload">📁 Upload Local Video</button>
+        <button class="tab-btn" data-tab="url">🔗 YouTube / Video URL</button>
+      </div>
+
+      <!-- Upload Tab -->
+      <div id="tab-upload" class="tab-content">
+        <form id="upload-form">
+          <div class="form-group">
+            <label for="file-input">Select Traffic Surveillance Video</label>
+            <input type="file" id="file-input" class="form-input" accept="video/mp4,video/avi,video/mov,video/*" required>
+            <p style="font-size:12px; color:var(--text-secondary); margin-top:6px;">
+              Supported: MP4, AVI, MOV. The multi-frame pipeline will automatically analyze vehicles, track violations, and generate digital twin evidence.
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="upload-max-frames">Max Frames to Process</label>
+            <input type="number" id="upload-max-frames" class="form-input" value="300" min="1" max="100000" required>
+            <p style="font-size:12px; color:var(--text-secondary); margin-top:6px;">
+              1–100,000 frames (Default: 300 ≈ 10 seconds at 30 fps)
+            </p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-upload">
+            Upload & Start Processing
+          </button>
+        </form>
+      </div>
+
+      <!-- URL Tab -->
+      <div id="tab-url" class="tab-content" style="display:none;">
+        <form id="url-form">
+          <div class="form-group">
+            <label for="url-input">YouTube or Direct Video URL</label>
+            <input type="url" id="url-input" class="form-input" placeholder="https://www.youtube.com/watch?v=..." required>
+            <p style="font-size:12px; color:var(--text-secondary); margin-top:6px;">
+              Paste a public video link. It will download in the background and begin automated multi-frame violation analysis.
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="url-max-frames">Max Frames to Process</label>
+            <input type="number" id="url-max-frames" class="form-input" value="300" min="1" max="100000" required>
+            <p style="font-size:12px; color:var(--text-secondary); margin-top:6px;">
+              1–100,000 frames (Default: 300 ≈ 10 seconds at 30 fps)
+            </p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-url">
+            Download & Start Processing
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Active & Recent Jobs Section -->
+    <div style="margin-top:40px; max-width:800px;">
+      <h2 style="font-size:22px; margin-bottom:16px;">Active & Recent Jobs</h2>
+      <div id="active-jobs"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script>
+    requireAuth();
+    setupNavbar();
+
+    const noticeEl = document.getElementById('notice-alert');
+    function showNotice(msg, isError = false) {
+      noticeEl.textContent = msg;
+      noticeEl.className = 'alert ' + (isError ? 'alert-error' : 'alert-success');
+      noticeEl.style.display = 'block';
+      setTimeout(() => { noticeEl.style.display = 'none'; }, 8000);
+    }
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).style.display = 'block';
+      });
+    });
+
+    // Upload form
+    document.getElementById('upload-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById('file-input');
+      const file = fileInput.files[0];
+      const maxFrames = parseInt(document.getElementById('upload-max-frames').value) || 300;
+      const btn = document.getElementById('btn-upload');
+
+      if (!file) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Uploading…';
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('max_frames', maxFrames);
+      formData.append('start_frame', '0');
+
+      try {
+        const resp = await apiFetch('/api/jobs/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        if (!resp) return;
+
+        const data = await safeParseResponse(resp);
+        if (!resp.ok) throw new Error(data.detail || 'Upload failed');
+
+        fileInput.value = '';
+        showNotice(`Job submitted successfully: ${data.job_id}. Analysis is running in background.`);
+        pollJobs();
+      } catch (err) {
+        showNotice('Upload failed: ' + err.message, true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Upload & Start Processing';
+      }
+    });
+
+    // URL form
+    document.getElementById('url-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const urlInput = document.getElementById('url-input');
+      const url = urlInput.value.trim();
+      const maxFrames = parseInt(document.getElementById('url-max-frames').value) || 300;
+      const btn = document.getElementById('btn-url');
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const data = await apiJSON('/api/jobs/url', {
+          method: 'POST',
+          body: JSON.stringify({ url, max_frames: maxFrames, start_frame: 0 }),
+        });
+
+        urlInput.value = '';
+        showNotice(`Job submitted: ${data.job_id}. Downloading video and running pipeline.`);
+        pollJobs();
+      } catch (err) {
+        showNotice('Submission failed: ' + err.message, true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Download & Start Processing';
+      }
+    });
+
+    // Poll jobs
+    let pollInterval = null;
+    async function pollJobs() {
+      try {
+        const jobs = await apiJSON('/api/jobs');
+        if (!jobs) return;
+
+        const container = document.getElementById('active-jobs');
+        if (jobs.length === 0) {
+          container.innerHTML = '<div class="empty-state"><p>No jobs submitted yet. Submit a video above to begin.</p></div>';
+          return;
+        }
+
+        container.innerHTML = jobs.slice(0, 6).map(j => {
+          const progress = j.progress > 0 ? j.progress : (j.status === 'downloading' ? 5 : (j.status === 'done' ? 100 : 0));
+          const isDone = j.status === 'done';
+          const isFailed = j.status === 'failed';
+
+          return `
+            <div class="card" style="margin-bottom:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+                <div style="flex:1;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                    <span style="font-weight:700; font-family:monospace; font-size:14px;">${j.id}</span>
+                    ${statusBadge(j.status)}
+                  </div>
+                  <div style="font-size:13px; color:var(--text-secondary);">
+                    ${j.input_source} • ${j.max_frames} frames • ${formatDate(j.created_at)}
+                  </div>
+                </div>
+                ${isDone ? `
+                  <a href="/results?job=${j.id}" class="btn btn-sm btn-primary">
+                    View Results (${j.total_challans || 0} violations)
+                  </a>
+                ` : ''}
+              </div>
+
+              ${!isDone && !isFailed ? `
+                <div class="progress-bar" style="margin-top:12px;">
+                  <div class="progress-fill" style="width:${Math.max(4, progress)}%"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); margin-top:4px;">
+                  <span>${j.status === 'downloading' ? 'Downloading video stream…' : 'Multi-frame tracking & analysis…'}</span>
+                  <span>${progress}%</span>
+                </div>
+              ` : ''}
+
+              ${isFailed ? `
+                <div class="alert alert-error" style="margin-top:10px; font-size:13px;">
+                  Failed: ${j.error_message || 'Processing error'}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+
+        const hasActive = jobs.some(j => ['queued', 'downloading', 'processing'].includes(j.status));
+        if (hasActive && !pollInterval) {
+          pollInterval = setInterval(pollJobs, 3000);
+        } else if (!hasActive && pollInterval) {
+          clearInterval(pollInterval);
+          pollInterval = null;
+        }
+      } catch (err) {
+        console.error('Poll error:', err);
+      }
+    }
+
+    pollJobs();
+  </script>
+</body>
+</html>

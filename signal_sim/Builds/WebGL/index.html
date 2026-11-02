@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TraffiSense - 3D Junction Simulator</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#11161F;font-family:-apple-system,Segoe UI,Arial,sans-serif}
+#c{width:100vw;height:100vh;display:block;background:#11161F}
+#load{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#F3EFE6}
+#load h1{margin:0;font-size:28px;font-weight:600;letter-spacing:.5px}
+#load p{margin:0;color:#B9C3CF;font-size:15px}
+#bar{width:320px;height:6px;background:#2C3646;border-radius:3px;overflow:hidden}
+#fill{height:100%;width:0;background:#F2A33A;transition:width .2s}
+#err{color:#ff8b7a;max-width:520px;text-align:center}
+</style></head><body>
+<canvas id="c" tabindex="-1"></canvas>
+<div id="load"><h1>TraffiSense 3D Junction Simulator</h1><div id="bar"><div id="fill"></div></div>
+<p>Loading the simulator (about 80 MB the first time)...</p><p id="err"></p></div>
+<script>
+var s=document.createElement('script');s.src='Build/WebGL.loader.js';
+s.onload=function(){createUnityInstance(document.getElementById('c'),{
+ dataUrl:'Build/WebGL.data',frameworkUrl:'Build/WebGL.framework.js',codeUrl:'Build/WebGL.wasm',
+ streamingAssetsUrl:'StreamingAssets',companyName:'TraffiSense',productName:'signal_sim',productVersion:'1.0'
+},function(p){document.getElementById('fill').style.width=(100*p)+'%';})
+.then(function(){document.getElementById('load').remove();document.getElementById('c').focus();})
+.catch(function(e){document.getElementById('err').textContent='Could not start: '+e;});};
+document.body.appendChild(s);
+</script></body></html>

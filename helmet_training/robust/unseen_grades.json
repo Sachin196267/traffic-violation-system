@@ -1,0 +1,8 @@
+{"_note": "Visual grades of each no_helmet call in video_out/baseline_first_run/<video>_review.jpg, in sheet order (c = correct, w = wrong, u = too blurry to judge). Model: runs/helmet_robust/final, thr 0.55 / nh_thr 0.4, before the rider-geometry check.",
+ "hyd_nohelmet": "ccccccccc ucwccwc ccccuucc uccc uccc ucccccccccccu",
+ "bhopal": "cuuuuucc wccuccuu cccccwuu uu",
+ "mysore": "ccccuuuw cucwwwuu wwwccwww wccuuucc uuuc",
+ "kochi_vytila": "uucuuucwcc",
+ "hyd_police": "wccuuccu wwuc",
+ "vns_main": "cccuwcc",
+ "blr_signal": "u"}

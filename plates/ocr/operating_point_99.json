@@ -1,0 +1,10 @@
+{
+ "char_conf": 0.96,
+ "min_reads": 1,
+ "target_correct": 0.99,
+ "single_image_test": {
+  "read_rate": 0.635,
+  "correct_among_read": 0.9947,
+  "n": 299
+ }
+}

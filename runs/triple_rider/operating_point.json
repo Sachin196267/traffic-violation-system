@@ -1,0 +1,108 @@
+{
+ "method": "classifier + heads, >=3 agreeing frames",
+ "combiner": {
+  "mu": [
+   -7.415635951985731,
+   -5.2034123713036875,
+   0.1762272596810958,
+   0.48546273546273544
+  ],
+  "sd": [
+   5.232472089817113,
+   4.363365658371069,
+   0.32782013477979444,
+   0.29541290382125585
+  ],
+  "w": [
+   2.0530212184579337,
+   0.6291513852934734,
+   0.22132826366060976,
+   0.6087363498957572
+  ],
+  "b": -2.3286968348212262
+ },
+ "features": [
+  "logit p_triple",
+  "logit p_two",
+  "share of frames with >=3 heads on seat",
+  "max heads on seat / 4"
+ ],
+ "t_hi": 0.89733,
+ "t_lo": 0.83922,
+ "min_votes": 3,
+ "target": "0 wrong TRIPLE calls on held-out cameras; not-sure <= 0.083 of two-wheelers",
+ "cv": {
+  "classifier, >=1 agreeing frames": {
+   "t_hi": 0.99998,
+   "t_lo": 0.69946,
+   "min_votes": 1,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 20,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 56,
+   "triples_missed": 48
+  },
+  "classifier, >=2 agreeing frames": {
+   "t_hi": 0.99998,
+   "t_lo": 0.77536,
+   "min_votes": 2,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 14,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 60,
+   "triples_missed": 50
+  },
+  "classifier, >=3 agreeing frames": {
+   "t_hi": 0.9894,
+   "t_lo": 0.47138,
+   "min_votes": 3,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 37,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 44,
+   "triples_missed": 43
+  },
+  "classifier, >=4 agreeing frames": {
+   "t_hi": 0.9894,
+   "t_lo": 0.49146,
+   "min_votes": 4,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 34,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 46,
+   "triples_missed": 44
+  },
+  "classifier + heads, >=1 agreeing frames": {
+   "t_hi": 0.99534,
+   "t_lo": 0.89861,
+   "min_votes": 1,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 11,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 63,
+   "triples_missed": 50
+  },
+  "classifier + heads, >=3 agreeing frames": {
+   "t_hi": 0.89733,
+   "t_lo": 0.83922,
+   "min_votes": 3,
+   "bikes": 980,
+   "triples": 125,
+   "caught": 50,
+   "wrong": 0,
+   "not_sure": 0.083,
+   "triples_not_sure": 40,
+   "triples_missed": 34
+  }
+ }
+}

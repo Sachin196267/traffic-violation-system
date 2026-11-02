@@ -1,0 +1,18 @@
+{
+ "model": "CLIP ViT-B/16 + logistic probe (ambulance/police/fire/other)",
+ "t_exempt": 0.956,
+ "t_review": 0.541,
+ "exempt_types": [
+  "ambulance",
+  "police",
+  "fire"
+ ],
+ "held_out": {
+  "emergency_tracks": 170,
+  "other_tracks": 2450,
+  "exempted_correct": 98,
+  "exempted_wrong": 0,
+  "review_or_exempt_emergency": 143,
+  "review_other": 49
+ }
+}

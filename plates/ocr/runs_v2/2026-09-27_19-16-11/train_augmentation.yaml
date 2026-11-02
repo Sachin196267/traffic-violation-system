@@ -1,0 +1,224 @@
+__version__: 2.0.8
+transform:
+  __class_fullname__: Compose
+  additional_targets: {}
+  bbox_params: null
+  is_check_shapes: true
+  keypoint_params: null
+  p: 1.0
+  transforms:
+  - __class_fullname__: Affine
+    balanced_scale: false
+    border_mode: 0
+    fill:
+    - 0.0
+    - 0.0
+    - 0.0
+    fill_mask: 0.0
+    fit_output: false
+    interpolation: 1
+    keep_ratio: false
+    mask_interpolation: 0
+    p: 0.65
+    rotate:
+    - -12.0
+    - 12.0
+    rotate_method: largest_box
+    scale:
+      x:
+      - 0.8
+      - 1.1
+      y:
+      - 0.8
+      - 1.1
+    shear:
+      x:
+      - 0.0
+      - 0.0
+      y:
+      - 0.0
+      - 0.0
+    translate_percent:
+      x:
+      - -0.02
+      - 0.02
+      y:
+      - -0.02
+      - 0.02
+    translate_px: null
+  - __class_fullname__: RandomBrightnessContrast
+    brightness_by_max: true
+    brightness_limit:
+    - -0.1
+    - 0.1
+    contrast_limit:
+    - -0.1
+    - 0.1
+    ensure_safe_range: false
+    p: 0.4
+  - __class_fullname__: OneOf
+    p: 0.25
+    transforms:
+    - __class_fullname__: HueSaturationValue
+      hue_shift_limit:
+      - -5.0
+      - 5.0
+      p: 0.7
+      sat_shift_limit:
+      - -10.0
+      - 10.0
+      val_shift_limit:
+      - -10.0
+      - 10.0
+    - __class_fullname__: RGBShift
+      approximation: 1.0
+      b_shift_limit:
+      - -10.0
+      - 10.0
+      g_shift_limit:
+      - -10.0
+      - 10.0
+      noise_params:
+        noise_type: uniform
+        ranges:
+        - - -0.0392156862745098
+          - 0.0392156862745098
+        - - -0.0392156862745098
+          - 0.0392156862745098
+        - - -0.0392156862745098
+          - 0.0392156862745098
+      noise_type: uniform
+      p: 0.3
+      r_shift_limit:
+      - -10.0
+      - 10.0
+      spatial_mode: constant
+  - __class_fullname__: PlanckianJitter
+    mode: cied
+    p: 0.1
+    sampling_method: gaussian
+    temperature_limit:
+    - 5500
+    - 7000
+  - __class_fullname__: RandomGamma
+    gamma_limit:
+    - 95.0
+    - 105.0
+    p: 0.15
+  - __class_fullname__: ToGray
+    method: weighted_average
+    num_output_channels: 3
+    p: 0.05
+  - __class_fullname__: Downscale
+    interpolation_pair:
+      downscale: 3
+      upscale: 1
+    p: 0.1
+    scale_range:
+    - 0.75
+    - 0.95
+  - __class_fullname__: OneOf
+    p: 0.15
+    transforms:
+    - __class_fullname__: GaussianBlur
+      blur_limit:
+      - 0
+      - 0
+      p: 0.5
+      sigma_limit:
+      - 0.2
+      - 0.5
+    - __class_fullname__: MotionBlur
+      allow_shifted: true
+      angle_range:
+      - 0.0
+      - 360.0
+      blur_limit:
+      - 3
+      - 3
+      direction_range:
+      - -1.0
+      - 1.0
+      p: 0.5
+  - __class_fullname__: OneOf
+    p: 0.1
+    transforms:
+    - __class_fullname__: Morphological
+      operation: dilation
+      p: 0.5
+      scale:
+      - 1
+      - 2
+    - __class_fullname__: Morphological
+      operation: erosion
+      p: 0.5
+      scale:
+      - 1
+      - 2
+  - __class_fullname__: OneOf
+    p: 0.25
+    transforms:
+    - __class_fullname__: GaussNoise
+      mean_range:
+      - 0.0
+      - 0.0
+      noise_scale_factor: 1.0
+      p: 0.2
+      per_channel: true
+      std_range:
+      - 0.01
+      - 0.03
+    - __class_fullname__: MultiplicativeNoise
+      elementwise: false
+      multiplier:
+      - 0.98
+      - 1.02
+      p: 0.1
+      per_channel: false
+    - __class_fullname__: ISONoise
+      color_shift:
+      - 0.01
+      - 0.05
+      intensity:
+      - 0.005
+      - 0.02
+      p: 0.1
+    - __class_fullname__: ImageCompression
+      compression_type: jpeg
+      p: 0.1
+      quality_range:
+      - 55
+      - 90
+  - __class_fullname__: OneOf
+    p: 0.25
+    transforms:
+    - __class_fullname__: CoarseDropout
+      fill: 0.0
+      fill_mask: null
+      hole_height_range:
+      - 1
+      - 5
+      hole_width_range:
+      - 1
+      - 5
+      num_holes_range:
+      - 1
+      - 8
+      p: 0.2
+    - __class_fullname__: PixelDropout
+      drop_value: 0.0
+      dropout_prob: 0.02
+      mask_drop_value: null
+      p: 0.3
+      per_channel: false
+    - __class_fullname__: GridDropout
+      fill: random
+      fill_mask: null
+      holes_number_xy: null
+      p: 0.3
+      random_offset: true
+      ratio: 0.2
+      shift_xy:
+      - 0
+      - 0
+      unit_size_range: null

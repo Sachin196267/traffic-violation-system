@@ -1,0 +1,13 @@
+{
+  "id": "sachin196267/tvs-probe",
+  "title": "tvs-probe",
+  "code_file": "probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["redzapdos123/indian-driving-dataset-detections-yolov11", "kronomy/helmet-dataset-by-osf-lite"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

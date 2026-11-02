@@ -1,0 +1,3 @@
+- 09-27 15:50 autopilot started
+- 09-27 16:21 light-state model downloaded -> runs/signal_state/weights/last.pt (held-out LISA/TVD confusion in runs/signal_state/report.json)
+- 09-27 16:26 CLIP web pre-sort downloaded -> ambulance_training/clip_web/clip_scores.csv

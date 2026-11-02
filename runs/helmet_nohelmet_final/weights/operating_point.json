@@ -1,0 +1,1 @@
+{"conf": 0.45, "per_class_conf": {"helmet": 0.45, "no_helmet": 0.5}, "imgsz": 640, "chosen_on": "val split (F1-optimal)", "source_run": "runs/helmet_nohelmet_final/n640_traffic (epoch 62)"}

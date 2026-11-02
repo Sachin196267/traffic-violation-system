@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Traffic Violation System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <h1>🚦 <span>ITMS</span> Enforcement</h1>
+        <p>Intelligent Traffic Management & Surveillance System</p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Sign In</h2>
+        <div id="alert" class="alert alert-error" style="display:none"></div>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="password" class="form-input" placeholder="••••••••" required minlength="6" autocomplete="current-password">
+              <button type="button" class="password-toggle" onclick="togglePassword('password', this)" title="Show password" aria-label="Show password">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;" id="btn-login">
+            Sign In
+          </button>
+        </form>
+
+        <p style="text-align:center; margin-top:20px; font-size:14px; color:var(--text-secondary)">
+          Don't have an account? <a href="/register">Create one</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (getToken()) window.location.href = '/dashboard';
+
+    const form = document.getElementById('login-form');
+    const alertBox = document.getElementById('alert');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertBox.style.display = 'none';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn = document.getElementById('btn-login');
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+
+      try {
+        const resp = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await safeParseResponse(resp);
+        if (!resp.ok) {
+          const detail = typeof data.detail === 'string' ? data.detail : (JSON.stringify(data.detail) || 'Login failed');
+          throw new Error(detail);
+        }
+
+        setToken(data.token);
+        setEmail(data.email);
+        window.location.href = '/dashboard';
+      } catch (err) {
+        alertBox.textContent = err.message || 'Login failed';
+        alertBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    });
+  </script>
+</body>
+</html>

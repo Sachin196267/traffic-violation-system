@@ -1,0 +1,12 @@
+{
+ "detector": {
+  "recall": 0.994,
+  "false_boxes_per_image": 0.194,
+  "n": 315
+ },
+ "easyocr": {
+  "exact_plate": 0.137,
+  "char_accuracy": 0.633,
+  "n": 299
+ }
+}

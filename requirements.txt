@@ -1,0 +1,12 @@
+kaggle>=1.6.0
+huggingface_hub[hf_xet]>=0.31.0
+hf_xet>=1.0.0
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+numpy>=1.24.0
+opencv-python>=4.9.0
+pyyaml>=6.0.0
+scipy>=1.10.0
+ultralytics>=8.3.0
+reportlab>=4.0.0
+shap>=0.45.0

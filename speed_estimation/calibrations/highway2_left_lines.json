@@ -1,0 +1,55 @@
+{
+ "type": "dashes",
+ "note": "highway2: left-carriageway lane line only (German RMS Leitlinie 6 m / 12 m gap)",
+ "cycle_m": 18.0,
+ "dash_m": 6.0,
+ "tolerance": 0.02,
+ "vp": [
+  931.9,
+  177.1
+ ],
+ "lines": {
+  "L_inner": {
+   "m": -0.9,
+   "dashes": [
+    [
+     344,
+     350
+    ],
+    [
+     363,
+     369
+    ],
+    [
+     385,
+     395
+    ],
+    [
+     416,
+     428
+    ],
+    [
+     457,
+     474
+    ],
+    [
+     514,
+     538
+    ],
+    [
+     599,
+     640
+    ],
+    [
+     745,
+     821
+    ],
+    [
+     1048,
+     null
+    ]
+   ]
+  }
+ },
+ "coords": "background"
+}

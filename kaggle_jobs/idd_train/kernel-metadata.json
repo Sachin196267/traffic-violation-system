@@ -1,0 +1,13 @@
+{
+  "id": "sachin196267/tvs-idd-yolo11s-960",
+  "title": "tvs-idd-yolo11s-960",
+  "code_file": "train_idd.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["redzapdos123/indian-driving-dataset-detections-yolov11"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,64 @@
+{
+ "weights": "runs/helmet_nohelmet_final/n640_default/weights/best.pt",
+ "anywhere_matching": false,
+ "conf": "0.45,0.4",
+ "imgsz": 640,
+ "frames": 600,
+ "overall": {
+  "helmet": {
+   "n_riders": 806,
+   "correct": 52,
+   "missed": 754,
+   "rider_recall(correct/n)": 0.065
+  },
+  "no_helmet": {
+   "n_riders": 360,
+   "correct": 5,
+   "missed": 354,
+   "FALSE_HELMET": 1,
+   "rider_recall(correct/n)": 0.014
+  }
+ },
+ "per_video": {
+  "New-video2": {
+   "helmet": {
+    "n_riders": 191,
+    "correct": 17,
+    "missed": 174,
+    "rider_recall(correct/n)": 0.089
+   },
+   "no_helmet": {
+    "n_riders": 231,
+    "correct": 3,
+    "missed": 227,
+    "FALSE_HELMET": 1,
+    "rider_recall(correct/n)": 0.013
+   }
+  },
+  "New-video1": {
+   "helmet": {
+    "n_riders": 0,
+    "rider_recall(correct/n)": null
+   },
+   "no_helmet": {
+    "n_riders": 129,
+    "correct": 2,
+    "missed": 127,
+    "rider_recall(correct/n)": 0.016
+   }
+  },
+  "20220802_075652": {
+   "helmet": {
+    "n_riders": 615,
+    "correct": 35,
+    "missed": 580,
+    "rider_recall(correct/n)": 0.057
+   },
+   "no_helmet": {
+    "n_riders": 0,
+    "rider_recall(correct/n)": null
+   }
+  }
+ },
+ "note": "PH frames are 416x416 (stretched) elevated-CCTV; heads are typically 5-12 px. Out-of-domain stress test."
+}

@@ -1,0 +1,9 @@
+{
+ "video": "model2_test.mp4",
+ "samples": 54,
+ "two_wheelers": 115,
+ "helmet": 114,
+ "no_helmet": 1,
+ "undecided": 223,
+ "no_helmet_share": 0.009
+}

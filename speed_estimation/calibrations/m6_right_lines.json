@@ -1,0 +1,64 @@
+{
+ "type": "dashes",
+ "note": "M6: right-carriageway lane lines only",
+ "cycle_m": 9.0,
+ "dash_m": 2.0,
+ "tolerance": 0.02,
+ "vp": [
+  978,
+  350
+ ],
+ "lines": {
+  "A_right_inner": {
+   "m": 0.72,
+   "dashes": [
+    [
+     573,
+     582
+    ],
+    [
+     619,
+     632
+    ],
+    [
+     686,
+     706
+    ],
+    [
+     794,
+     830
+    ],
+    [
+     1014,
+     null
+    ]
+   ]
+  },
+  "B_right_outer": {
+   "m": 1.155,
+   "dashes": [
+    [
+     576,
+     585
+    ],
+    [
+     623,
+     635
+    ],
+    [
+     692,
+     711
+    ],
+    [
+     796,
+     829
+    ],
+    [
+     1014,
+     null
+    ]
+   ]
+  }
+ },
+ "coords": "background"
+}

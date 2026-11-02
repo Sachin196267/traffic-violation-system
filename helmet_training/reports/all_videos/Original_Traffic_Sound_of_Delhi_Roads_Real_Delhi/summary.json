@@ -1,0 +1,22 @@
+{
+ "video": "Original Traffic Sound of Delhi Roads \uff5c Real Delhi Traffic \uff5c 1 Minute [D2m3THw-b78].mp4",
+ "resolution": "3840x2160",
+ "samples": 30,
+ "two_wheelers": 256,
+ "full640": {
+  "helmet": 2,
+  "no_helmet": 0
+ },
+ "full1280": {
+  "helmet": 3,
+  "no_helmet": 0
+ },
+ "crop": {
+  "crops": 256,
+  "head_found": 12,
+  "helmet": 15,
+  "no_helmet": 0,
+  "head_found_rate": 0.047
+ },
+ "two_wheeler_height_px_median": 494
+}

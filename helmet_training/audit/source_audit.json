@@ -1,0 +1,255 @@
+{
+ "ph": {
+  "splits": {
+   "train": {
+    "images": 6844,
+    "empty_labels": 3704,
+    "boxes": {
+     "0": 2274,
+     "1": 1232,
+     "2": 802,
+     "3": 1646
+    }
+   },
+   "valid": {
+    "images": 974,
+    "empty_labels": 532,
+    "boxes": {
+     "0": 318,
+     "1": 138,
+     "2": 104,
+     "3": 249
+    }
+   },
+   "test": {
+    "images": 506,
+    "empty_labels": 280,
+    "boxes": {
+     "0": 166,
+     "1": 82,
+     "2": 58,
+     "3": 118
+    }
+   }
+  },
+  "issues": {
+   "tiny(<4px)": 2
+  },
+  "examples": {},
+  "dup": {
+   "exact_dup_groups": 981,
+   "exact_groups_spanning_splits": 379,
+   "near_dup_pairs(hamming<=4)": 276386,
+   "near_dup_pairs_across_splits": 91749
+  },
+  "resolutions": {
+   "416x416": 8324
+  },
+  "box_sqrt_area_px": {
+   "0": {
+    "n": 2758,
+    "p10": 22.4,
+    "median": 33.1,
+    "p90": 55.9
+   },
+   "1": {
+    "n": 1452,
+    "p10": 23.4,
+    "median": 37.1,
+    "p90": 56.5
+   },
+   "2": {
+    "n": 964,
+    "p10": 20.6,
+    "median": 31.9,
+    "p90": 55.0
+   },
+   "3": {
+    "n": 2013,
+    "p10": 23.2,
+    "median": 34.6,
+    "p90": 54.4
+   }
+  }
+ },
+ "bike": {
+  "splits": {
+   "train": {
+    "images": 3546,
+    "empty_labels": 129,
+    "boxes": {
+     "0": 10091,
+     "1": 4724
+    }
+   },
+   "valid": {
+    "images": 126,
+    "empty_labels": 0,
+    "boxes": {
+     "0": 184,
+     "1": 115
+    }
+   },
+   "test": {
+    "images": 63,
+    "empty_labels": 0,
+    "boxes": {
+     "0": 123,
+     "1": 61
+    }
+   }
+  },
+  "issues": {
+   "tiny(<4px)": 4
+  },
+  "examples": {},
+  "dup": {
+   "exact_dup_groups": 0,
+   "exact_groups_spanning_splits": 0,
+   "near_dup_pairs(hamming<=4)": 0,
+   "near_dup_pairs_across_splits": 0
+  },
+  "resolutions": {
+   "416x416": 3735
+  },
+  "box_sqrt_area_px": {
+   "0": {
+    "n": 10398,
+    "p10": 25.0,
+    "median": 50.2,
+    "p90": 92.8
+   },
+   "1": {
+    "n": 4900,
+    "p10": 21.6,
+    "median": 39.4,
+    "p90": 70.7
+   }
+  }
+ },
+ "india": {
+  "splits": {
+   "train": {
+    "images": 800,
+    "empty_labels": 0,
+    "boxes": {
+     "0": 1327,
+     "1": 791,
+     "2": 1787,
+     "3": 293,
+     "4": 1750
+    }
+   },
+   "valid": {
+    "images": 142,
+    "empty_labels": 0,
+    "boxes": {
+     "0": 258,
+     "1": 179,
+     "2": 274,
+     "3": 53,
+     "4": 300
+    }
+   }
+  },
+  "issues": {
+   "tiny(<4px)": 26
+  },
+  "examples": {},
+  "dup": {
+   "exact_dup_groups": 18,
+   "exact_groups_spanning_splits": 7,
+   "near_dup_pairs(hamming<=4)": 93,
+   "near_dup_pairs_across_splits": 25
+  },
+  "resolutions": {
+   "640x640": 942
+  },
+  "box_sqrt_area_px": {
+   "0": {
+    "n": 1585,
+    "p10": 15.0,
+    "median": 32.7,
+    "p90": 55.8
+   },
+   "1": {
+    "n": 970,
+    "p10": 30.3,
+    "median": 59.2,
+    "p90": 103.3
+   },
+   "2": {
+    "n": 2061,
+    "p10": 25.2,
+    "median": 54.4,
+    "p90": 151.2
+   },
+   "3": {
+    "n": 346,
+    "p10": 27.5,
+    "median": 51.5,
+    "p90": 125.9
+   },
+   "4": {
+    "n": 2050,
+    "p10": 68.2,
+    "median": 158.5,
+    "p90": 337.7
+   }
+  }
+ },
+ "merged10k": {
+  "splits": {
+   "train": {
+    "images": 13217,
+    "empty_labels": 129,
+    "boxes": {
+     "0": 24168,
+     "1": 13163
+    }
+   },
+   "val": {
+    "images": 1844,
+    "empty_labels": 0,
+    "boxes": {
+     "0": 2735,
+     "1": 1508
+    }
+   }
+  },
+  "issues": {
+   "tiny(<4px)": 11
+  },
+  "examples": {},
+  "dup": {
+   "exact_dup_groups": 4084,
+   "exact_groups_spanning_splits": 802,
+   "near_dup_pairs(hamming<=4)": 1727388,
+   "near_dup_pairs_across_splits": 443700
+  },
+  "resolutions": {
+   "416x416": 11086,
+   "18x18": 17,
+   "15x16": 14,
+   "27x30": 14,
+   "24x24": 14,
+   "23x24": 13,
+   "17x23": 13,
+   "18x16": 13
+  },
+  "box_sqrt_area_px": {
+   "0": {
+    "n": 26903,
+    "p10": 23.9,
+    "median": 46.8,
+    "p90": 87.7
+   },
+   "1": {
+    "n": 14671,
+    "p10": 21.0,
+    "median": 37.3,
+    "p90": 67.7
+   }
+  }
+ }
+}
